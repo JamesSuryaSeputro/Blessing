@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">BlessingSIA</string>
+    <string name="teaching_with_integrity_making_history_through_knowledge">Teaching with Integrity, Making History Through Knowledge</string>
+    <string name="belum_pernah_mendaftar">Belum pernah mendaftar?</string>
+    <string name="daftar_sekarang">Daftar sekarang</string>
+    <string name="blessing">BLESSING</string>
+    <string name="masukan_email">Masukan email</string>
+    <string name="masukan_password">Masukan password</string>
+    <string name="masukan_username">Masukan username</string>
+    <string name="konfirmasi_password">Konfirmasi password</string>
+    <string name="register">Register</string>
+    <string name="profil">Profil</string>
+    <string name="logout">Logout</string>
+    <string name="login">login</string>
+    <string name="input">input</string>
+</resources>
