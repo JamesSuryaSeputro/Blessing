@@ -9,16 +9,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.blessing.Model.LearningModel;
 import com.example.blessing.Model.MapelModel;
-import com.example.blessing.Model.SiswaModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 
@@ -29,10 +30,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LearningActivity extends AppCompatActivity{
+public class MapelActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<LearningModel> learningModelArrayList;
-    private LearningAdapter adapter;
+    private MapelAdapter adapter;
     private CustomRecyclerViewListener customRecyclerViewListener;
     private long mLastClickTime = 0;
     private API service;
@@ -43,19 +44,16 @@ public class LearningActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learning);
+        setContentView(R.layout.activity_mapel);
         service = RetrofitBuildCustom.getInstance().getService();
 
-
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setLogo(R.drawable.ic_arrow_back);
-        getSupportActionBar().setDisplayUseLogoEnabled(true);
-        getSupportActionBar().setTitle("Mata Pelajaran");
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Mata Pelajaran </font>"));
 
         recyclerView = (RecyclerView) findViewById(R.id.text_learning);
 
-        adapter = new LearningAdapter(new ArrayList<MapelModel>(), this, new CustomRecyclerViewListener() {
+        adapter = new MapelAdapter(new ArrayList<MapelModel>(), this, new CustomRecyclerViewListener() {
             @Override
             public void onClickCustomItem(String id) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
@@ -80,8 +78,8 @@ public class LearningActivity extends AppCompatActivity{
                     case "Kimia": {
                         break;
                     }
-                    default:{
-                        Log.d("JAMES", "onClickCustomItem: BOHAI "+id);
+                    default: {
+                        Log.d("JAMES", "onClickCustomItem: clicked" + id);
                         break;
                     }
                 }
@@ -93,12 +91,12 @@ public class LearningActivity extends AppCompatActivity{
         getdatamapel();
     }
 
-    public void getdatamapel(){
+    public void getdatamapel() {
         service.getdatamapel().enqueue(new Callback<List<MapelModel>>() {
             @Override
             public void onResponse(Call<List<MapelModel>> call, Response<List<MapelModel>> response) {
-                if (response.isSuccessful()){
-                    if (response.body()!=null){
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
                         adapter.updatedata(response.body());
                     }
                 }
@@ -136,22 +134,27 @@ public class LearningActivity extends AppCompatActivity{
         );
         return super.onCreateOptionsMenu(menu);
     }
-    private void makemoveactivity(Class activity){
-        Intent intent = new Intent (this, activity);
+
+    private void makemoveactivity(Class activity) {
+        Intent intent = new Intent(this, activity);
         this.startActivity(intent);
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.btnadd:
 //                Toast.makeText(this, "selected", Toast.LENGTH_SHORT);
                 makemoveactivity(CreateMapelActivity.class);
                 return true;
         }
+        int id = item.getItemId();
+
+        if (id == android.R.id.home) {
+            this.finish();
+        }
         return super.onOptionsItemSelected(item);
     }
-
-
 }
+
 

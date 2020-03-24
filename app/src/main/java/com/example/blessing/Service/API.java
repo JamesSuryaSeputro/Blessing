@@ -2,7 +2,7 @@ package com.example.blessing.Service;
 
 import com.example.blessing.Model.LoginModel;
 import com.example.blessing.Model.MapelModel;
-import com.example.blessing.Model.SiswaModel;
+import com.example.blessing.Model.RegisterModel;
 
 import java.util.List;
 
@@ -16,28 +16,28 @@ import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 public interface API {
-        @POST("loginsiswa.php")
+        @POST("api_post_loginsiswa")
         @FormUrlEncoded
         Call<LoginModel> checklogin(@Field("email") String email, @Field("password") String password);
 
-        @POST("daftarsiswa.php")
+        @POST("api_post_daftarsiswa")
         @FormUrlEncoded
-        Call<LoginModel> checkregister(@Field("nama") String nama,
-                                       @Field("email") String email,
-                                       @Field("password") String password,
-                                       @Field("confirmpass") String confirmpassword);
+        Call<RegisterModel> checkregister(@Field("nama") String nama,
+                                          @Field("email") String email,
+                                          @Field("password") String password,
+                                          @Field("confirmpass") String confirmpassword);
 
-        @POST("routes.php")
+        @POST("api_post_mapel")
         @FormUrlEncoded
-        Call<LoginModel> checkmapel(@Field("nama_mapel") String nama_mapel);
+        Call<MapelModel> postdatamapel(@Field("nama_mapel") String namaMapel);
 
         @Streaming
         @GET
         Call<ResponseBody> downloadFileByUrl(@Url String url);
 
-        @GET("api_get_daftarsiswa")
-        Call<SiswaModel> getdatasiswa();
-
         @GET("api_get_mapel")
         Call<List<MapelModel>> getdatamapel();
+
+
+
 }

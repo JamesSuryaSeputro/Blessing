@@ -20,7 +20,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ArrayList<LearningModel> learningModelArrayList;
-    private ItemAdapter adapter;
+    private MainAdapter adapter;
     private TextView textView;
     private long mLastClickTime = 0;
 
@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makemoveactivity(MateriActivity.class);
+                makeMoveActivity(MateriActivity.class);
             }
         });
 
-        adapter = new ItemAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
+        adapter = new MainAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
             @Override
             public void onClickCustomItem(String id) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case "PELAJARAN": {
                         Log.d("MainActivity", "BTN CLICKED");
-                        makemoveactivity(LearningActivity.class);
+                        makeMoveActivity(MapelActivity.class);
                         break;
                     }
                     case "UJIAN": {
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
     }
 
-    private void makemoveactivity(Class activity) {
+    private void makeMoveActivity(Class activity) {
         Intent intent = new Intent(this, activity);
         this.startActivity(intent);
     }
@@ -105,10 +105,10 @@ public class MainActivity extends AppCompatActivity {
     public void setMode(int selectedMode) {
         switch (selectedMode) {
             case R.id.myProfile:
-                makemoveactivity(ProfileActivity.class);
+                makeMoveActivity(ProfileActivity.class);
                 break;
             case R.id.Logout:
-                makemoveactivity(LoginActivity.class);
+                makeMoveActivity(LoginActivity.class);
                 break;
         }
     }

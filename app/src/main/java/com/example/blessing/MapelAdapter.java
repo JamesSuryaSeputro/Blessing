@@ -9,20 +9,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.L;
-import com.example.blessing.Model.LearningModel;
 import com.example.blessing.Model.MapelModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.ViewHolder> {
+public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> {
 
     private ArrayList<MapelModel> learningModelArrayList;
     private Context context;
     private CustomRecyclerViewListener customRecyclerViewListener;
 
-    public LearningAdapter(ArrayList<MapelModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
+    public MapelAdapter(ArrayList<MapelModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
         this.learningModelArrayList = learningModelArrayList;
         this.context = context;
         this.customRecyclerViewListener = customRecyclerViewListener;
@@ -30,14 +28,14 @@ public class LearningAdapter extends RecyclerView.Adapter<LearningAdapter.ViewHo
 
     @NonNull
     @Override
-    public LearningAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MapelAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.cv_list, parent, false);
-        LearningAdapter.ViewHolder holder = new LearningAdapter.ViewHolder(view);
+        MapelAdapter.ViewHolder holder = new MapelAdapter.ViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LearningAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MapelAdapter.ViewHolder holder, final int position) {
         holder.textview.setText(learningModelArrayList.get(position).getNamaMapel());
         holder.textview.setOnClickListener(new View.OnClickListener() {
             @Override

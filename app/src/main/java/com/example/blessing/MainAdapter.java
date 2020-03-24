@@ -14,13 +14,13 @@ import com.example.blessing.Model.LearningModel;
 
 import java.util.ArrayList;
 
-public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
+public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private ArrayList<LearningModel> learningModelArrayList;
     private Context context;
     private CustomRecyclerViewListener customRecyclerViewListener;
 
-    public ItemAdapter(ArrayList<LearningModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
+    public MainAdapter(ArrayList<LearningModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
         this.learningModelArrayList = learningModelArrayList;
         this.context = context;
         this.customRecyclerViewListener = customRecyclerViewListener;
@@ -33,7 +33,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     @NonNull
     @Override
-    public ItemAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
@@ -41,7 +41,7 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ItemAdapter.ViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull MainAdapter.ViewHolder holder, final int position) {
         holder.imageview.setImageResource(learningModelArrayList.get(position).getLearnimage());
         holder.textview.setText(learningModelArrayList.get(position).getLearntext());
         holder.imageview.setOnClickListener(new View.OnClickListener() {

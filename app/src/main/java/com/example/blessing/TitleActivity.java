@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 
 import com.example.blessing.Model.LearningModel;
 
@@ -16,7 +14,7 @@ public class TitleActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private ArrayList<LearningModel> learningModelArrayList;
-    private LearningAdapter adapter;
+    private MapelAdapter adapter;
     private CustomRecyclerViewListener customRecyclerViewListener;
     private long mLastClickTime = 0;
 
@@ -26,7 +24,7 @@ public class TitleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_learning);
+        setContentView(R.layout.activity_mapel);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.blessing_icon);

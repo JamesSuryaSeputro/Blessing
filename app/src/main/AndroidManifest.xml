@@ -16,17 +16,11 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CreateMapelActivity"></activity>
+        <activity android:name=".CreateMapelActivity"/>
         <activity android:name=".PdfViewFixActivity" />
         <activity android:name=".MateriActivity" />
         <activity android:name=".TitleActivity" />
-        <activity android:name=".LearningActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".MapelActivity" />
         <activity
             android:name=".SplashScreen"
             android:theme="@style/Theme.Design.Light.NoActionBar">

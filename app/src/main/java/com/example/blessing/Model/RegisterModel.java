@@ -3,7 +3,7 @@ package com.example.blessing.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class SiswaModel {
+public class RegisterModel {
 
   @Expose
   @SerializedName("email")
