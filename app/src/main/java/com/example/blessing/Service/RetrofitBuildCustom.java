@@ -8,8 +8,9 @@ public class RetrofitBuildCustom {
    private static RetrofitBuildCustom instance = null;
    private Retrofit retrofit;
    private API service;
-   private static final String BASE_URL = "http://localhost:8080/blessing/blessingAPI/public/";
+   private static final String BASE_URL = "http://192.168.1.3/blessing/blessingAPI/public/";
    //https://blessingme.herokuapp.com/public/
+   //http://192.168.1.3/blessing/blessingAPI/public/
     public RetrofitBuildCustom() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
