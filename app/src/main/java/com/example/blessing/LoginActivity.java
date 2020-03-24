@@ -80,10 +80,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(moveIntent);
                     finish();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "login gagal", Toast.LENGTH_SHORT).show();
-                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "login gagal", Toast.LENGTH_SHORT).show();
                 }
+            }
 
             @Override
             public void onFailure(Call<LoginModel> call, Throwable t) {
