@@ -8,14 +8,6 @@ import static org.junit.Assert.*;
 
 public class RetrofitBuildCustomTest {
 
-  @Before
-  public void setUp() throws Exception {
-  }
-
-  @After
-  public void tearDown() throws Exception {
-  }
-
   @Test
   public void testsingleton() throws Exception {
     int a, b;

@@ -76,13 +76,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         call.enqueue(new Callback<LoginModel>() {
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
-//                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body().getStatus().equals("1")) {
                         Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(moveIntent);
                         finish();
-//                    } else {
-//                        Toast.makeText(getApplicationContext(), "login gagal", Toast.LENGTH_SHORT).show();
-//                    }
+                    } else {
+                        Toast.makeText(getApplicationContext(), "login gagal", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
 
