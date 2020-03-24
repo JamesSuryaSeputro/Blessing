@@ -38,6 +38,4 @@ public interface API {
         @GET("api_get_mapel")
         Call<List<MapelModel>> getdatamapel();
 
-
-
 }
