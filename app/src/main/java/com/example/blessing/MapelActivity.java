@@ -79,7 +79,7 @@ public class MapelActivity extends AppCompatActivity {
                         break;
                     }
                     default: {
-                        Log.d("JAMES", "onClickCustomItem: clicked" + id);
+                        Log.d("JAMES", "onClickCustomItem: clicked " + id);
                         break;
                     }
                 }

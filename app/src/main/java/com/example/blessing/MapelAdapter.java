@@ -62,9 +62,10 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView textview;
 
-        public ViewHolder(View view) {
-            super(view);
-            textview = (TextView) view.findViewById(R.id.nama_materi);
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            textview = itemView.findViewById(R.id.nama_materi);
+
         }
     }
 }

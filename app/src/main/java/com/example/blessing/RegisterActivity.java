@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private RetrofitBuildCustom retrofitBuildCustom;
     private EditText edtNama, edtEmail, edtPassword, edtConfirmpass;
     private ImageView imageView;
+    private TextView tv1, tv2;
     private long mLastClickTime = 0;
 
     @Override
@@ -65,7 +67,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
-
     private void CheckRegister() {
         //check edt tidak kosong
         if (edtNama.getText().toString().equals("") || edtEmail.getText().toString().equals("") || edtPassword.getText().toString().equals("")) {
@@ -82,6 +83,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
                         if (response.isSuccessful()) {
                             clearall();
+//                            String nama = edtNama.getText().toString();
+//                            String email = edtPassword.getText().toString();
                             Toast.makeText(RegisterActivity.this, "registrasi berhasil", Toast.LENGTH_SHORT).show();
                         } else {
                             Toast.makeText(RegisterActivity.this, "registrasi gagal", Toast.LENGTH_SHORT).show();

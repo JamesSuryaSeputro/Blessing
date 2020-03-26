@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.LearningModel;
+import com.example.blessing.Utils.Preferences;
 
 import java.util.ArrayList;
 
@@ -108,7 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 makeMoveActivity(ProfileActivity.class);
                 break;
             case R.id.Logout:
+                Preferences.clearLoggedinUser(getBaseContext());
                 makeMoveActivity(LoginActivity.class);
+                finish();
                 break;
         }
     }

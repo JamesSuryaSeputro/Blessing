@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.blessing.Model.LoginModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
+import com.example.blessing.Utils.Preferences;
 import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
@@ -56,7 +57,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(moveIntent);
                 break;
             case R.id.btnlogin:
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1500) {
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
@@ -77,6 +78,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                 if (response.isSuccessful() && response.body().getStatus().equals("1")) {
+                    Preferences.setStatusLogin(getBaseContext(),true);
+                    Log.d("AK1", "onResponse: "+response.body().toString());
+                    Log.d("AK1", "onResponse: "+response.body().getNama()+" "+response.body().getEmail());
+                    Preferences.setKeyNama(getBaseContext(),response.body().getNama());
+                    Preferences.setKeyEmail(getBaseContext(), response.body().getEmail());
                     Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(moveIntent);
                     finish();

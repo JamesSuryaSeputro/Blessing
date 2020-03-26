@@ -22,21 +22,23 @@
             app:civ_border_color="#FF000000"/>
 
         <TextView
+            android:id="@+id/nama"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="James Surya"
             android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:text="Nama"/>
 
         <TextView
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
-            android:text="jamessuryaseputro@gmail.com"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            tools:text="Email"/>
 
     </LinearLayout>
 </RelativeLayout>
