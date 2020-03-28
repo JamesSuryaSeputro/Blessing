@@ -6,13 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_margin="9dp"
-    tools:context=".CreateMapelActivity">
+    tools:context=".CreateMateriActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garamondbold"
-        android:text="Tambah Mata Pelajaran"
+        android:text="Tambah Materi"
         android:textColor="#FF9800"
         android:textSize="18sp" />
 

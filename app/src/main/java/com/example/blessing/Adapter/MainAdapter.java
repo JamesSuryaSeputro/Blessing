@@ -1,4 +1,4 @@
-package com.example.blessing;
+package com.example.blessing.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.LearningModel;
+import com.example.blessing.R;
 
 import java.util.ArrayList;
 
@@ -47,7 +48,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               customRecyclerViewListener.onClickCustomItem(learningModelArrayList.get(position).getLearntext());
+               customRecyclerViewListener.onItemClick(learningModelArrayList.get(position).getLearntext());
             }
         });
     }

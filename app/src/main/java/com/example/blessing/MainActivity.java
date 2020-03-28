@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.blessing.Adapter.CustomRecyclerViewListener;
+import com.example.blessing.Adapter.MainAdapter;
 import com.example.blessing.Model.LearningModel;
 import com.example.blessing.Utils.Preferences;
 
@@ -48,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
         adapter = new MainAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
             @Override
-            public void onClickCustomItem(String id) {
+            public void onItemClick(String id) {
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
                     return;
                 }

@@ -3,6 +3,7 @@ package com.example.blessing;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -38,23 +39,27 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
     }
 
     public void postDataMapel() {
-        Call<MapelModel> call = service.postdatamapel(edtMapel.getText().toString());
-        call.enqueue(new Callback<MapelModel>() {
-            @Override
-            public void onResponse(Call<MapelModel> call, Response<MapelModel> response) {
-                if (response.isSuccessful()) {
-                    clearAll();
-                    Toast.makeText(CreateMapelActivity.this, "berhasil tambah mata pelajaran", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(CreateMapelActivity.this, "terjadi kesalahan", Toast.LENGTH_SHORT).show();
+        if (edtMapel.getText().toString().equals("")) {
+            Toast.makeText(CreateMapelActivity.this, "isi mata pelajaran dulu", Toast.LENGTH_SHORT).show();
+        } else {
+            Call<MapelModel> call = service.postdatamapel(edtMapel.getText().toString());
+            call.enqueue(new Callback<MapelModel>() {
+                @Override
+                public void onResponse(Call<MapelModel> call, Response<MapelModel> response) {
+                    if (response.isSuccessful()) {
+                        clearAll();
+                        Toast.makeText(CreateMapelActivity.this, "berhasil tambah mata pelajaran", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(CreateMapelActivity.this, "terjadi kesalahan", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<MapelModel> call, Throwable t) {
-                Log.e("CreateMapelActivity", "onFailure: ", t);
-            }
-        });
+                @Override
+                public void onFailure(Call<MapelModel> call, Throwable t) {
+                    Log.e("CreateMapelActivity", "onFailure: ", t);
+                }
+            });
+        }
     }
 
     private void clearAll() {
@@ -66,7 +71,9 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-//            this.finish();
+        //  this.finish();
+            Intent moveIntent = new Intent(CreateMapelActivity.this, MapelActivity.class);
+            startActivity(moveIntent);
 
         }
         return super.onOptionsItemSelected(item);
