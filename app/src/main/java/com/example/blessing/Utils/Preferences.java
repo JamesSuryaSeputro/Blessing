@@ -6,9 +6,11 @@ import android.preference.PreferenceManager;
 
 public class Preferences {
 
+    static final String KEY_ID = "id";
     static final String KEY_NAMA = "nama";
     static final String KEY_EMAIL = "email";
-    static final String KEY_LOGGEDIN_USER = "loggedinuser";
+    static final String KEY_ROLE = "role";
+    static final String KEY_NAMAROLE = "namarole";
     static final String KEY_USER_STATUS = "statuslogin";
 
     // Deklarasi sharedpreferences berdasarkan parameter context
@@ -16,7 +18,18 @@ public class Preferences {
         return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public static void setKeyNama(Context context, String nama) {
+    public static void setKeyId(Context context, String id) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_ID, id);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai String dari KEY_ID
+    public static String getKeyId(Context context) {
+        return getSharedPreferences(context).getString(KEY_ID, "");
+    }
+
+     public static void setKeyNama(Context context, String nama) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.putString(KEY_NAMA, nama);
         editor.apply();
@@ -38,14 +51,26 @@ public class Preferences {
         return getSharedPreferences(context).getString(KEY_EMAIL, "No Data");
     }
 
-    public static void setKeyLoggedinUser(Context context, String username){
+    public static void setKeyRole(Context context, String idrole) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-        editor.putString(KEY_LOGGEDIN_USER, username);
+        editor.putString(KEY_ROLE, idrole);
         editor.apply();
     }
-    // Mengembalikan nilai string dari KEY_LOGGEDIN_USER
-    public static String getKeyLoggedinUser(Context context){
-        return getSharedPreferences(context).getString(KEY_LOGGEDIN_USER,"No Data");
+
+    // Mengembalikan nilai string dari KEY_USER
+    public static String getKeyUser(Context context) {
+        return getSharedPreferences(context).getString(KEY_ROLE, "No Data");
+    }
+
+    public static void setKeyRolename(Context context, String namarole) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_NAMAROLE, namarole);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai string dari KEY_USER
+    public static String getKeyRolename(Context context) {
+        return getSharedPreferences(context).getString(KEY_NAMAROLE, "No Data");
     }
 
     public static void setStatusLogin(Context context, boolean status) {
@@ -62,7 +87,6 @@ public class Preferences {
     public static void clearLoggedinUser(Context context) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.remove(KEY_USER_STATUS);
-        editor.remove(KEY_LOGGEDIN_USER);
         editor.apply();
     }
 }

@@ -1,14 +1,14 @@
 package com.example.blessing.Model;
 
-public class LearningModel {
+public class MainModel {
 
     private String learntext;
     private int learnimage;
 
-    public LearningModel() {
+    public MainModel() {
     }
 
-    public LearningModel(String learntext, int learnimage) {
+    public MainModel(String learntext, int learnimage) {
         this.learntext = learntext;
         this.learnimage = learnimage;
     }

@@ -10,18 +10,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.blessing.Model.LearningModel;
+import com.example.blessing.Model.MainModel;
 import com.example.blessing.R;
 
 import java.util.ArrayList;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
-    private ArrayList<LearningModel> learningModelArrayList;
+    private ArrayList<MainModel> learningModelArrayList;
     private Context context;
     private CustomRecyclerViewListener customRecyclerViewListener;
 
-    public MainAdapter(ArrayList<LearningModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
+    public MainAdapter(ArrayList<MainModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
         this.learningModelArrayList = learningModelArrayList;
         this.context = context;
         this.customRecyclerViewListener = customRecyclerViewListener;

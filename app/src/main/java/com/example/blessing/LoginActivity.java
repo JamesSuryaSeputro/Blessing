@@ -1,10 +1,13 @@
 package com.example.blessing;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -64,8 +67,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 if (!EdtEmail.getText().equals("") && !EdtPassword.getText().equals("")) {
                     Log.d("LoginActivity", "BTNLOGIN CLICKED");
                     checkLogin();
-                } else {
-                    //Toast.makeText(this, "Email dan Password Harus Diisi", Toast.LENGTH_SHORT).show();
                 }
                 break;
         }
@@ -81,8 +82,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Preferences.setStatusLogin(getBaseContext(),true);
                     Log.d("AK1", "onResponse: "+response.body().toString());
                     Log.d("AK1", "onResponse: "+response.body().getNama()+" "+response.body().getEmail());
+                    Preferences.setKeyId(getBaseContext(),response.body().getId());
                     Preferences.setKeyNama(getBaseContext(),response.body().getNama());
                     Preferences.setKeyEmail(getBaseContext(), response.body().getEmail());
+                    Preferences.setKeyRole(getBaseContext(), response.body().getRoleid());
+                    Preferences.setKeyRolename(getBaseContext(), response.body().getNamaRole());
                     Intent moveIntent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(moveIntent);
                     finish();
@@ -96,5 +100,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Log.e("LoginActivity", "onFailure: ", t);
             }
         });
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
     }
 }

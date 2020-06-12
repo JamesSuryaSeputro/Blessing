@@ -2,43 +2,38 @@ package com.example.blessing.Adapter;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.blessing.MapelActivity;
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> {
+public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
 
-    private ArrayList<MapelModel> mLearningModelArrayList;
+    private static final String TAG = "MapelAdapter";
+    private List<MapelModel> mLearningModelArrayList;
     private Context mContext;
-    private OnItemClickListener mListener;
+    private OnClickItemContextMenuMapel mListener;
 
     public MapelAdapter(Context context, ArrayList<MapelModel> learningModelArrayList) {
         this.mContext = context;
         this.mLearningModelArrayList = learningModelArrayList;
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) {
-        mListener = listener;
+    public void setmListener(OnClickItemContextMenuMapel mListener) {
+        this.mListener = mListener;
     }
-
-//    public MapelAdapter(ArrayList<MapelModel> learningModelArrayList, Context context, OnItemClickListener listener) {
-//        this.learningModelArrayList = learningModelArrayList;
-//        this.context = context;
-//        mListener = listener;
-//    }
-
+    
     @NonNull
     @Override
     public MapelAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,25 +45,29 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull MapelAdapter.ViewHolder holder, final int position) {
         MapelModel mapelModel = mLearningModelArrayList.get(position);
+        //log ini akan muncul sesuai dengan jumlah size datanya
         String mapelList = mapelModel.getNamaMapel();
-
-        holder.textview.setText(mapelList);
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.textView.setText(mapelList);
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.onItemClickListener(position);
+                 mListener.onClickItem(mapelModel.getIdMapel());
             }
         });
-//        holder.textview.setOnClickListener(new View.OnClickListener() {
+//        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
 //            @Override
-//            public void onClick(View view) {
-//                OnItemClickListener.onItemClickListener(learningModelArrayList.get(position).getNamaMapel());
+//            public boolean onLongClick(View v) {
+//                Log.d("MapelAdapter", "long press");
+//                mListener.onItemClickLongListener(Integer.parseInt(mapelModel.getIdMapel()));
+//                return true;
 //            }
-//            });
+//        });
+
     }
 
-    public void updatedata(List<MapelModel> list) {
-        mLearningModelArrayList.addAll(list);
+    public void updateData(List<MapelModel> list) {
+      // mLearningModelArrayList.addAll(list);
+        mLearningModelArrayList = list;
         notifyDataSetChanged();
     }
 
@@ -81,13 +80,39 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> 
         }
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textview;
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+        TextView textView;
+        CardView cardView;
 
         //ingat ini di kasih sebagai deklarasi dari inherintancenya dan pendeklarasian tentang alamat dari element
         public ViewHolder(@NonNull View view) {
             super(view);
-            textview = view.findViewById(R.id.nama_materi);
+            textView = view.findViewById(R.id.list_item);
+            cardView = view.findViewById(R.id.card_view);
+            cardView.setOnCreateContextMenuListener(this);
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+            menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it ->{
+                Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
+                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel(),mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
+
+//                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
+                return false;
+            });
+            menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it ->{
+                mListener.onDeleteItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
+                return false;
+            });
+            menu.add(this.getAdapterPosition(),v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
+                    return false;
+                }
+            });
         }
     }
 }
+

@@ -1,47 +1,170 @@
 package com.example.blessing;
 
-import android.content.Context;
+import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.text.Html;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.text.HtmlCompat;
 
 import com.bumptech.glide.Glide;
+import com.example.blessing.Model.LoginModel;
+import com.example.blessing.Model.MapelModel;
+import com.example.blessing.Model.RegisterModel;
+import com.example.blessing.Service.API;
+import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private CircleImageView circleImageView;
+    private String id, idRole;
+    private ImageView imageView;
+    private long mLastClickTime = 0;
+    private API service;
+    private EditText newName;
+    private Button btnSimpan;
+    private TextView nama;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-        TextView nama = findViewById(R.id.nama);
+
+        nama = findViewById(R.id.nama);
         TextView email = findViewById(R.id.email);
-//        if(Preferences.getKeyLoggedinUser(getBaseContext()) != null){
-//            nama.setText(Preferences.getKeyNama(getBaseContext()));
-//        }
-//        else
-//        {
-//            // ini guna untuk set data ke preference kalau mau abis login berhasil baru set preferencenya berarti harus return 4 value status, id, email dan nama
-//            Preferences.setKeyNama(getBaseContext(), "nama");
-//            Preferences.setKeyEmail(getBaseContext(), "email");
-//            finish();
-//        }
-//        tvEmail = findViewById(R.id.email);
-//        tvEmail.setText(Preferences.getKeyEmail(getBaseContext()));
+        TextView rolename = findViewById(R.id.role);
+        circleImageView = findViewById(R.id.img_role);
+        newName = findViewById(R.id.newname);
+        newName.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                final int DRAWABLE_RIGHT = 2;
 
+                if(event.getAction() == MotionEvent.ACTION_UP) {
+                    if(event.getRawX() >= (newName.getRight() - newName.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        newName.setFocusableInTouchMode(true);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+        newName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    hideKeyboard(v);
+                }
+            }
+        });
+        btnSimpan = findViewById(R.id.btnnewname);
+        btnSimpan.setOnClickListener(this);
+        service = RetrofitBuildCustom.getInstance().getService();
+        imageView = findViewById(R.id.backtomain);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
+                Intent moveIntent = new Intent(ProfileActivity.this, MainActivity.class);
+                startActivity(moveIntent);
+            }
+        });
+
+        Log.d("TEST1", "onResponse: " + Preferences.getKeyNama(getBaseContext()));
         nama.setText(Preferences.getKeyNama(getBaseContext()));
-        Log.d("AK1", "onCreate: Profile "+ Preferences.getKeyNama(getBaseContext()));
+        Log.d("AK1", "onCreate: Profile " + Preferences.getKeyNama(getBaseContext()));
         email.setText(Preferences.getKeyEmail(getBaseContext()));
+        rolename.setText(Preferences.getKeyRolename(getBaseContext()));
+        id = Preferences.getKeyId(getBaseContext());
+        idRole = Preferences.getKeyUser(getBaseContext());
 
-        circleImageView = findViewById(R.id.profile_photo);
-        Glide.with(this)
-                .load("https://www.dicoding.com/images/small/avatar/2019031623320214325b5c427348f613ea68af1a8c8b8b.jpg")
-                .into(circleImageView);
+        if (idRole.equals("1")) {
+            Glide.with(this)
+                    .load(getImage("admin"))
+                    .into(circleImageView);
+        } else if (idRole.equals("2")) {
+            Glide.with(this)
+                    .load(getImage("teacher"))
+                    .into(circleImageView);
+        } else {
+            Glide.with(this)
+                    .load(getImage("student"))
+                    .into(circleImageView);
+        }
+    }
+
+    public int getImage(String imageName) {
+
+        int drawableResourceId = this.getResources().getIdentifier(imageName, "drawable", this.getPackageName());
+
+        return drawableResourceId;
+    }
+
+    public void hideKeyboard(View view) {
+        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public void updateDataUser(String id, LoginModel loginModel) {
+        if (newName.getText().toString().equals("")) {
+            Toast.makeText(ProfileActivity.this, "nama belum diisi", Toast.LENGTH_SHORT).show();
+        } else {
+            Call<LoginModel> call = service.updatedatauser(id, loginModel);
+            call.enqueue(new Callback<LoginModel>() {
+                @Override
+                public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
+                    if (response.isSuccessful()) {
+                        if (response.body() != null) {
+                            clearAll();
+                            Preferences.setKeyNama(getBaseContext(),response.body().getNama());
+                            Log.d("TEST2", "onResponse: " + Preferences.getKeyNama(getBaseContext()));
+                            nama.setText(Preferences.getKeyNama(getBaseContext()));
+                            Toast.makeText(ProfileActivity.this, "nama berhasil diperbaharui", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(ProfileActivity.this, "nama gagal diperbaharui", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<LoginModel> call, Throwable t) {
+                    Log.e("CreateMapelActivity", "onFailure: ", t);
+                }
+            });
+        }
+    }
+
+    private void clearAll() {
+        newName.getText().clear();
+    }
+
+    @Override
+    public void onClick(View v) {
+        LoginModel loginModel = new LoginModel();
+        loginModel.setNama(newName.getText().toString());
+        updateDataUser(id, loginModel);
     }
 }

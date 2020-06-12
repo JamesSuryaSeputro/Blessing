@@ -6,17 +6,31 @@ import com.google.gson.annotations.SerializedName;
 public class LoginModel {
 
     @Expose
+    @SerializedName("nama_role")
+    private String namaRole;
+    @Expose
     @SerializedName("email")
     private String email;
     @Expose
     @SerializedName("nama")
     private String nama;
     @Expose
+    @SerializedName("roleid")
+    private String roleid;
+    @Expose
     @SerializedName("id")
     private String id;
     @Expose
     @SerializedName("status")
     private String status;
+
+    public String getNamaRole() {
+        return namaRole;
+    }
+
+    public void setNamaRole(String namaRole) {
+        this.namaRole = namaRole;
+    }
 
     public String getEmail() {
         return email;
@@ -32,6 +46,14 @@ public class LoginModel {
 
     public void setNama(String nama) {
         this.nama = nama;
+    }
+
+    public String getRoleid() {
+        return roleid;
+    }
+
+    public void setRoleid(String roleid) {
+        this.roleid = roleid;
     }
 
     public String getId() {
@@ -53,8 +75,10 @@ public class LoginModel {
     @Override
     public String toString() {
         return "LoginModel{" +
+                ", nama='" + namaRole + '\'' +
                 "email='" + email + '\'' +
                 ", nama='" + nama + '\'' +
+                ", idRole='" + roleid + '\'' +
                 ", id='" + id + '\'' +
                 ", status='" + status + '\'' +
                 '}';

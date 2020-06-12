@@ -1,10 +1,13 @@
 package com.example.blessing;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -15,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Service.RetrofitBuildCustom;
+import com.example.blessing.Utils.Preferences;
 
 import java.util.ArrayList;
 
@@ -22,13 +26,17 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
-    private ArrayList<Toast> toasts;
     private RetrofitBuildCustom retrofitBuildCustom;
     private EditText edtNama, edtEmail, edtPassword, edtConfirmpass;
     private ImageView imageView;
-    private TextView tv1, tv2;
+    private TextView tvRegister;
+    private String idRole;
     private long mLastClickTime = 0;
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+    private Boolean registerGuru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +47,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtEmail = findViewById(R.id.txtemail);
         edtPassword = findViewById(R.id.txtpassword);
         edtConfirmpass = findViewById(R.id.txtconfirmpass);
-        imageView = findViewById(R.id.tologin);
+        imageView = findViewById(R.id.backtologin);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -54,16 +62,26 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         retrofitBuildCustom = RetrofitBuildCustom.getInstance();
         Button btnRegister = findViewById(R.id.btnregister);
         btnRegister.setOnClickListener(this);
+
+        tvRegister = findViewById(R.id.tvregister);
+        idRole = Preferences.getKeyUser(getBaseContext());
+        registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+
+        if (!registerGuru) {
+            idRole = String.valueOf(3);
+            tvRegister.setText(R.string.daftar_siswa);
+        } else {
+            idRole = String.valueOf(2);
+            tvRegister.setText(R.string.daftar_guru);
+        }
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.btnregister:
-                if (edtNama != null && edtEmail != null && edtPassword != null && edtConfirmpass != null) {
-                    CheckRegister();
-                }
-                break;
+        if (v.getId() == R.id.btnregister) {
+            if (edtNama != null && edtEmail != null && edtPassword != null && edtConfirmpass != null) {
+                CheckRegister();
+            }
         }
     }
 
@@ -74,22 +92,20 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else if (!edtPassword.getText().toString().equals(edtConfirmpass.getText().toString())) {
             Toast.makeText(RegisterActivity.this, "password tidak sama", Toast.LENGTH_SHORT).show();
         } else {
-            Call<RegisterModel> call = retrofitBuildCustom.getService().checkregister(edtNama.getText().toString(),
+            Call<RegisterModel> call = retrofitBuildCustom.getService().checkregister(idRole, edtNama.getText().toString(),
                     edtEmail.getText().toString(),
                     edtPassword.getText().toString().trim(),
                     edtConfirmpass.getText().toString().trim());
             call.enqueue(new Callback<RegisterModel>() {
                 @Override
                 public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {
-                        if (response.isSuccessful()) {
-                            clearall();
-//                            String nama = edtNama.getText().toString();
-//                            String email = edtPassword.getText().toString();
-                            Toast.makeText(RegisterActivity.this, "registrasi berhasil", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "registrasi gagal", Toast.LENGTH_SHORT).show();
-                        }
+                    if (response.isSuccessful()) {
+                        clearall();
+                        Toast.makeText(RegisterActivity.this, "registrasi berhasil", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(RegisterActivity.this, "registrasi gagal", Toast.LENGTH_SHORT).show();
                     }
+                }
 
                 @Override
                 public void onFailure(Call<RegisterModel> call, Throwable t) {
@@ -106,4 +122,14 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtPassword.getText().clear();
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (inputMethodManager != null) {
+                inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+            }
+        }
+        return super.dispatchTouchEvent(ev);
+    }
 }

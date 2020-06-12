@@ -4,7 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:padding="12dp"
+    android:clickable="true"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -26,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/garamondbold"
             android:text="@string/blessing"
             android:textColor="#000000"
@@ -38,8 +41,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
             android:fontFamily="@font/garamond"
             android:text="@string/teaching_with_integrity_making_history_through_knowledge"
             android:textColor="#767474"
@@ -54,9 +57,9 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="200dp"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="2dp">
 
@@ -69,10 +72,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/masukan_email"
-                android:singleLine="true"
+                android:text="b"
                 android:inputType="textPersonName"
                 android:importantForAutofill="no"
-                android:paddingVertical="20dp"/>
+                android:singleLine="true"
+                android:theme="@style/TextInputLayoutAppearance"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -88,9 +92,10 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="@string/masukan_password"
+                    android:text="b"
                     android:inputType="textPassword"
-                    android:paddingVertical="20dp"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:theme="@style/TextInputLayoutAppearance"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -98,40 +103,38 @@
                 android:id="@+id/btnlogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:text="@string/login"
-                android:background="#EEA50A"
+                android:background="@color/colorLightOrange"
                 android:layout_gravity="bottom" />
         </androidx.cardview.widget.CardView>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="50dp"
-        android:paddingHorizontal="10dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.4"
-            android:textAlignment="center"
-            android:text="@string/belum_pernah_mendaftar"
-            android:textSize="14sp"/>
+            android:paddingHorizontal="4dp"
+            android:layout_marginTop="40dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
-        <TextView
-            android:id="@+id/toregister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            android:textAlignment="center"
-            android:text="@string/daftar_sekarang"
-            android:textSize="14sp"
-            android:textColor="#4682B4"
-            android:clickable="true"
-            android:focusable="true" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.4"
+                android:gravity="center"
+                android:text="@string/belum_pernah_mendaftar"
+                android:textSize="14sp"/>
+
+            <TextView
+                android:id="@+id/toregister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.6"
+                android:gravity="center"
+                android:text="@string/daftar_sekarang"
+                android:textSize="14sp"
+                android:textColor="#4682B4"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

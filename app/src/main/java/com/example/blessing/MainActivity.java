@@ -1,8 +1,11 @@
 package com.example.blessing;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.telecom.Call;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,71 +13,114 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.CustomRecyclerViewListener;
 import com.example.blessing.Adapter.MainAdapter;
-import com.example.blessing.Model.LearningModel;
+import com.example.blessing.Model.MainModel;
 import com.example.blessing.Utils.Preferences;
+import com.example.blessing.Utils.SpanningLinearLayoutManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private ArrayList<LearningModel> learningModelArrayList;
+    private CardView cvMateri, cvBankSoal;
+    private ArrayList<MainModel> learningModelArrayList;
     private MainAdapter adapter;
-    private TextView textView;
+    private TextView tvRiwayat, tvNamaUser, tvMateri;
     private long mLastClickTime = 0;
+    private String idRole;
+    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+    private Menu menuItem;
 
-    private int[] ImageList = new int[]{R.drawable.study, R.drawable.exam, R.drawable.elearning, R.drawable.onlinelearning};
-    private String[] TextList = new String[]{"PELAJARAN", "UJIAN", "UTBK", "RUMUS"};
+//    private int[] ImageList = new int[]{R.drawable.study, R.drawable.to4, R.drawable.elearning, R.drawable.onlinelearning};
+//    private String[] TextList = new String[]{"PELAJARAN", "UJIAN", "UTBK", "RUMUS"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setLogo(R.drawable.blessing_icon);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
 
-        recyclerView = (RecyclerView) findViewById(R.id.item_learning);
-        textView = (TextView) findViewById(R.id.riwayat);
-        textView.setOnClickListener(new View.OnClickListener() {
+        idRole = Preferences.getKeyUser(getBaseContext());
+        tvNamaUser = findViewById(R.id.tvnamauser);
+        displaySharedPreferences();
+        tvMateri = findViewById(R.id.tvmateri);
+        cvMateri = findViewById(R.id.materi);
+        cvBankSoal = (CardView) findViewById(R.id.banksoal);
+        tvRiwayat = (TextView) findViewById(R.id.riwayat);
+
+        if (!idRole.isEmpty()) {
+            Log.d(TAG, "idrole: " + idRole);
+        }
+
+        if (idRole.equals("3")) {
+            tvMateri.setVisibility(View.GONE);
+            cvMateri.setVisibility(View.GONE);
+        }
+
+        cvMateri.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                preventDoubleClick();
+                makeMoveActivity(MapelActivity.class);
+            }
+        });
+
+
+        cvBankSoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preventDoubleClick();
+                makeMoveActivity(MapelSoalActivity.class);
+            }
+        });
+
+//        recyclerView = (RecyclerView) findViewById(R.id.item_learning);
+
+        tvRiwayat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                preventDoubleClick();
                 makeMoveActivity(MateriActivity.class);
             }
         });
 
-        adapter = new MainAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
-            @Override
-            public void onItemClick(String id) {
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-                    return;
-                }
-                mLastClickTime = SystemClock.elapsedRealtime();
-                switch (id) {
-                    case "PELAJARAN": {
-                        Log.d("MainActivity", "BTN CLICKED");
-                        makeMoveActivity(MapelActivity.class);
-                        break;
-                    }
-                    case "UJIAN": {
-                        break;
-                    }
-                    case "UTBK": {
-                        break;
-                    }
-                    case "RUMUS": {
-                        break;
-                    }
-                }
-            }
-        });
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false));
+//        adapter = new MainAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
+//            @Override
+//            public void onItemClick(String id) {
+//                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+//                    return;
+//                }
+//                mLastClickTime = SystemClock.elapsedRealtime();
+//                switch (id) {
+//                    case "PELAJARAN": {
+//                        Log.d("MainActivity", "BTN CLICKED");
+//                        makeMoveActivity(MapelActivity.class);
+//                        break;
+//                    }
+//                    case "UJIAN": {
+//                        break;
+//                    }
+//                    case "UTBK": {
+//                        break;
+//                    }
+//                    case "RUMUS": {
+//                        break;
+//                    }
+//                }
+//            }
+//        });
+//        recyclerView.setAdapter(adapter);
+//        recyclerView.setLayoutManager(new SpanningLinearLayoutManager(getApplicationContext(), SpanningLinearLayoutManager.HORIZONTAL, false));
     }
 
     private void makeMoveActivity(Class activity) {
@@ -82,21 +128,39 @@ public class MainActivity extends AppCompatActivity {
         this.startActivity(intent);
     }
 
-    private ArrayList<LearningModel> itemLearning() {
-
-        ArrayList<LearningModel> list = new ArrayList<>();
-        for (int i = 0; i < ImageList.length; i++) {
-            LearningModel learningmodel = new LearningModel();
-            learningmodel.setLearnimage(ImageList[i]);
-            learningmodel.setLearntext(TextList[i]);
-            list.add(learningmodel);
+    private void preventDoubleClick() {
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+            return;
         }
-        return list;
+        mLastClickTime = SystemClock.elapsedRealtime();
+    }
+
+//    private ArrayList<MainModel> itemLearning() {
+//
+//        ArrayList<MainModel> list = new ArrayList<>();
+//        for (int i = 0; i < ImageList.length; i++) {
+//            MainModel learningmodel = new MainModel();
+//            learningmodel.setLearnimage(ImageList[i]);
+//            learningmodel.setLearntext(TextList[i]);
+//            list.add(learningmodel);
+//        }
+//        return list;
+//    }
+
+    private void displaySharedPreferences() {
+        tvNamaUser.setText(Preferences.getKeyNama(getBaseContext()));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        this.menuItem = menu;
         getMenuInflater().inflate(R.menu.actionbar_menu, menu);
+        MenuItem item = menuItem.findItem(R.id.registerguru);
+        if(idRole.equals("3")){
+            item.setVisible(false);
+        } else if (idRole .equals("2")){
+            item.setVisible(false);
+        }
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -110,11 +174,22 @@ public class MainActivity extends AppCompatActivity {
             case R.id.myProfile:
                 makeMoveActivity(ProfileActivity.class);
                 break;
+            case R.id.registerguru:
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                intent.putExtra(EXTRA_BOOLEAN, true);
+                startActivity(intent);
+                break;
             case R.id.Logout:
                 Preferences.clearLoggedinUser(getBaseContext());
                 makeMoveActivity(LoginActivity.class);
                 finish();
                 break;
         }
+    }
+
+    @Override
+    protected void onResume() {
+        displaySharedPreferences();
+        super.onResume();
     }
 }

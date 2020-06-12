@@ -7,13 +7,16 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="10dp"
-    card_view:cardCornerRadius="10dp">
+    card_view:cardCornerRadius="10dp"
+    android:clickable="true"
+    android:focusable="true">
 
     <TextView
-        android:id="@+id/nama_materi"
+        android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:padding="12dp" />
+        android:textAlignment="center"
+        android:padding="12dp"
+        tools:text="test"/>
 
 </androidx.cardview.widget.CardView>

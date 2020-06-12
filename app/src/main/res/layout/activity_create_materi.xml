@@ -9,28 +9,47 @@
     tools:context=".CreateMateriActivity">
 
     <TextView
+        android:id="@+id/textviewmateri"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garamondbold"
-        android:text="Tambah Materi"
+        android:text="Upload Materi"
         android:textColor="#FF9800"
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/mapel"
+        android:id="@+id/edtmateri"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Masukan Mata Pelajaran"
+        android:hint="Nama Materi"
         android:inputType=""/>
 
     <Button
-        android:id="@+id/btninputmapel"
+        android:id="@+id/btnchoosepdf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:text="@string/input"
-        android:background="#EEA50A"
+        android:text="Pilih PDF"
+        android:background="@color/colorLightOrange"
+        android:layout_gravity="bottom" />
+
+    <Button
+        android:id="@+id/btnuploadmateri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorLightOrange"
+        android:text="@string/upload" />
+
+    <Button
+        android:id="@+id/btnrename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="@string/simpan"
+        android:background="@color/colorLightOrange"
         android:layout_gravity="bottom" />
 
 </LinearLayout>

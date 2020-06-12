@@ -13,4 +13,25 @@
     <string name="logout">Logout</string>
     <string name="login">login</string>
     <string name="input">input</string>
+    <string name="upload">UPLOAD</string>
+    <string name="simpan">simpan</string>
+    <string name="msg_loading" />
+    <string name="don_t_show_this_message_again">Don\'t show this message again.</string>
+    <string name="kelas">Kelas:</string>
+    <string name="jenjang">Jenjang:</string>
+    <string name="preview">Preview</string>
+    <string name="choose_image">choose image</string>
+    <string name="image_kuis">image kuis</string>
+    <string name="upload_kuis">Upload Kuis</string>
+    <string name="submit">submit</string>
+    <string name="selamat_datang">Selamat Datang, \u0020</string>
+    <string name="backarrow">backarrow</string>
+    <string name="informasi_lengkap">Informasi Lengkap</string>
+    <string name="nama">Nama:</string>
+    <string name="email">Email:</string>
+    <string name="input_nama_baru">input nama baru</string>
+    <string name="register_guru">Register Guru</string>
+    <string name="daftar_siswa">Registrasi Siswa</string>
+    <string name="daftar_guru">Registrasi Guru</string>
+    <string name="icon_made_by_freepik_from_www_flaticon_com">Icon made by Freepik from www.flaticon.com</string>
 </resources>

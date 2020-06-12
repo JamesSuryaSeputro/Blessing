@@ -2,14 +2,21 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/accountmenu"
         android:icon="@drawable/ic_account"
-        app:showAsAction="always|withText"
-        android:title="TODO">
+        app:showAsAction="ifRoom|withText"
+        android:title="">
         <menu>
             <item
                 android:id="@+id/myProfile"
                 android:title="@string/profil"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/registerguru"
+                android:title="@string/register_guru"
                 app:showAsAction="never"/>
+
             <item
                 android:id="@+id/Logout"
                 android:title="@string/logout"
