@@ -34,6 +34,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         this.userid = Preferences.getKeyUser(context);
     }
 
+
     public void setmListener(OnClickItemContextMenuSoal mListener) {
         this.mListener = mListener;
     }
@@ -98,7 +99,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
             menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it -> {
                 Log.d(TAG, "onMenuItemClick: " + mLearningModelArrayList.get(getAdapterPosition()).getIdSoal());
-                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdSoal(), mLearningModelArrayList.get(getAdapterPosition()).getIdMapelsoal(), mLearningModelArrayList.get(getAdapterPosition()).getNamaJenjang(), mLearningModelArrayList.get(getAdapterPosition()).getNamaSoal());
+                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdSoal(), mLearningModelArrayList.get(getAdapterPosition()).getIdMapelsoal(), mLearningModelArrayList.get(getAdapterPosition()).getIdJenjang(), mLearningModelArrayList.get(getAdapterPosition()).getNamaJenjang(), mLearningModelArrayList.get(getAdapterPosition()).getNamaSoal());
                 return false;
             });
             menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it -> {

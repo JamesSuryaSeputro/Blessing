@@ -70,11 +70,6 @@ public class MapelSoalAdapter extends RecyclerView.Adapter<MapelSoalAdapter.View
         notifyDataSetChanged();
     }
 
-    public void removeData(List<MapelSoalModel> list) {
-        mLearningModelArrayListNew = list;
-        notifyDataSetChanged();
-    }
-
     public void updateDataChangeFilterSchool(int id){
         Log.d(TAG, "updateDataChangeFilterSchool: "+id);
         //mLearningModelArrayList.removeIf(it -> it.getIdMapelsoal().equals(String.valueOf(id)));

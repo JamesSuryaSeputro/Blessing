@@ -83,7 +83,7 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
         Button button = findViewById(R.id.btnsoal);
         button.setOnClickListener(this);
 
-        getDataKelas();
+        getDataKelas(idjenjang);
     }
 
 
@@ -151,8 +151,8 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void getDataKelas() {
-        service.getdatakelas().enqueue(new Callback<List<KelasModel>>() {
+    private void getDataKelas(String id) {
+        service.getdatakelasbyidjenjang(id).enqueue(new Callback<List<KelasModel>>() {
             @Override
             public void onResponse(Call<List<KelasModel>> call, Response<List<KelasModel>> response) {
                 List<KelasModel> kelasModelList = response.body();

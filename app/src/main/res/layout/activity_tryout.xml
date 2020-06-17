@@ -1,43 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="4dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    card_view:cardCornerRadius="10dp">
-
-        <TextView
-            android:id="@+id/tvjenjang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="6dp"
-            android:fontFamily="@font/garamond"
-            android:padding="4dp"
-            android:text="@string/jenjang"
-            android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/jenjang"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/garamond"
-            android:padding="4dp"
-            android:text="@string/jenjang"
-            android:layout_toEndOf="@+id/tvjenjang"
-            android:textSize="20sp"
-            tools:text="SMP" />
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvjenjang"
         android:layout_marginTop="6dp"
         android:paddingBottom="60dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RV_soal"
+            android:id="@+id/RV_tryout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
@@ -52,7 +27,7 @@
         android:orientation="horizontal">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fab_addsoal"
+            android:id="@+id/fab_addto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"

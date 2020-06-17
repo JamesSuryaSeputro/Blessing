@@ -134,12 +134,9 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         startActivityForResult(intent, READ_FILE_REQ);
     }
 
-    private boolean checkFileisHere() {
+    private void checkFileisHere() {
         if (imgPath.equals("")) {
             Toast.makeText(CreateKuisActivity.this, "Belum memilih gambar", Toast.LENGTH_SHORT).show();
-            return false;
-        } else {
-            return true;
         }
     }
 
@@ -262,7 +259,6 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
             call.enqueue(new Callback<ImageModel>() {
                 @Override
                 public void onResponse(Call<ImageModel> call, Response<ImageModel> response) {
-                    Log.d(TAG, "onResponse: " + response.body());
                     if (response.body() != null) {
                         Log.d(TAG, "onResponse: " + response.body().getStatus());
                         if (response.body().getStatus() == 1) {

@@ -8,12 +8,32 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="10dp"
-    card_view:cardCornerRadius="10dp">
+    card_view:cardCornerRadius="4dp">
+
+    <TextView
+        android:id="@+id/tvnamamapel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/jenjang"
+        android:textColor="@color/colorLightOrange"
+        android:fontFamily="@font/garamond"
+        android:textSize="20sp"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="10dp"
+        tools:text="Bidang Studi"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/colorOrange" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
         android:paddingBottom="60dp">
 
         <androidx.recyclerview.widget.RecyclerView
@@ -21,17 +41,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:clipToPadding="false"
-            android:gravity="center"
-            android:padding="8dp"/>
+            android:gravity="center" />
 
     </ScrollView>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="right"
-        android:orientation="horizontal">
+        android:gravity="end">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_addmateri"

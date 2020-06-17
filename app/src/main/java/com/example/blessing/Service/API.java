@@ -12,6 +12,7 @@ import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Model.MateriModel;
 import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Model.SoalModel;
+import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Model.UploadModel;
 
 import java.util.List;
@@ -100,6 +101,12 @@ public interface API {
     @GET("api_get_kelas")
     Call<List<KelasModel>> getdatakelas();
 
+    @GET("api_get_kelas/{id}")
+    Call<List<KelasModel>> getdatakelasbyidjenjang(@Path("id") String id);
+
+    @GET("api_get_soal")
+    Call<List<SoalModel>> getdatasoal();
+
     @GET("api_get_soal/{id}")
     Call<List<SoalModel>> getsoalbymapel(@Path("id") String idmapelsoal);
 
@@ -146,4 +153,7 @@ public interface API {
     Call<ImageModel> updatedatadetailkuis(@Path("id") String id,
                                           @Part MultipartBody.Part file,
                                           @Part("jawaban") RequestBody jawaban);
+
+    @GET("api_get_tryout")
+    Call<List<TryoutModel>> getdatatryout();
 }

@@ -45,13 +45,12 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull MapelAdapter.ViewHolder holder, final int position) {
         MapelModel mapelModel = mLearningModelArrayList.get(position);
-        //log ini akan muncul sesuai dengan jumlah size datanya
         String mapelList = mapelModel.getNamaMapel();
         holder.textView.setText(mapelList);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 mListener.onClickItem(mapelModel.getIdMapel());
+                 mListener.onClickItem(mapelModel.getIdMapel(), mapelModel.getNamaMapel());
             }
         });
 //        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -97,8 +96,6 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
             menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it ->{
                 Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
                 mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel(),mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
-
-//                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
                 return false;
             });
             menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it ->{

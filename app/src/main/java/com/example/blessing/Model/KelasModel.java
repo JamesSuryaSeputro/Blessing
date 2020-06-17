@@ -9,6 +9,9 @@ public class KelasModel {
     @SerializedName("kelas")
     private String kelas;
     @Expose
+    @SerializedName("id_jenjang")
+    private String idJenjang;
+    @Expose
     @SerializedName("id_kelas")
     private String idKelas;
 
@@ -18,6 +21,14 @@ public class KelasModel {
 
     public void setKelas(String kelas) {
         this.kelas = kelas;
+    }
+
+    public String getIdJenjang() {
+        return idJenjang;
+    }
+
+    public void setIdJenjang(String idJenjang) {
+        this.idJenjang = idJenjang;
     }
 
     public String getIdKelas() {

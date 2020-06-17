@@ -15,8 +15,8 @@
         android:id="@+id/parentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="2dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="2dp">
 
         <TextView
             android:id="@+id/list_soal"
@@ -24,26 +24,28 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
-            android:textSize="18sp"
+            android:textSize="16sp"
             tools:text="soal" />
 
-            <TextView
-                android:id="@+id/tvkelas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_below="@+id/list_soal"
-                android:layout_alignBottom="@+id/list_kelas"
-                android:text="@string/kelas" />
+        <TextView
+            android:id="@+id/tvkelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_soal"
+            android:layout_alignBottom="@+id/list_kelas"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp"
+            android:text="@string/kelas" />
 
-            <TextView
-                android:id="@+id/list_kelas"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_below="@+id/list_soal"
-                android:layout_toRightOf="@+id/tvkelas"
-                tools:text="10" />
+        <TextView
+            android:id="@+id/list_kelas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_soal"
+            android:layout_marginStart="6dp"
+            android:textSize="16sp"
+            android:layout_toRightOf="@+id/tvkelas"
+            tools:text="10" />
 
     </RelativeLayout>
 

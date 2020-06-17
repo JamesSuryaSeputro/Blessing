@@ -88,7 +88,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
             //true
             btnRename.setVisibility(View.GONE);
         } else {
-            textView.setText("Edit Materi");
+            textView.setText(R.string.edit_materi);
             btnChoosePdf.setVisibility(View.GONE);
             btnUploadMateri.setVisibility(View.GONE);
         }

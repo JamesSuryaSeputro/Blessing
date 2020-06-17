@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:layout_gravity="center_horizontal"
+    card_view:cardPreventCornerOverlap="false">
+
+    <ProgressBar
+        android:id="@+id/solutionProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminateDrawable="@drawable/progressbar"
+        android:visibility="invisible" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_pembahasan"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image_kuis"
+        android:scaleType="fitXY" />
+
+</androidx.cardview.widget.CardView>

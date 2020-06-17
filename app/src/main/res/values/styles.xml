@@ -19,7 +19,7 @@
     </style>
 
     <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
-        <item name="android:colorAccent">#CC5500</item>
+        <item name="android:colorAccent">@color/colorOrange</item>
     </style>
 
     <style name="Widget.Design.TextInputLayout" parent="AppTheme">

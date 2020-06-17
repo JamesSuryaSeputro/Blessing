@@ -19,21 +19,25 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
+        <activity android:name=".CreateTryoutActivity"></activity>
+        <activity android:name=".TryoutActivity" />
+        <activity android:name=".PembahasanActivity" />
+        <activity android:name=".MenuPembahasanActivity" />
         <activity android:name=".CreateKuisActivity" />
         <activity android:name=".DetailKuisActivity" />
         <activity android:name=".CreateSoalActivity" />
-        <activity android:name=".CreateMapelSoalActivity" />
         <activity android:name=".SoalActivity" />
-        <activity android:name=".MapelSoalActivity"/>
+        <activity android:name=".MapelSoalActivity" />
         <activity android:name=".PdfViewActivity" />
         <activity android:name=".CreateMateriActivity" />
         <activity android:name=".CreateMapelActivity" />
+        <activity android:name=".CreateMapelSoalActivity" />
         <activity android:name=".PdfViewFixActivity" />
         <activity android:name=".MateriActivity" />
         <activity android:name=".MapelActivity" />
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.Design.Light.NoActionBar" >
+            android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

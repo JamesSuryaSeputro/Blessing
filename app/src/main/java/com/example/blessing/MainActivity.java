@@ -1,11 +1,8 @@
 package com.example.blessing;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.telecom.Call;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -16,21 +13,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.blessing.Adapter.CustomRecyclerViewListener;
 import com.example.blessing.Adapter.MainAdapter;
 import com.example.blessing.Model.MainModel;
 import com.example.blessing.Utils.Preferences;
-import com.example.blessing.Utils.SpanningLinearLayoutManager;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
-    private CardView cvMateri, cvBankSoal;
+    private CardView cvMateri, cvBankSoal, cvTryout, cvPembahasan;
     private ArrayList<MainModel> learningModelArrayList;
     private MainAdapter adapter;
-    private TextView tvRiwayat, tvNamaUser, tvMateri;
+    private TextView tvNamaUser, tvMateri;
     private long mLastClickTime = 0;
     private String idRole;
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -52,11 +47,12 @@ public class MainActivity extends AppCompatActivity {
 
         idRole = Preferences.getKeyUser(getBaseContext());
         tvNamaUser = findViewById(R.id.tvnamauser);
-        displaySharedPreferences();
         tvMateri = findViewById(R.id.tvmateri);
         cvMateri = findViewById(R.id.materi);
-        cvBankSoal = (CardView) findViewById(R.id.banksoal);
-        tvRiwayat = (TextView) findViewById(R.id.riwayat);
+        cvBankSoal = findViewById(R.id.banksoal);
+        cvTryout = findViewById(R.id.tryout);
+        cvPembahasan = findViewById(R.id.pembahasan);
+        displaySharedPreferences();
 
         if (!idRole.isEmpty()) {
             Log.d(TAG, "idrole: " + idRole);
@@ -67,40 +63,31 @@ public class MainActivity extends AppCompatActivity {
             cvMateri.setVisibility(View.GONE);
         }
 
-        cvMateri.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                preventDoubleClick();
-                makeMoveActivity(MapelActivity.class);
-            }
+        cvMateri.setOnClickListener(v -> {
+            preventDoubleClick();
+            makeMoveActivity(MapelActivity.class);
         });
 
 
-        cvBankSoal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                preventDoubleClick();
-                makeMoveActivity(MapelSoalActivity.class);
-            }
+        cvBankSoal.setOnClickListener(v -> {
+            preventDoubleClick();
+            makeMoveActivity(MapelSoalActivity.class);
         });
 
-//        recyclerView = (RecyclerView) findViewById(R.id.item_learning);
-
-        tvRiwayat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                preventDoubleClick();
-                makeMoveActivity(MateriActivity.class);
-            }
+        cvTryout.setOnClickListener(v -> {
+            preventDoubleClick();
+            makeMoveActivity(TryoutActivity.class);
         });
 
+        cvPembahasan.setOnClickListener(v -> {
+            preventDoubleClick();
+            makeMoveActivity(MenuPembahasanActivity.class);
+        });
+
+        //        recyclerView = (RecyclerView) findViewById(R.id.item_learning);
 //        adapter = new MainAdapter(itemLearning(), this, new CustomRecyclerViewListener() {
 //            @Override
 //            public void onItemClick(String id) {
-//                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-//                    return;
-//                }
-//                mLastClickTime = SystemClock.elapsedRealtime();
 //                switch (id) {
 //                    case "PELAJARAN": {
 //                        Log.d("MainActivity", "BTN CLICKED");

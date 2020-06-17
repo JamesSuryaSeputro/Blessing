@@ -19,23 +19,16 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
 
     private ArrayList<MainModel> learningModelArrayList;
     private Context context;
-    private CustomRecyclerViewListener customRecyclerViewListener;
 
-    public MainAdapter(ArrayList<MainModel> learningModelArrayList, Context context, CustomRecyclerViewListener customRecyclerViewListener) {
+    public MainAdapter(ArrayList<MainModel> learningModelArrayList, Context context) {
         this.learningModelArrayList = learningModelArrayList;
         this.context = context;
-        this.customRecyclerViewListener = customRecyclerViewListener;
-    }
-
-
-    public void setCustomRecyclerViewListener(CustomRecyclerViewListener customRecyclerViewListener) {
-        this.customRecyclerViewListener = customRecyclerViewListener;
     }
 
     @NonNull
     @Override
     public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.list_img, parent, false);
         ViewHolder holder = new ViewHolder(view);
 
         return holder;
@@ -48,7 +41,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.imageview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               customRecyclerViewListener.onItemClick(learningModelArrayList.get(position).getLearntext());
+             //  customRecyclerViewListener.onItemClick(learningModelArrayList.get(position).getLearntext());
             }
         });
     }
@@ -65,8 +58,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
 
-            imageview = (ImageView) view.findViewById(R.id.RV_Image);
-            textview = (TextView) view.findViewById(R.id.RV_Text);
+            //imageview = (ImageView) view.findViewById(R.id.RV_Image);
+            //textview = (TextView) view.findViewById(R.id.RV_Text);
         }
     }
 }

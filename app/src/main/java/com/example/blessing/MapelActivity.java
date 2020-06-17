@@ -22,6 +22,7 @@ import com.example.blessing.Adapter.RecyclerviewClickListener;
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
+import com.example.blessing.Utils.Preferences;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -41,8 +42,10 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
     private API service;
     public static final String TAG = MapelActivity.class.getSimpleName();
     public static final String EXTRA_MAPEL = "extra_mapel";
+    public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private FloatingActionButton fab;
+    private String idRole;
 
     //private String[] TextList = new String[]{"Matematika Dasar", "Bahasa Inggris", "Fisika", "Biologi", "Kimia"};
 
@@ -105,6 +108,11 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
 //
 //            }
 //        });
+
+        idRole = Preferences.getKeyUser(getBaseContext());
+        if(idRole.equals("2")){
+            fab.setVisibility(View.GONE);
+        }
 
         getDataMapel();
 
@@ -186,11 +194,11 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
     }
 
     @Override
-    public void onClickItem(String id) {
+    public void onClickItem(String id, String namamapel) {
         Log.d(TAG, "onClickItem: "+id);
         Intent intent = new Intent(MapelActivity.this, MateriActivity.class);
-
         intent.putExtra(EXTRA_MAPEL, id);
+        intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
         startActivity(intent);
     }
 

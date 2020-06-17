@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.OnClickItemContextMenuSoal;
 import com.example.blessing.Adapter.SoalAdapter;
+import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -27,13 +28,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+
 public class SoalActivity extends AppCompatActivity implements OnClickItemContextMenuSoal {
-    private ArrayList<SoalModel> mLearningModelArrayList = new ArrayList<>();
     private static final String TAG = SoalActivity.class.getSimpleName();
     private SoalAdapter mAdapter;
     private long mLastClickTime = 0;
@@ -46,8 +49,9 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_KELAS = "extra_kelas";
-    private TextView jenjang;
-    private String idrole;
+    private TextView tvJenjang, jenjang;
+    private String idRole;
+    private Boolean pembahasanBankSoal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +64,9 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         namajenjang = getIntent().getStringExtra(EXTRA_NAMAJENJANG);
         idmapelsoal = getIntent().getStringExtra(EXTRA_MAPELSOAL);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        pembahasanBankSoal = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Soal </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
         fab = findViewById(R.id.fab_addsoal);
@@ -87,18 +92,27 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         recyclerView.setAdapter(mAdapter);
         mAdapter.setmListener(this);
 
+        tvJenjang = findViewById(R.id.tvjenjang);
         jenjang = findViewById(R.id.jenjang);
         jenjang.setText(namajenjang);
 
-        idrole = Preferences.getKeyUser(getBaseContext());
-        if(idrole.equals("3")){
+        idRole = Preferences.getKeyUser(getBaseContext());
+        if (idRole.equals("3")) {
             fab.setVisibility(View.GONE);
         }
-
-        getSoalByMapel();
+        if (!pembahasanBankSoal) {
+            getSoalByMapel();
+        } else {
+            fab.setVisibility(View.GONE);
+            tvJenjang.setVisibility(View.GONE);
+            jenjang.setVisibility(View.GONE);
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Bank Soal </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            getDataSoal();
+        }
     }
 
     private void makeMoveActivity(String id, String jId, String nama) {
+        preventDoubleClick();
         Intent intent = new Intent(SoalActivity.this, CreateSoalActivity.class);
         intent.putExtra(EXTRA_IDJENJANG, jId);
         intent.putExtra(EXTRA_NAMAJENJANG, nama);
@@ -114,8 +128,25 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
                     if (response.body() != null) {
                         Log.d(TAG, "onResponseSuccessful: " + response);
                         mAdapter.updateData(response.body());
-                        mLearningModelArrayList.addAll(response.body());
 
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<SoalModel>> call, Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+            }
+        });
+    }
+
+    public void getDataSoal() {
+        service.getdatasoal().enqueue(new Callback<List<SoalModel>>() {
+            @Override
+            public void onResponse(Call<List<SoalModel>> call, Response<List<SoalModel>> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        mAdapter.updateData(response.body());
                     }
                 }
             }
@@ -131,9 +162,18 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
 
-        if (id == android.R.id.home) {
-            Intent moveIntent = new Intent(SoalActivity.this, MapelSoalActivity.class);
-            startActivity(moveIntent);
+        if (!pembahasanBankSoal) {
+            if (id == android.R.id.home) {
+                preventDoubleClick();
+                Intent moveIntent = new Intent(SoalActivity.this, MapelSoalActivity.class);
+                startActivity(moveIntent);
+            }
+        } else {
+            if (id == android.R.id.home) {
+                preventDoubleClick();
+                Intent moveIntent = new Intent(SoalActivity.this, MenuPembahasanActivity.class);
+                startActivity(moveIntent);
+            }
         }
         return super.onOptionsItemSelected(item);
     }
@@ -161,11 +201,13 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     }
 
     @Override
-    public void onEditItem(String mId, String id, String namajenjang, String nama) {
+    public void onEditItem(String mId, String id, String jId, String namajenjang, String nama) {
         Log.d(TAG, "onEditItem: " + id);
+        preventDoubleClick();
         Intent intent = new Intent(SoalActivity.this, CreateSoalActivity.class);
         intent.putExtra(EXTRA_SOAL, mId);
         intent.putExtra(EXTRA_MAPELSOAL, id);
+        intent.putExtra(EXTRA_IDJENJANG, jId);
         intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
         intent.putExtra(EXTRA_BOOLEAN, true);
         intent.putExtra("edittextitem", nama);
@@ -174,18 +216,28 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
 
     @Override
     public void onClickItem(String id, String jId, String namajenjang, String mId, String cId) {
-        Log.d(TAG, "idsoal: "+id + "idjenjang: " + jId + "namajenjang" + namajenjang + "idmapelsoal" + mId + "idkelas" + cId);
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+        if (!pembahasanBankSoal) {
+            preventDoubleClick();
+            Intent intent = new Intent(SoalActivity.this, DetailKuisActivity.class);
+            intent.putExtra(EXTRA_SOAL, id);
+            intent.putExtra(EXTRA_IDJENJANG, jId);
+            intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
+            intent.putExtra(EXTRA_MAPELSOAL, mId);
+            intent.putExtra(EXTRA_KELAS, cId);
+            startActivity(intent);
+        } else {
+            preventDoubleClick();
+            Intent intent = new Intent(SoalActivity.this, PembahasanActivity.class);
+            Preferences.setKeyIdSoal(getBaseContext(), id);
+            startActivity(intent);
+        }
+    }
+
+    private void preventDoubleClick() {
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
             return;
         }
         mLastClickTime = SystemClock.elapsedRealtime();
-        Intent intent = new Intent(SoalActivity.this, DetailKuisActivity.class);
-        intent.putExtra(EXTRA_SOAL, id);
-        intent.putExtra(EXTRA_IDJENJANG, jId);
-        intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
-        intent.putExtra(EXTRA_MAPELSOAL, mId);
-        intent.putExtra(EXTRA_KELAS, cId);
-        startActivity(intent);
     }
 
     @Override

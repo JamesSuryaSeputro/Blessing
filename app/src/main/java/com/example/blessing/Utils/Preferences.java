@@ -12,6 +12,7 @@ public class Preferences {
     static final String KEY_ROLE = "role";
     static final String KEY_NAMAROLE = "namarole";
     static final String KEY_USER_STATUS = "statuslogin";
+    static final String KEY_IDSOAL = "idsoal";
 
     // Deklarasi sharedpreferences berdasarkan parameter context
     private static SharedPreferences getSharedPreferences(Context context) {
@@ -82,6 +83,17 @@ public class Preferences {
     // Mengembalikan nilai boolean dari key KEY_USER_STATUS
     public static boolean getStatusLogin(Context context) {
         return getSharedPreferences(context).getBoolean(KEY_USER_STATUS, false);
+    }
+
+    public static void setKeyIdSoal(Context context, String idsoal) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_IDSOAL, idsoal);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai String dari KEY_ID
+    public static String getKeyIdSoal(Context context) {
+        return getSharedPreferences(context).getString(KEY_IDSOAL, "");
     }
 
     public static void clearLoggedinUser(Context context) {

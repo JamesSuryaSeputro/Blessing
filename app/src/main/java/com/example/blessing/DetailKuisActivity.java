@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -39,6 +40,7 @@ import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Adapter.NumberAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuNumber;
 import com.example.blessing.Model.KuisModel;
+import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
@@ -48,6 +50,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,22 +59,15 @@ import retrofit2.Response;
 public class DetailKuisActivity extends AppCompatActivity implements OnClickItemContextMenuNumber, View.OnClickListener {
     public static final String TAG = DetailKuisActivity.class.getSimpleName();
     private NumberAdapter mAdapter;
-    private List<KuisModel> numberList = new ArrayList<>();
     private List<KuisModel> kuisModel = new ArrayList<>();
     private long mLastClickTime = 0;
     private RecyclerView recyclerView;
-    private String idsoal;
-    private String idjenjang;
-    private String namajenjang;
-    private String idmapelsoal;
-    private String idkelas;
-    private String idkuis;
+    private String idsoal, idjenjang, namajenjang, idmapelsoal, idkuis;
     public static final String EXTRA_SOAL = "extra_soal";
-    public static final String EXTRA_IDJENJANG = "extra_idjenjang";
     public static final String EXTRA_IDKUIS = "extra_idkuis";
+    public static final String EXTRA_IDJENJANG = "extra_idjenjang";
     public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
-    public static final String EXTRA_KELAS = "extra_kelas";
     private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private FloatingActionButton fabExpand, fabNumber, fabAddKuis, fabRefresh;
@@ -82,10 +78,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private LinearLayout optionLayout;
     private ProgressBar progressBar;
     boolean isOpen = false;
-    private String answer = null;
-    // private int score = 0;
     private int noSoal = 0;
-    private String imgPath = RetrofitBuildCustom.BASE_URL;
     private View previousView;
     private Menu menuItem;
     private String idRole;
@@ -96,12 +89,10 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         setContentView(R.layout.activity_detail_kuis);
 
         idsoal = getIntent().getStringExtra(EXTRA_SOAL);
-        //\idjenjang = getIntent().getStringExtra(EXTRA_IDJENJANG);
+        idjenjang = getIntent().getStringExtra(EXTRA_IDJENJANG);
         namajenjang = getIntent().getStringExtra(EXTRA_NAMAJENJANG);
         idmapelsoal = getIntent().getStringExtra(EXTRA_MAPELSOAL);
         idkuis = getIntent().getStringExtra(EXTRA_IDKUIS);
-        //idkelas = getIntent().getStringExtra(EXTRA_KELAS);
-        //iddetailkuis = getIntent().getStringExtra(EXTRA_IDDETAILKUIS);
 
         imgKuis = findViewById(R.id.img_kuis);
         progressBar = findViewById(R.id.progressBar);
@@ -112,6 +103,12 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         E = findViewById(R.id.opt_E);
         tvMulai = findViewById(R.id.tvmulai);
         optionLayout = findViewById(R.id.optionlayout);
+
+        A.setOnClickListener(this);
+        B.setOnClickListener(this);
+        C.setOnClickListener(this);
+        D.setOnClickListener(this);
+        E.setOnClickListener(this);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Kuis </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
@@ -146,24 +143,28 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             startActivity(intent);
         });
 
-        A.setOnClickListener(this);
-        B.setOnClickListener(this);
-        C.setOnClickListener(this);
-        D.setOnClickListener(this);
-        E.setOnClickListener(this);
-
         recyclerView = findViewById(R.id.RV_number);
         mAdapter = new NumberAdapter(DetailKuisActivity.this, new ArrayList<>());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(mAdapter);
         mAdapter.setmListener(this);
-
+        mAdapter.registerAdapterDataObserver(new RecyclerView.AdapterDataObserver() {
+            @Override
+            public void onChanged() {
+                super.onChanged();
+                if (mAdapter.getItemCount() == 0) {
+                    tvMulai.setVisibility(View.GONE);
+                    Toast.makeText(DetailKuisActivity.this, "No data available", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         service = RetrofitBuildCustom.getInstance().getService();
         idRole = Preferences.getKeyUser(getBaseContext());
-        if(idRole.equals("3")){
+        if (idRole.equals("3")) {
             fabExpand.setVisibility(View.GONE);
         }
+
         //nomor kuis
         getDetailKuisBySoal();
     }
@@ -175,23 +176,37 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         mLastClickTime = SystemClock.elapsedRealtime();
     }
 
-    private void makeMoveActivity(String id, String sId, String mId, String namajenjang) {
+    private void makeMoveActivity(String id, String sId, String mId, String jId, String namajenjang) {
         Intent intent = new Intent(DetailKuisActivity.this, CreateKuisActivity.class);
-        Log.d(TAG, "makeMoveActivity: idkuis: " + id + " idsoal: " + sId + " mapelsoal: " + mId + " namajenjang: " + namajenjang);
+        Log.d(TAG, "makeMoveActivity: idkuis: " + id + " idsoal: " + sId + " mapelsoal: " + mId + " idjenjang: " + jId + " namajenjang: " + namajenjang);
         intent.putExtra(EXTRA_IDKUIS, id);
         intent.putExtra(EXTRA_SOAL, sId);
         intent.putExtra(EXTRA_MAPELSOAL, mId);
-        //intent.putExtra(EXTRA_IDJENJANG, jId);
+        intent.putExtra(EXTRA_IDJENJANG, jId);
         intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
-        //intent.putExtra(EXTRA_KELAS, cId);
         this.startActivity(intent);
     }
 
-    private void makeMoveBackActivity(String mId, String namajenjang) {
+    private void makeMoveBackActivity(String mId, String jId, String namajenjang) {
         Intent intent = new Intent(DetailKuisActivity.this, SoalActivity.class);
         intent.putExtra(EXTRA_MAPELSOAL, mId);
+        intent.putExtra(EXTRA_IDJENJANG, jId);
         intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
         this.startActivity(intent);
+    }
+
+    public void keluarKuis() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+        builder.setMessage("Yakin ingin keluar dari kuis?");
+        builder.setCancelable(false);
+        builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                makeMoveBackActivity(idmapelsoal, idjenjang, namajenjang);
+            }
+        });
+        builder.setNegativeButton("tidak", null);
+        builder.show();
     }
 
     @Override
@@ -199,10 +214,14 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         switch (item.getItemId()) {
             case android.R.id.home:
                 preventDoubleClick();
-                makeMoveBackActivity(idmapelsoal, namajenjang);
+                keluarKuis();
                 return (true);
             case R.id.submit:
-                submitKuis();
+                try {
+                    submitKuis();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 return (true);
         }
         return super.onOptionsItemSelected(item);
@@ -252,7 +271,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             public void onResponse(Call<List<KuisModel>> call, Response<List<KuisModel>> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onDetailKuisByIdKuis: " + id);
+                        Log.d(TAG, "response: " + response.body());
                     }
                 }
             }
@@ -321,6 +340,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             intent.putExtra(EXTRA_SOAL, sId);
             intent.putExtra(EXTRA_IDDETAILKUIS, dkId);
             intent.putExtra(EXTRA_MAPELSOAL, idmapelsoal);
+            intent.putExtra(EXTRA_IDJENJANG, idjenjang);
             intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
             intent.putExtra(EXTRA_BOOLEAN, true);
             startActivity(intent);
@@ -333,13 +353,25 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         tvMulai.setVisibility(View.GONE);
         progressBar.setVisibility(View.VISIBLE);
         optionLayout.setVisibility(View.VISIBLE);
-        showSubmit();
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.optionlayout);
-
+        fabNumber.hide();
+        fabAddKuis.hide();
+        fabRefresh.hide();
+        LinearLayout linearLayout = findViewById(R.id.optionlayout);
         getDetailKuisByIdKuis(kuisModel.getIdKuis());
-        Log.d(TAG, "answer: " + kuisModel.getJawaban());
-        answer = kuisModel.getJawaban();
         noSoal = posisi;
+        showSubmit();
+
+        if (kuisModel.getIdDetailkuis() == null) {
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
+                View view = linearLayout.getChildAt(i);
+                view.setEnabled(false);
+            }
+        } else {
+            for (int i = 0; i < linearLayout.getChildCount(); i++) {
+                View view = linearLayout.getChildAt(i);
+                view.setEnabled(true);
+            }
+        }
 
         if (kuisModel.getJawabanUser() == null) {
             A.setTextColor(Color.BLACK);
@@ -377,18 +409,12 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             B.setTextColor(Color.BLACK);
             C.setTextColor(Color.BLACK);
             D.setTextColor(Color.BLACK);
-        }
-
-        if (kuisModel.getIdDetailkuis() == null) {
-            for (int i = 0; i < linearLayout.getChildCount(); i++) {
-                View view = linearLayout.getChildAt(i);
-                view.setEnabled(false);
-            }
         } else {
-            for (int i = 0; i < linearLayout.getChildCount(); i++) {
-                View view = linearLayout.getChildAt(i);
-                view.setEnabled(true);
-            }
+            A.setTextColor(Color.BLACK);
+            B.setTextColor(Color.BLACK);
+            C.setTextColor(Color.BLACK);
+            D.setTextColor(Color.BLACK);
+            E.setTextColor(Color.BLACK);
         }
 
         fabExpand.setOnClickListener(v -> {
@@ -409,7 +435,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             @Override
             public void onClick(View view) {
                 if (kuisModel.getIdDetailkuis() == null) {
-                    DetailKuisActivity.this.makeMoveActivity(kuisModel.getIdKuis(), idsoal, idmapelsoal, namajenjang);
+                    DetailKuisActivity.this.makeMoveActivity(kuisModel.getIdKuis(), idsoal, idmapelsoal, idjenjang, namajenjang);
                 } else {
                     Toast.makeText(DetailKuisActivity.this, "Kuis sudah dibuat", Toast.LENGTH_SHORT).show();
                 }
@@ -417,23 +443,26 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         });
 
         RequestOptions options = new RequestOptions()
-                .fitCenter()
                 .error(R.drawable.ic_error)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .priority(Priority.HIGH);
+                .priority(Priority.HIGH)
+                .dontAnimate();
 
+        String imgPath = RetrofitBuildCustom.BASE_URL;
         Glide.with(this)
                 .load(imgPath + "/uploads/" + kuisModel.getImgPertanyaan())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
                         progressBar.setVisibility(View.GONE);
+                        imgKuis.setScaleType(ImageView.ScaleType.CENTER);
                         return false;
                     }
 
                     @Override
                     public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
                         progressBar.setVisibility(View.GONE);
+                        imgKuis.setScaleType(ImageView.ScaleType.FIT_XY);
                         return false;
                     }
                 })
@@ -487,37 +516,19 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         builder.show();
     }
 
-    public void getSolution(List<KuisModel> kuisModelList) {
-        for (int i = 0; i < kuisModelList.size(); i++) {
-            KuisModel kuisModel = kuisModelList.get(i);
-            switch (kuisModel.getJawaban()) {
-                case "A":
-                    A.setTextColor(Color.GREEN);
-                    break;
-                case "B":
-                    B.setTextColor(Color.GREEN);
-                    break;
-                case "C":
-                    C.setTextColor(Color.GREEN);
-                    break;
-                case "D":
-                    D.setTextColor(Color.GREEN);
-                    break;
-                case "E":
-                    E.setTextColor(Color.GREEN);
-                    break;
-            }
-        }
-    }
-
     public void scoreDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setMessage("Nilai kamu adalah " + countingScore(kuisModel) + "/" + kuisModel.size());
+        builder.setTitle("RESULT");
+        builder.setMessage("Skor kamu adalah " + countingScore(kuisModel) + " /" + kuisModel.size() + " pertanyaan");
         builder.setCancelable(false);
         builder.setPositiveButton("lihat pembahasan", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-               // getSolution(kuisModel);
+                hideSubmit();
+                Intent intent = new Intent(DetailKuisActivity.this, PembahasanActivity.class);
+                intent.putExtra(EXTRA_BOOLEAN, true);
+                intent.putExtra(EXTRA_SOAL, idsoal);
+                startActivity(intent);
             }
         });
         builder.setNegativeButton("cancel", null);
@@ -526,11 +537,11 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
 
     private int countingScore(List<KuisModel> kuisModelList) {
         int score = 0;
+        //for ini yang bikin GC jadiin RxJava di IOThread||ComputingThread
         for (int i = 0; i < kuisModelList.size(); i++) {
             KuisModel kuisModel = kuisModelList.get(i);
-            if (answer.equals(kuisModel.getJawabanUser())) {
+            if (kuisModel.getJawaban() != null && kuisModel.getJawaban().equals(kuisModel.getJawabanUser())) {
                 score += 1;
-
             }
         }
         return score;

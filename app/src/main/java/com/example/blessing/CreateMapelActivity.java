@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
+
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +33,7 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
     private API service;
     private String mapelid;
     private Boolean updatemapel;
+    private TextView tvMapel;
     private long mLastClickTime = 0;
 
     @Override
@@ -37,6 +41,7 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_mapel);
         edtMapel = findViewById(R.id.mapel);
+        tvMapel = findViewById(R.id.tvmapel);
 
         edtMapel.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama mapel":getIntent().getStringExtra("edittextitem"));
 
@@ -47,14 +52,13 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
         updatemapel = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Simpan Mata Pelajaran </font>", Html.FROM_HTML_MODE_LEGACY));
 
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
-            return;
+        if (updatemapel) {
+            //true
+            tvMapel.setText(R.string.edit_mapel);
         }
-        mLastClickTime = SystemClock.elapsedRealtime();
     }
 
     public void saveDataMapel() {

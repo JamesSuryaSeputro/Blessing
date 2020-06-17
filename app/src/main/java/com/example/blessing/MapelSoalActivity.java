@@ -89,7 +89,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
         spinner = findViewById(R.id.spinner);
 
         idRole = Preferences.getKeyUser(getBaseContext());
-        if(idRole.equals("3")){
+        if(idRole.equals("2")||idRole.equals("3")){
             fab.setVisibility(View.GONE);
         }
 

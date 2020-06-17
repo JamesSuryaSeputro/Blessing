@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blessing.Adapter.MateriAdapter;
@@ -61,11 +62,13 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     public static final String TAG = MateriActivity.class.getSimpleName();
     public static final String EXTRA_MATERI = "extra_materi";
     public static final String EXTRA_MAPEL = "extra_mapel";
+    public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
-    private String mapelid;
+    private String mapelid, namamapel;
     private Button btnRename;
     private long downloadID;
     private DownloadManager manager;
+    private TextView tvNamaMapel;
 
     private BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
         @Override
@@ -119,12 +122,17 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_materi);
-        registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
 
+        registerReceiver(onDownloadComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         service = RetrofitBuildCustom.getInstance().getService();
+
+        namamapel = getIntent().getStringExtra(EXTRA_NAMAMAPEL);
 
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
         btnRename = findViewById(R.id.btnrename);
+
+        tvNamaMapel = findViewById(R.id.tvnamamapel);
+        tvNamaMapel.setText(namamapel);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -301,13 +309,13 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     @Override
-    public void onEditItem(String mId, String id, String nama) {
+    public void onEditItem(String mId, String id, String namamapel) {
         Log.d(TAG, "onEditItem: " + id);
         Intent intent = new Intent(MateriActivity.this, CreateMateriActivity.class);
         intent.putExtra(EXTRA_MATERI, mId);
         intent.putExtra(EXTRA_MAPEL, id);
+        intent.putExtra("edittextitem", namamapel);
         intent.putExtra(EXTRA_BOOLEAN, true);
-        intent.putExtra("edittextitem", nama);
         startActivity(intent);
     }
 
