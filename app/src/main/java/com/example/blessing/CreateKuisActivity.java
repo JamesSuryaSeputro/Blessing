@@ -64,7 +64,6 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
     public static final String EXTRA_IDKUIS = "extra_idkuis";
     public static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
-    private API service;
     private Boolean updatekuis;
     private String[] arraySpinner = new String[]{"A", "B", "C", "D", "E"};
 
@@ -91,8 +90,6 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         updatekuis = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
         idkuis = getIntent().getStringExtra(EXTRA_IDKUIS);
         iddetailkuis = getIntent().getStringExtra(EXTRA_IDDETAILKUIS);
-
-        service = RetrofitBuildCustom.getInstance().getService();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

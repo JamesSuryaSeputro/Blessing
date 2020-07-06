@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-public class Preferences {
-
+ public class Preferences {
     static final String KEY_ID = "id";
     static final String KEY_NAMA = "nama";
     static final String KEY_EMAIL = "email";
@@ -13,6 +12,11 @@ public class Preferences {
     static final String KEY_NAMAROLE = "namarole";
     static final String KEY_USER_STATUS = "statuslogin";
     static final String KEY_IDSOAL = "idsoal";
+    static final String KEY_NAMASOAL = "namasoal";
+    static final String KEY_IDTRYOUT = "idtryout";
+    static final String KEY_JUDULTRYOUT = "judultryout";
+     static final String KEY_IDNILAISOAL = "idnilaisoal";
+    static final String KEY_IDNILAITRYOUT = "idnilaitryout";
 
     // Deklarasi sharedpreferences berdasarkan parameter context
     private static SharedPreferences getSharedPreferences(Context context) {
@@ -91,11 +95,65 @@ public class Preferences {
         editor.apply();
     }
 
-    // Mengembalikan nilai String dari KEY_ID
+    // Mengembalikan nilai String dari KEY_IDSOAL
     public static String getKeyIdSoal(Context context) {
         return getSharedPreferences(context).getString(KEY_IDSOAL, "");
     }
 
+    public static void setKeyIdTryout(Context context, String idtryout) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_IDTRYOUT, idtryout);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai String dari KEY_IDTRYOUT
+    public static String getKeyIdTryout(Context context) {
+        return getSharedPreferences(context).getString(KEY_IDTRYOUT, "");
+    }
+
+    public static void setKeyNamaSoal(Context context, String namasoal) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_NAMASOAL, namasoal);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai String dari KEY NAMASOAL
+    public static String getKeyNamaSoal(Context context) {
+        return getSharedPreferences(context).getString(KEY_NAMASOAL, "");
+    }
+
+    public static void setKeyJudulTryout(Context context, String judultryout) {
+        SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+        editor.putString(KEY_JUDULTRYOUT, judultryout);
+        editor.apply();
+    }
+
+    // Mengembalikan nilai String dari KEY_JUDULTRYOUT
+    public static String getKeyJudulTryout(Context context) {
+        return getSharedPreferences(context).getString(KEY_JUDULTRYOUT, "");
+    }
+
+     public static void setKeyIdNilaiSoal(Context context, String idnilaisoal) {
+         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+         editor.putString(KEY_IDNILAISOAL, idnilaisoal);
+         editor.apply();
+     }
+
+     // Mengembalikan nilai String dari KEY_ID
+     public static String getKeyIdNilaiSoal(Context context) {
+         return getSharedPreferences(context).getString(KEY_IDNILAISOAL, "");
+     }
+
+     public static void setKeyIdNilaiTryout(Context context, String idnilaitryout) {
+         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
+         editor.putString(KEY_IDNILAITRYOUT, idnilaitryout);
+         editor.apply();
+     }
+
+     // Mengembalikan nilai String dari KEY_ID
+     public static String getKeyIdNilaiTryout(Context context) {
+         return getSharedPreferences(context).getString(KEY_IDNILAITRYOUT, "");
+     }
     public static void clearLoggedinUser(Context context) {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.remove(KEY_USER_STATUS);

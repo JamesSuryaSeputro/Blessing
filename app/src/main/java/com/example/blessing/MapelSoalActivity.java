@@ -104,7 +104,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
             @Override
             public void onResponse(Call<List<JenjangModel>> call, Response<List<JenjangModel>> response) {
                 List<JenjangModel> jenjangModelList = response.body();
-                //ini jalan di mainthread Ini GC calon calon
+
                 for (int i = 0; i < jenjangModelList.size(); i++) {
                     listSpinner.add(jenjangModelList.get(i).getNamaJenjang());
                 }
@@ -115,10 +115,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
                 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        //String mJenjang = parent.getItemAtPosition(position).toString();
-                        String mJenjang = spinner.getSelectedItem().toString();
                         mAdapter.updateDataChangeFilterSchool(Integer.parseInt(jenjangModelList.get(position).getIdJenjang()));
-                        //Toast.makeText(MapelSoalActivity.this, "Memilih jenjang " + mJenjang, Toast.LENGTH_SHORT).show();
                     }
 
                     @Override

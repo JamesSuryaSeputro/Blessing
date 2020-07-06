@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.MateriModel;
+import com.example.blessing.Model.SoalModel;
 import com.example.blessing.R;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,7 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.ViewHolder
     @NonNull
     @Override
     public MateriAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.cv_list, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_list, parent, false);
         MateriAdapter.ViewHolder holder = new MateriAdapter.ViewHolder(view);
         return holder;
     }
@@ -46,8 +47,10 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.ViewHolder
     public void onBindViewHolder(@NonNull MateriAdapter.ViewHolder holder, int position) {
         MateriModel materiModel = mLearningModelArrayList.get(position);
         String materiList = materiModel.getJudulMateri();
+        String kelasList = materiModel.getKelas();
 
-        holder.textView.setText(materiList);
+        holder.tvMateri.setText(materiList);
+        holder.tvListKelas.setText(kelasList);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,12 +76,13 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.ViewHolder
     }
 
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        TextView textView;
+        TextView tvMateri, tvListKelas;
         CardView cardView;
 
         public ViewHolder(@NonNull View view) {
             super(view);
-            textView = view.findViewById(R.id.list_item);
+            tvMateri = view.findViewById(R.id.list_judul);
+            tvListKelas = view.findViewById(R.id.list_kelas);
             cardView = view.findViewById(R.id.card_view);
             cardView.setOnCreateContextMenuListener(this);
         }

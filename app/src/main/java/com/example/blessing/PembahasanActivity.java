@@ -49,15 +49,13 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PembahasanActivity extends AppCompatActivity {
-    private static final String TAG = SoalActivity.class.getSimpleName();
+    private static final String TAG = PembahasanActivity.class.getSimpleName();
     private ImagePembahasanAdapter mAdapter;
     private JawabanAdapter mJawabanAdapter;
     private API service;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_SOAL = "extra_soal";
-    private ProgressBar solutionProgressBar;
-    private PhotoView imgPembahasan;
-    private String idsoal;
+    private String idsoal, namasoal;
     private TextView tvJawaban, tvBelumAdaPembahasan;
 
     @Override
@@ -65,8 +63,10 @@ public class PembahasanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembahasan);
 
+        namasoal = Preferences.getKeyNamaSoal(getBaseContext());
+
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Pembahasan </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+        getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> " + namasoal + " </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
         SnapHelper helper = new LinearSnapHelper();
         RecyclerView rvImage = findViewById(R.id.RV_imgpembahasan);
@@ -93,8 +93,6 @@ public class PembahasanActivity extends AppCompatActivity {
 
         service = RetrofitBuildCustom.getInstance().getService();
         idsoal = Preferences.getKeyIdSoal(getBaseContext());
-        solutionProgressBar = findViewById(R.id.solutionProgressBar);
-        imgPembahasan = findViewById(R.id.img_pembahasan);
         tvJawaban = findViewById(R.id.tvjawaban);
         tvBelumAdaPembahasan = findViewById(R.id.tvbelumadapembahasan);
 

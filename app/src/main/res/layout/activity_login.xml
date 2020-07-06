@@ -57,9 +57,9 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="180dp"
             android:layout_gravity="center"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="6dp"
             app:cardCornerRadius="5dp"
             app:cardElevation="2dp">
 
@@ -72,8 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/masukan_email"
-                android:text="b"
-                android:inputType="textPersonName"
+                android:inputType="textEmailAddress"
                 android:importantForAutofill="no"
                 android:singleLine="true"
                 android:theme="@style/TextInputLayoutAppearance"/>
@@ -83,7 +82,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="60dp"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -92,7 +91,6 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:hint="@string/masukan_password"
-                    android:text="b"
                     android:inputType="textPassword"
                     android:singleLine="true"
                     android:theme="@style/TextInputLayoutAppearance"/>
@@ -119,7 +117,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.4"
+                android:layout_weight="0.45"
                 android:gravity="center"
                 android:text="@string/belum_pernah_mendaftar"
                 android:textSize="14sp"/>
@@ -128,7 +126,7 @@
                 android:id="@+id/toregister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.6"
+                android:layout_weight="0.55"
                 android:gravity="center"
                 android:text="@string/daftar_sekarang"
                 android:textSize="14sp"

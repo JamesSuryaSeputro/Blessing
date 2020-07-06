@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 startActivity(moveIntent);
                 break;
             case R.id.btnlogin:
-                if (SystemClock.elapsedRealtime() - mLastClickTime < 1500) {
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();

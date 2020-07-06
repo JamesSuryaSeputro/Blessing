@@ -19,6 +19,7 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
+import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Model.KuisModel;
 import com.example.blessing.R;
 import com.example.blessing.Service.RetrofitBuildCustom;

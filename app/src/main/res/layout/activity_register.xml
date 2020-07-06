@@ -68,7 +68,6 @@
                     android:hint="@string/masukan_username"
                     android:importantForAutofill="no"
                     android:inputType="textPersonName"
-
                     android:singleLine="true"
                     android:theme="@style/TextInputLayoutAppearance"/>
 
@@ -86,7 +85,6 @@
                     android:hint="@string/masukan_email"
                     android:importantForAutofill="no"
                     android:inputType="textEmailAddress"
-
                     android:singleLine="true"
                     android:theme="@style/TextInputLayoutAppearance"/>
 

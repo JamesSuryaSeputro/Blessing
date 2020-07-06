@@ -47,4 +47,14 @@
     <string name="belum_ada_pembahasan">Belum ada pembahasan</string>
     <string name="deskripsi">deskripsi</string>
     <string name="mulai">mulai</string>
+    <string name="masukan_judul_tryout">Masukan judul tryout</string>
+    <string name="masukan_deskripsi">masukan deskripsi</string>
+    <string name="input_tryout">Input Tryout</string>
+    <string name="edit_tryout">Edit Tryout</string>
+    <string name="upload_tryout">upload tryout</string>
+    <string name="waktu">Waktu:</string>
+    <string name="dalam_hitungan_menit">dalam hitungan menit</string>
+    <string name="hasil">Hasil</string>
+    <string name="nilai">Nilai:</string>
+    <string name="slash">/</string>
 </resources>

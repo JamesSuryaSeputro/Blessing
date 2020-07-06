@@ -124,14 +124,14 @@ public class MainActivity extends AppCompatActivity {
 
 //    private ArrayList<MainModel> itemLearning() {
 //
-//        ArrayList<MainModel> list = new ArrayList<>();
+//        ArrayList<MainModel> score = new ArrayList<>();
 //        for (int i = 0; i < ImageList.length; i++) {
 //            MainModel learningmodel = new MainModel();
 //            learningmodel.setLearnimage(ImageList[i]);
 //            learningmodel.setLearntext(TextList[i]);
-//            list.add(learningmodel);
+//            score.add(learningmodel);
 //        }
-//        return list;
+//        return score;
 //    }
 
     private void displaySharedPreferences() {

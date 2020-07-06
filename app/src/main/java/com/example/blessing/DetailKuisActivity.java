@@ -41,6 +41,7 @@ import com.example.blessing.Adapter.NumberAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuNumber;
 import com.example.blessing.Model.KuisModel;
 import com.example.blessing.Model.MapelModel;
+import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
@@ -62,7 +63,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private List<KuisModel> kuisModel = new ArrayList<>();
     private long mLastClickTime = 0;
     private RecyclerView recyclerView;
-    private String idsoal, idjenjang, namajenjang, idmapelsoal, idkuis;
+    private String idsoal, idjenjang, namajenjang, idmapelsoal, idkuis, namasoal, idnilaisoal;
     public static final String EXTRA_SOAL = "extra_soal";
     public static final String EXTRA_IDKUIS = "extra_idkuis";
     public static final String EXTRA_IDJENJANG = "extra_idjenjang";
@@ -70,8 +71,9 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
     private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+    public static final String EXTRA_NAMASOAL = "extra_namasoal";
+    private static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
     private FloatingActionButton fabExpand, fabNumber, fabAddKuis, fabRefresh;
-    private Toolbar toolbar;
     private API service;
     private TextView A, B, C, D, E, tvMulai;
     private PhotoView imgKuis;
@@ -81,7 +83,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private int noSoal = 0;
     private View previousView;
     private Menu menuItem;
-    private String idRole;
+    private String id, idRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +95,9 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         namajenjang = getIntent().getStringExtra(EXTRA_NAMAJENJANG);
         idmapelsoal = getIntent().getStringExtra(EXTRA_MAPELSOAL);
         idkuis = getIntent().getStringExtra(EXTRA_IDKUIS);
+        namasoal = getIntent().getStringExtra(EXTRA_NAMASOAL);
+        idnilaisoal = getIntent().getStringExtra(EXTRA_IDNILAISOAL);
+        id = Preferences.getKeyId(getBaseContext());
 
         imgKuis = findViewById(R.id.img_kuis);
         progressBar = findViewById(R.id.progressBar);
@@ -298,6 +303,47 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             @Override
             public void onFailure(Call<KuisModel> call, Throwable t) {
                 Log.e("DetailKuisActivity", "onFailure: ", t);
+            }
+        });
+    }
+
+    public void saveNilaiSoal() {
+        Call<NilaiSoalModel> call = service.postdatanilaisoal(idsoal, id, String.valueOf(countingScore(kuisModel)), String.valueOf(kuisModel.size()));
+        call.enqueue(new Callback<NilaiSoalModel>() {
+            @Override
+            public void onResponse(Call<NilaiSoalModel> call, Response<NilaiSoalModel> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        idnilaisoal =  response.body().getIdNilaisoal();
+                    }
+                    Toast.makeText(DetailKuisActivity.this, "Berhasil submit nilai", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(DetailKuisActivity.this, "Gagal submit nilai", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NilaiSoalModel> call, Throwable t) {
+                Log.e("CreateMapelActivity", "onFailure: ", t);
+            }
+        });
+    }
+
+    public void updateNilaiSoal(String id, String nilaisoal, String jumlahsoal) {
+        Call<NilaiSoalModel> call = service.updatedatanilaisoal(id, nilaisoal, jumlahsoal);
+        call.enqueue(new Callback<NilaiSoalModel>() {
+            @Override
+            public void onResponse(Call<NilaiSoalModel> call, Response<NilaiSoalModel> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(DetailKuisActivity.this, "Berhasil update nilai", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(DetailKuisActivity.this, "Gagal update upnilai", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<NilaiSoalModel> call, Throwable t) {
+                Log.e("CreateMapelActivity", "onFailure: ", t);
             }
         });
     }
@@ -510,6 +556,12 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 scoreDialog();
+                if(idnilaisoal==null) {
+                    saveNilaiSoal();
+                } else {
+                    Log.d(TAG, "idnilaisoal: " + idnilaisoal);
+                    updateNilaiSoal(idnilaisoal, String.valueOf(countingScore(kuisModel)), String.valueOf(kuisModel.size()));
+                }
             }
         });
         builder.setNegativeButton("tidak", null);
@@ -526,8 +578,9 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             public void onClick(DialogInterface dialog, int which) {
                 hideSubmit();
                 Intent intent = new Intent(DetailKuisActivity.this, PembahasanActivity.class);
-                intent.putExtra(EXTRA_BOOLEAN, true);
-                intent.putExtra(EXTRA_SOAL, idsoal);
+                //intent.putExtra(EXTRA_BOOLEAN, true);
+                Preferences.setKeyIdSoal(getBaseContext(), idsoal);
+                Preferences.setKeyNamaSoal(getBaseContext(), namasoal);
                 startActivity(intent);
             }
         });

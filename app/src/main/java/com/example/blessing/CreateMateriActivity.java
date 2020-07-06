@@ -14,8 +14,11 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.blessing.Model.KelasModel;
 import com.example.blessing.Model.MateriModel;
 import com.example.blessing.Model.UploadModel;
 import com.example.blessing.Service.API;
@@ -33,6 +37,8 @@ import com.example.blessing.Utils.FilePath;
 import com.example.blessing.Utils.PermissionUtils;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -54,9 +60,12 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
     private String pdfPath = "";
     private Uri filePath;
     private String mapelid, materiid;
-    private Boolean updatemapel;
+    private Boolean updatemateri;
     private API service;
     private long mLastClickTime = 0;
+    private Spinner spinner;
+    private String selectedId;
+    private List<String> listSpinner = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +79,11 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         service = RetrofitBuildCustom.getInstance().getService();
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
         materiid = getIntent().getStringExtra(EXTRA_MATERI);
-        updatemapel = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+        updatemateri = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
         Button btnChoosePdf = findViewById(R.id.btnchoosepdf);
         Button btnUploadMateri = findViewById(R.id.btnuploadmateri);
-        Button btnRename = findViewById(R.id.btnrename);
+        spinner = findViewById(R.id.spinnerkelasmateri);
 
         editText = findViewById(R.id.edtmateri);
         editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama materi":getIntent().getStringExtra("edittextitem"));
@@ -82,15 +91,13 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
 
         btnChoosePdf.setOnClickListener(this);
         btnUploadMateri.setOnClickListener(this);
-        btnRename.setOnClickListener(this);
 
-        if (!updatemapel){
+        getDataKelas();
+
+        if (updatemateri){
             //true
-            btnRename.setVisibility(View.GONE);
-        } else {
             textView.setText(R.string.edit_materi);
-            btnChoosePdf.setVisibility(View.GONE);
-            btnUploadMateri.setVisibility(View.GONE);
+            btnUploadMateri.setText(R.string.simpan);
         }
     }
 
@@ -112,16 +119,8 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
                 }
                 break;
             case R.id.btnuploadmateri:
-                if (checkFileisHere() && !updatemapel){
-                    new UploadPdf().execute();
-                }
-                break;
-            case R.id.btnrename:
-                if(updatemapel) {
-                    MateriModel materi = new MateriModel();
-                    materi.setJudulMateri(editText.getText().toString());
-                    updateDataMateri(materiid, materi);
-                }
+                checkFileisHere();
+                new UploadPdf().execute();
                 break;
         }
     }
@@ -199,11 +198,50 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+    private void getDataKelas() {
+        service.getdatakelas().enqueue(new Callback<List<KelasModel>>() {
+            @Override
+            public void onResponse(Call<List<KelasModel>> call, Response<List<KelasModel>> response) {
+                List<KelasModel> kelasModelList = response.body();
+                for (int i = 0; i < kelasModelList.size(); i++) {
+                    listSpinner.add(kelasModelList.get(i).getKelas());
+                }
+                listSpinner.add(0, "- Pilih Kelas -");
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(CreateMateriActivity.this, android.R.layout.simple_spinner_item, listSpinner);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        Log.d(TAG, "onItemSelected: " + position);
+                        if (position != 0) {
+                            selectedId = String.valueOf(kelasModelList.get(position - 1).getIdKelas());
+                        }
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+            }
+
+            @Override
+            public void onFailure(Call<List<KelasModel>> call, Throwable t) {
+
+            }
+        });
+    }
+
     private class UploadPdf extends AsyncTask<Void, Integer, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
             try {
-                uploadFile();
+                if (!updatemateri) {
+                    uploadFile();
+                } else {
+                    updateDataMateri(materiid);
+                }
                 runOnUiThread(new Runnable() {
                     public void run() {
                         Log.d(TAG, "doInBackground: Upload Progress");
@@ -259,9 +297,10 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
             RequestBody requestBody = RequestBody.create(file, MediaType.parse("*/*"));
             RequestBody JudulMateri = RequestBody.create(editText.getText().toString(), MediaType.parse("text/plain"));
             RequestBody MapelId = RequestBody.create(mapelid, MediaType.parse("text/plain"));
+            RequestBody SelectedId = RequestBody.create(selectedId, MediaType.parse("text/plain"));
             MultipartBody.Part NamaMateri = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
             API getResponse = RetrofitBuildCustom.getRetrofit().create(API.class);
-            Call<UploadModel> call = getResponse.uploadmateri(NamaMateri, JudulMateri, MapelId);
+            Call<UploadModel> call = getResponse.uploadmateri(NamaMateri, JudulMateri, MapelId, SelectedId);
             call.enqueue(new Callback<UploadModel>() {
                 @Override
                 public void onResponse(Call<UploadModel> call, Response<UploadModel> response) {
@@ -283,26 +322,36 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    public void updateDataMateri(String id, MateriModel materi) {
+    public void updateDataMateri(String id) {
         if (editText.getText().toString().equals("")) {
-            Toast.makeText(CreateMateriActivity.this, "Isi materi", Toast.LENGTH_SHORT).show();
-        } else {
-            Call<MateriModel> call = service.updatedatamateri(id, materi);
-            call.enqueue(new Callback<MateriModel>() {
+
+        } else if (pdfPath.equals("") || pdfPath.isEmpty()){
+
+        } else if (!pdfPath.isEmpty()) {
+            Log.d(TAG, "uploadFile: "+ pdfPath);
+            File file = new File(pdfPath);
+            RequestBody requestBody = RequestBody.create(file, MediaType.parse("*/*"));
+            RequestBody JudulMateri = RequestBody.create(editText.getText().toString(), MediaType.parse("text/plain"));
+            RequestBody SelectedId = RequestBody.create(selectedId, MediaType.parse("text/plain"));
+            MultipartBody.Part NamaMateri = MultipartBody.Part.createFormData("file", file.getName(), requestBody);
+            API getResponse = RetrofitBuildCustom.getRetrofit().create(API.class);
+            Call<UploadModel> call = getResponse.updatedatamateri(id, NamaMateri, JudulMateri, SelectedId);
+            call.enqueue(new Callback<UploadModel>() {
                 @Override
-                public void onResponse(Call<MateriModel> call, Response<MateriModel> response) {
-                    if (response.isSuccessful()) {
-                        clearAll();
-                        Log.d(TAG, "onResponse: "+ (response.body() != null ? response.body().getJudulMateri() : null));
-                        Toast.makeText(CreateMateriActivity.this, "Updated", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(CreateMateriActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                public void onResponse(Call<UploadModel> call, Response<UploadModel> response) {
+                    if (response.body() != null) {
+                        Log.d(TAG, "onResponse: "+response.body().getStatus());
+                        if (response.body().getStatus() == 1) {
+                            Toast.makeText(CreateMateriActivity.this, "Success", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(CreateMateriActivity.this, "Failed", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
 
                 @Override
-                public void onFailure(Call<MateriModel> call, Throwable t) {
-                    Log.e("CreateMateriActivity", "onFailure: ", t);
+                public void onFailure(Call<UploadModel> call, Throwable t) {
+                    Log.e("onFailed", "onFailure: ", t);
                 }
             });
         }

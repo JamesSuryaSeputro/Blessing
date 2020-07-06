@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:layout_margin="6dp"
+    android:layout_margin="10dp"
     android:clickable="true"
     android:focusable="true"
     app:cardCornerRadius="10dp">
@@ -15,7 +15,6 @@
         android:id="@+id/parentView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="6dp">
 
         <TextView
@@ -46,16 +45,28 @@
             tools:text="ini adalah deskripsi judul"/>
 
         <TextView
-            android:id="@+id/list_date"
+            android:id="@+id/list_jenjang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_deskripsi"
             android:layout_marginStart="6dp"
             android:textSize="14sp"
             android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif"
+
+
+            tools:text="SMA" />
+
+        <TextView
+            android:id="@+id/list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_deskripsi"
+            android:layout_toEndOf="@+id/list_jenjang"
+            android:layout_marginStart="6dp"
+            android:textSize="14sp"
+            android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-light"
-            android:layout_toStartOf="@+id/btnstart"
-            android:layout_alignParentStart="true"
             tools:text="dd-mm-yy" />
 
         <Button
@@ -67,7 +78,6 @@
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
             android:background="@drawable/btn_rounded_to"
-            android:layout_gravity="bottom"
             android:clickable="true"
             android:focusable="true" />
 

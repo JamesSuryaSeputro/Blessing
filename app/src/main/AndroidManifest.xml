@@ -19,12 +19,21 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
-        <activity android:name=".CreateTryoutActivity"></activity>
+        <activity android:name=".NilaiTryoutActivity"></activity>
+        <activity android:name=".NilaiSoalActivity" />
+        <activity android:name=".PembahasanTryoutActivity" />
+        <activity android:name=".CreateDetailTryoutActivity" />
+        <activity
+            android:name=".DetailTryoutActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity android:name=".CreateTryoutActivity" />
         <activity android:name=".TryoutActivity" />
         <activity android:name=".PembahasanActivity" />
         <activity android:name=".MenuPembahasanActivity" />
         <activity android:name=".CreateKuisActivity" />
-        <activity android:name=".DetailKuisActivity" />
+        <activity
+            android:name=".DetailKuisActivity"
+            android:configChanges="orientation|screenSize" />
         <activity android:name=".CreateSoalActivity" />
         <activity android:name=".SoalActivity" />
         <activity android:name=".MapelSoalActivity" />

@@ -129,7 +129,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         namamapel = getIntent().getStringExtra(EXTRA_NAMAMAPEL);
 
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
-        btnRename = findViewById(R.id.btnrename);
 
         tvNamaMapel = findViewById(R.id.tvnamamapel);
         tvNamaMapel.setText(namamapel);

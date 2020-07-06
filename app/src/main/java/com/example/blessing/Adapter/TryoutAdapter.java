@@ -14,12 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.blessing.Model.MapelSoalModel;
+import com.example.blessing.Model.NilaiTryoutModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.R;
 import com.example.blessing.Utils.Preferences;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder> {
     private static final String TAG = "TryoutAdapter";
@@ -47,15 +51,17 @@ public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        TryoutModel tryoutModel = mLearningModelArrayList.get(position);
-        String listJudul = tryoutModel.getJudul();
-        String listDeskripsi = tryoutModel.getDeskripsi();
-        String listDate = tryoutModel.getDatecreated();
+                TryoutModel tryoutModel = mLearningModelArrayList.get(position);
+                String listJudul = tryoutModel.getJudul();
+                String listDeskripsi = tryoutModel.getDeskripsi();
+                String listJenjang = tryoutModel.getNamaJenjang();
+                String listDate = tryoutModel.getDatecreated();
 
-        holder.tvJudul.setText(listJudul);
-        holder.tvDeskripsi.setText(listDeskripsi);
-        holder.tvDate.setText(listDate);
-        holder.btnStart.setOnClickListener(view -> mListener.onClickItem(tryoutModel.getIdTryout()));
+                holder.tvJudul.setText(listJudul);
+                holder.tvDeskripsi.setText(listDeskripsi);
+                holder.tvJenjang.setText(listJenjang);
+                holder.tvDate.setText(listDate);
+                holder.btnStart.setOnClickListener(view -> mListener.onClickItem(tryoutModel.getIdTryout(), tryoutModel.getJudul(), tryoutModel.getTimer()));
     }
 
     @Override
@@ -72,9 +78,8 @@ public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder
         notifyDataSetChanged();
     }
 
-
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        TextView tvJudul, tvDeskripsi, tvDate;
+        TextView tvJudul, tvDeskripsi, tvJenjang, tvDate;
         Button btnStart;
         CardView cardView;
 
@@ -83,6 +88,7 @@ public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder
 
             tvJudul = itemView.findViewById(R.id.list_judul);
             tvDeskripsi = itemView.findViewById(R.id.list_deskripsi);
+            tvJenjang = itemView.findViewById(R.id.list_jenjang);
             tvDate = itemView.findViewById(R.id.list_date);
             btnStart = itemView.findViewById(R.id.btnstart);
             cardView = itemView.findViewById(R.id.card_view);

@@ -65,7 +65,7 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
     }
 
     public void updateData(List<MapelModel> list) {
-      // mLearningModelArrayList.addAll(list);
+      // mLearningModelArrayList.addAll(score);
         mLearningModelArrayList = list;
         notifyDataSetChanged();
     }

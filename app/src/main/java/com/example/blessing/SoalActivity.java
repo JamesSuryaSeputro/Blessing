@@ -20,6 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.blessing.Adapter.OnClickItemContextMenuSoal;
 import com.example.blessing.Adapter.SoalAdapter;
 import com.example.blessing.Model.MapelModel;
+import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -49,6 +50,8 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_KELAS = "extra_kelas";
+    public static final String EXTRA_NAMASOAL = "extra_namasoal";
+    public static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
     private TextView tvJenjang, jenjang;
     private String idRole;
     private Boolean pembahasanBankSoal;
@@ -63,7 +66,6 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         idjenjang = getIntent().getStringExtra(EXTRA_IDJENJANG);
         namajenjang = getIntent().getStringExtra(EXTRA_NAMAJENJANG);
         idmapelsoal = getIntent().getStringExtra(EXTRA_MAPELSOAL);
-
         pembahasanBankSoal = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -106,7 +108,7 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
             fab.setVisibility(View.GONE);
             tvJenjang.setVisibility(View.GONE);
             jenjang.setVisibility(View.GONE);
-            getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Bank Soal </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
+            getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Pembahasan Bank Soal </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
             getDataSoal();
         }
     }
@@ -140,6 +142,7 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         });
     }
 
+    //pembahasan bank soal
     public void getDataSoal() {
         service.getdatasoal().enqueue(new Callback<List<SoalModel>>() {
             @Override
@@ -215,7 +218,7 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     }
 
     @Override
-    public void onClickItem(String id, String jId, String namajenjang, String mId, String cId) {
+    public void onClickItem(String id, String jId, String namajenjang, String mId, String cId, String namasoal) {
         if (!pembahasanBankSoal) {
             preventDoubleClick();
             Intent intent = new Intent(SoalActivity.this, DetailKuisActivity.class);
@@ -224,11 +227,13 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
             intent.putExtra(EXTRA_NAMAJENJANG, namajenjang);
             intent.putExtra(EXTRA_MAPELSOAL, mId);
             intent.putExtra(EXTRA_KELAS, cId);
+            intent.putExtra(EXTRA_NAMASOAL, namasoal);
             startActivity(intent);
         } else {
             preventDoubleClick();
             Intent intent = new Intent(SoalActivity.this, PembahasanActivity.class);
             Preferences.setKeyIdSoal(getBaseContext(), id);
+            Preferences.setKeyNamaSoal(getBaseContext(), namasoal);
             startActivity(intent);
         }
     }

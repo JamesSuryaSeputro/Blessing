@@ -98,8 +98,6 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
                 if (editText != null && !updatesoal) {
                     saveDataSoal(idjenjang, idmapelsoal);
                 } else {
-                    SoalModel soalModel = new SoalModel();
-                    soalModel.setNamaSoal(editText.getText().toString());
                     updateDataSoal(idsoal, idmapelsoal);
                 }
                 break;

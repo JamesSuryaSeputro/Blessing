@@ -19,20 +19,19 @@
         android:padding="2dp">
 
         <TextView
-            android:id="@+id/list_soal"
+            android:id="@+id/list_judul"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
-            tools:text="soal" />
+            tools:text="Judul" />
 
         <TextView
             android:id="@+id/tvkelas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/list_soal"
-            android:layout_alignBottom="@+id/list_kelas"
+            android:layout_below="@+id/list_judul"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
             android:text="@string/kelas" />
@@ -41,10 +40,10 @@
             android:id="@+id/list_kelas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/list_soal"
+            android:layout_below="@+id/list_judul"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
-            android:layout_toRightOf="@+id/tvkelas"
+            android:layout_toEndOf="@+id/tvkelas"
             tools:text="10" />
 
     </RelativeLayout>

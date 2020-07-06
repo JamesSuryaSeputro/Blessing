@@ -90,7 +90,6 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
                 } else {
                     MapelSoalModel mapelSoalModel = new MapelSoalModel();
                     mapelSoalModel.setNamaMapelsoal(editText.getText().toString());
-                    //mapel.getNamaMapel();
                     updateDataMapel(idmapelsoal, mapelSoalModel);
                 }
         }
@@ -126,8 +125,7 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
                         if (position != 0) {
                                 selectedId = String.valueOf(jenjangModelList.get(position - 1).getIdJenjang());
                         }
-                         // API  SMP[0] SMA[1] WWW[2] -> Dari response Retrofit soalnya lu taroh adapternya di dalam call
-
+                        // API  SMP[0] SMA[1] WWW[2] -> Dari response Retrofit soalnya lu taroh adapternya di dalam call
                         //LIST Local -> Pilih[0] SMP[1-1] SMA[2-1] www{3-1] ->Spinner
                     }
 

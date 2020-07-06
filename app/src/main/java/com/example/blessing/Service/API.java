@@ -2,6 +2,7 @@ package com.example.blessing.Service;
 
 import android.media.Image;
 
+import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Model.ImageModel;
 import com.example.blessing.Model.JenjangModel;
 import com.example.blessing.Model.KelasModel;
@@ -10,10 +11,13 @@ import com.example.blessing.Model.LoginModel;
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Model.MateriModel;
+import com.example.blessing.Model.NilaiSoalModel;
+import com.example.blessing.Model.NilaiTryoutModel;
 import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Model.UploadModel;
+import com.example.blessing.TryoutActivity;
 
 import java.util.List;
 
@@ -71,14 +75,18 @@ public interface API {
     @POST("api_post_materi")
     Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
                                    @Part("judul_materi") RequestBody judulmateri,
-                                   @Part("id_mapel") RequestBody idmapel);
+                                   @Part("id_mapel") RequestBody idmapel,
+                                   @Part("id_kelas") RequestBody idkelas);
+
+    @Multipart
+    @POST("api_update_materi/{id}")
+    Call<UploadModel> updatedatamateri(@Path("id") String id,
+                                       @Part MultipartBody.Part file,
+                                       @Part("judul_materi") RequestBody judulmateri,
+                                       @Part("id_kelas") RequestBody idkelas);
 
     @DELETE("api_delete_materi/{id}")
     Call<MateriModel> deletedatamateri(@Path("id") String id);
-
-    @PUT("api_update_materi/{id}")
-    Call<MateriModel> updatedatamateri(@Path("id") String id,
-                                       @Body MateriModel materiModel);
 
     @GET("api_get_jenjang")
     Call<List<JenjangModel>> getdatajenjang();
@@ -133,7 +141,7 @@ public interface API {
     @DELETE("api_delete_kuis/{id}")
     Call<KuisModel> deletedatakuis(@Path("id") String id);
 
-    @GET("api_get_detailkuis/")
+    @GET("api_get_detailkuis")
     Call<List<KuisModel>> getdetailkuis();
 
     @GET("api_get_detailkuisbysoal/{id}")
@@ -156,4 +164,73 @@ public interface API {
 
     @GET("api_get_tryout")
     Call<List<TryoutModel>> getdatatryout();
+
+    @POST("api_post_tryout")
+    @FormUrlEncoded
+    Call<TryoutModel> postdatatryout(@Field("judul") String judul,
+                                     @Field("deskripsi") String deskripsi,
+                                     @Field("timer") String timer,
+                                     @Field("id_jenjang") String idjenjang);
+
+    @PUT("api_update_tryout/{id}")
+    @FormUrlEncoded
+    Call<TryoutModel> updatedatatryout(@Path("id") String id,
+                                       @Field("judul") String deskripsi,
+                                       @Field("deskripsi") String namasoal,
+                                       @Field("timer") String timer,
+                                       @Field("id_jenjang") String idjenjang);
+
+    @DELETE("api_delete_tryout/{id}")
+    Call<TryoutModel> deletedatatryout(@Path("id") String id);
+
+    @GET("api_get_detailtryout/{id}")
+    Call<List<DetailTryoutModel>> getdetailtryout(@Path("id") String id);
+
+    @Multipart
+    @POST("api_post_detailtryout")
+    Call<ImageModel> postdatadetailtryout(@Part MultipartBody.Part file,
+                                          @Part("jawaban_to") RequestBody jawaban,
+                                          @Part("id_tryout") RequestBody idtryout);
+
+    @Multipart
+    @POST("api_update_detailtryout/{id}")
+    Call<ImageModel> updatedatadetailtryout(@Path("id") String id,
+                                            @Part MultipartBody.Part file,
+                                            @Part("jawaban_to") RequestBody jawaban);
+
+    @DELETE("api_delete_detailtryout/{id}")
+    Call<DetailTryoutModel> deletedatadetailtryout(@Path("id") String id);
+
+    @GET("api_get_nilaisoal/{id}")
+    Call<List<NilaiSoalModel>> getnilaisoal(@Path("id") String id);
+
+    @POST("api_post_nilaisoal")
+    @FormUrlEncoded
+    Call<NilaiSoalModel> postdatanilaisoal(@Field("id_soal") String idsoal,
+                                           @Field("id") String id,
+                                           @Field("nilai_soal") String nilaisoal,
+                                           @Field("jumlah_soal") String jumlahsoal);
+
+    @POST("api_update_nilaisoal/{id}")
+    @FormUrlEncoded
+    Call<NilaiSoalModel> updatedatanilaisoal(@Path("id") String id,
+                                             @Field("nilai_soal") String nilaisoal,
+                                             @Field("jumlah_soal") String jumlahsoal);
+
+    @GET("api_get_nilaitryout/{id}")
+    Call<List<NilaiTryoutModel>> getnilaitryout(@Path("id") String id);
+
+
+    @POST("api_post_nilaitryout")
+    @FormUrlEncoded
+    Call<NilaiTryoutModel> postdatanilaitryout(@Field("id_tryout") String idtryout,
+                                               @Field("id") String id,
+                                               @Field("nilai_tryout") String nilaitryout,
+                                               @Field("jumlah_tryout") String jumlahtryout);
+
+    @POST("api_update_nilaitryout/{id}")
+    @FormUrlEncoded
+    Call<NilaiTryoutModel> updatedatanilaitryout(@Path("id") String id,
+                                                 @Field("nilai_tryout") String nilaitryout,
+                                                 @Field("jumlah_tryout") String jumlahtryout);
 }

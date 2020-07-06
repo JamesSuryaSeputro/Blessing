@@ -15,7 +15,7 @@ import com.example.blessing.Utils.Preferences;
 import java.util.Objects;
 
 public class MenuPembahasanActivity extends AppCompatActivity {
-    private CardView cvMenuBankSoal, cvMenuTryout;
+    private CardView cvPembahasanBankSoal, cvPembahasanTryout, cvNilaiBankSoal, cvNilaiTryout;
     private long mLastClickTime = 0;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
 
@@ -27,18 +27,35 @@ public class MenuPembahasanActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        cvMenuBankSoal = findViewById(R.id.cv_menubanksoal);
-        cvMenuTryout = findViewById(R.id.cv_menutryout);
+        cvPembahasanBankSoal = findViewById(R.id.cv_pembahasanbanksoal);
+        cvPembahasanTryout = findViewById(R.id.cv_pembahasantryout);
+        cvNilaiBankSoal = findViewById(R.id.cv_nilaibanksoal);
+        cvNilaiTryout = findViewById(R.id.cv_nilaitryout);
 
-        cvMenuBankSoal.setOnClickListener(v -> {
+        cvPembahasanBankSoal.setOnClickListener(v -> {
             preventDoubleClick();
             Intent moveIntent = new Intent(MenuPembahasanActivity.this, SoalActivity.class);
             moveIntent.putExtra(EXTRA_BOOLEAN, true);
             startActivity(moveIntent);
         });
 
-        cvMenuTryout.setOnClickListener(v -> {
+        cvPembahasanTryout.setOnClickListener(v -> {
             preventDoubleClick();
+            Intent moveIntent = new Intent(MenuPembahasanActivity.this, TryoutActivity.class);
+            moveIntent.putExtra(EXTRA_BOOLEAN, true);
+            startActivity(moveIntent);
+        });
+
+        cvNilaiBankSoal.setOnClickListener(v -> {
+            preventDoubleClick();
+            Intent moveIntent = new Intent(MenuPembahasanActivity.this, NilaiSoalActivity.class);
+            startActivity(moveIntent);
+        });
+
+        cvNilaiTryout.setOnClickListener(v -> {
+            preventDoubleClick();
+            Intent moveIntent = new Intent(MenuPembahasanActivity.this, NilaiTryoutActivity.class);
+            startActivity(moveIntent);
         });
     }
 

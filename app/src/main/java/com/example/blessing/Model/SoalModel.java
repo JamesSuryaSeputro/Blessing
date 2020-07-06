@@ -6,6 +6,12 @@ import com.google.gson.annotations.SerializedName;
 public class SoalModel {
 
     @Expose
+    @SerializedName("id")
+    private String id;
+    @Expose
+    @SerializedName("id_nilaisoal")
+    private String idNilaisoal;
+    @Expose
     @SerializedName("nama_jenjang")
     private String namaJenjang;
     @Expose
@@ -29,6 +35,22 @@ public class SoalModel {
     @Expose
     @SerializedName("id_soal")
     private String idSoal;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getIdNilaisoal() {
+        return idNilaisoal;
+    }
+
+    public void setIdNilaisoal(String idNilaisoal) {
+        this.idNilaisoal = idNilaisoal;
+    }
 
     public String getNamaJenjang() {
         return namaJenjang;

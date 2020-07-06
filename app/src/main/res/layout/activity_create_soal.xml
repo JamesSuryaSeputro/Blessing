@@ -45,7 +45,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.2"
             android:background="@drawable/spinner"
-            android:padding="12dp"
+            android:padding="10dp"
             android:layout_margin="10dp"
             android:spinnerMode="dropdown"
             android:textAlignment="center"

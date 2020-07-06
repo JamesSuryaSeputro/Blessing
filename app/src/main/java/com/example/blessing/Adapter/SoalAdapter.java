@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.blessing.Model.KelasModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.R;
 import com.example.blessing.Utils.Preferences;
@@ -42,7 +41,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
     @NonNull
     @Override
     public SoalAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.cv_listsoal, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_list, parent, false);
         SoalAdapter.ViewHolder holder = new SoalAdapter.ViewHolder(view);
         return holder;
     }
@@ -55,13 +54,13 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         String textKelas = mContext.getResources().getString(R.string.kelas);
 
         holder.tvSoal.setText(soalList);
-        holder.tvKelas.setText(kelasList);
-        holder.mtvKelas.setText(textKelas);
+        holder.tvKelas.setText(textKelas);
+        holder.tvListKelas.setText(kelasList);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                mListener.onClickItem(soalModel.getIdSoal(), soalModel.getIdJenjang(), soalModel.getNamaJenjang(), soalModel.getIdMapelsoal(), soalModel.getIdKelas());
+                mListener.onClickItem(soalModel.getIdSoal(), soalModel.getIdJenjang(), soalModel.getNamaJenjang(), soalModel.getIdMapelsoal(), soalModel.getIdKelas(), soalModel.getNamaSoal());
             }
         });
     }
@@ -81,14 +80,14 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
-        TextView tvSoal, mtvKelas, tvKelas;
+        TextView tvSoal, tvKelas, tvListKelas;
         CardView cardView;
 
         public ViewHolder(@NonNull View view) {
             super(view);
-            tvSoal = view.findViewById(R.id.list_soal);
-            mtvKelas = view.findViewById(R.id.tvkelas);
-            tvKelas = view.findViewById(R.id.list_kelas);
+            tvSoal = view.findViewById(R.id.list_judul);
+            tvKelas = view.findViewById(R.id.tvkelas);
+            tvListKelas = view.findViewById(R.id.list_kelas);
             cardView = view.findViewById(R.id.card_view);
             if(!userid.equals("3")) {
                 cardView.setOnCreateContextMenuListener(this);
