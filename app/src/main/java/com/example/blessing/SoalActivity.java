@@ -19,8 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.OnClickItemContextMenuSoal;
 import com.example.blessing.Adapter.SoalAdapter;
-import com.example.blessing.Model.MapelModel;
-import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -34,8 +32,6 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 
 public class SoalActivity extends AppCompatActivity implements OnClickItemContextMenuSoal {
     private static final String TAG = SoalActivity.class.getSimpleName();
@@ -174,7 +170,7 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         } else {
             if (id == android.R.id.home) {
                 preventDoubleClick();
-                Intent moveIntent = new Intent(SoalActivity.this, MenuPembahasanActivity.class);
+                Intent moveIntent = new Intent(SoalActivity.this, MenuHasilActivity.class);
                 startActivity(moveIntent);
             }
         }

@@ -13,9 +13,7 @@ import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.blessing.Adapter.NilaiSoalAdapter;
-import com.example.blessing.Adapter.TryoutAdapter;
 import com.example.blessing.Model.NilaiSoalModel;
-import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
@@ -78,7 +76,7 @@ public class NilaiSoalActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            Intent moveIntent = new Intent(NilaiSoalActivity.this, MenuPembahasanActivity.class);
+            Intent moveIntent = new Intent(NilaiSoalActivity.this, MenuHasilActivity.class);
             startActivity(moveIntent);
         }
         return super.onOptionsItemSelected(item);

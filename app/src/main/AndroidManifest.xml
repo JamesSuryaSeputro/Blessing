@@ -29,7 +29,7 @@
         <activity android:name=".CreateTryoutActivity" />
         <activity android:name=".TryoutActivity" />
         <activity android:name=".PembahasanActivity" />
-        <activity android:name=".MenuPembahasanActivity" />
+        <activity android:name=".MenuHasilActivity" />
         <activity android:name=".CreateKuisActivity" />
         <activity
             android:name=".DetailKuisActivity"

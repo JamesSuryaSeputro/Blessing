@@ -102,11 +102,13 @@
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/img_preview"
-            android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:adjustViewBounds="true"
             android:contentDescription="@string/preview"
-            android:scaleType="fitCenter"
-            android:visibility="gone" />
+            android:scaleType="fitXY"
+            android:layout_gravity="center"
+            android:visibility="gone"/>
 
     </LinearLayout>
 </ScrollView>

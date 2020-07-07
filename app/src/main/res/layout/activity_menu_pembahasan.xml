@@ -7,7 +7,7 @@
     android:layout_margin="6dp"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".MenuPembahasanActivity">
+    tools:context=".MenuHasilActivity">
 
     <TextView
         android:layout_width="wrap_content"

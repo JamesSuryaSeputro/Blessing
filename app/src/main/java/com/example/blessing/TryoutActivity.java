@@ -8,8 +8,6 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -21,8 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.OnClickItemContextMenuTryout;
 import com.example.blessing.Adapter.TryoutAdapter;
-import com.example.blessing.Model.JenjangModel;
-import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -50,8 +46,6 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
     private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private Boolean pembahasanTryout;
     private String idRole;
-    private Spinner spinner;
-    private List<String> listSpinner = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +54,6 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Tryout </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
-
-        spinner = findViewById(R.id.spinner);
 
         fab = findViewById(R.id.fab_addto);
         fab.setOnClickListener(view -> {
@@ -122,7 +114,7 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
                 startActivity(moveIntent);
             }
             else{
-                Intent moveIntent = new Intent(TryoutActivity.this, MenuPembahasanActivity.class);
+                Intent moveIntent = new Intent(TryoutActivity.this, MenuHasilActivity.class);
                 startActivity(moveIntent);
             }
         }

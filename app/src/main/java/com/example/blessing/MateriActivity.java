@@ -30,6 +30,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,7 +66,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private String mapelid, namamapel;
-    private Button btnRename;
     private long downloadID;
     private DownloadManager manager;
     private TextView tvNamaMapel;
@@ -94,21 +94,10 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
                             pdfIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             pdfIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
                             pdfIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                            //pdfIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             try {
                                 startActivity(pdfIntent);
                             } catch (ActivityNotFoundException e) {
                                 Toast.makeText(MateriActivity.this, "No Application available to view PDF", Toast.LENGTH_SHORT).show();
-//                            Intent intent1 = new Intent(Intent.ACTION_VIEW, Uri.parse(uriString));
-//                            intent.setDataAndType(Uri.parse(uriString), "application/pdf");
-//                            intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-//                            intent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-//                            context.startActivity(intent1);
-//                            try {
-//                                OpenFileUtils.openFile(MateriActivity.this,new File(uri.toString()));
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
                             }
                         }
                     }
@@ -127,7 +116,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         service = RetrofitBuildCustom.getInstance().getService();
 
         namamapel = getIntent().getStringExtra(EXTRA_NAMAMAPEL);
-
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
 
         tvNamaMapel = findViewById(R.id.tvnamamapel);
@@ -265,6 +253,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     private void makeMoveActivity(String id) {
         Intent intent = new Intent(this, CreateMateriActivity.class);
         intent.putExtra(EXTRA_MAPEL, id);
+        intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
         this.startActivity(intent);
     }
 
@@ -308,12 +297,13 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     @Override
-    public void onEditItem(String mId, String id, String namamapel) {
+    public void onEditItem(String mId, String id, String judul) {
         Log.d(TAG, "onEditItem: " + id);
         Intent intent = new Intent(MateriActivity.this, CreateMateriActivity.class);
         intent.putExtra(EXTRA_MATERI, mId);
         intent.putExtra(EXTRA_MAPEL, id);
-        intent.putExtra("edittextitem", namamapel);
+        intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
+        intent.putExtra("edittextitem", judul);
         intent.putExtra(EXTRA_BOOLEAN, true);
         startActivity(intent);
     }

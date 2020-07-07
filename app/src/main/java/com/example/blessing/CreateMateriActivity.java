@@ -29,7 +29,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.example.blessing.Model.KelasModel;
-import com.example.blessing.Model.MateriModel;
 import com.example.blessing.Model.UploadModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -50,6 +49,7 @@ import retrofit2.Response;
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 import static com.example.blessing.MapelActivity.EXTRA_MAPEL;
 import static com.example.blessing.MateriActivity.EXTRA_MATERI;
+import static com.example.blessing.MateriActivity.EXTRA_NAMAMAPEL;
 
 public class CreateMateriActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -59,13 +59,13 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
     private static final String TAG = CreateMateriActivity.class.getSimpleName();
     private String pdfPath = "";
     private Uri filePath;
-    private String mapelid, materiid;
+    private String mapelid, materiid, namamapel;
     private Boolean updatemateri;
     private API service;
     private long mLastClickTime = 0;
-    private Spinner spinner;
     private String selectedId;
     private List<String> listSpinner = new ArrayList<>();
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +80,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
         materiid = getIntent().getStringExtra(EXTRA_MATERI);
         updatemateri = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+        namamapel = getIntent().getStringExtra(EXTRA_NAMAMAPEL);
 
         Button btnChoosePdf = findViewById(R.id.btnchoosepdf);
         Button btnUploadMateri = findViewById(R.id.btnuploadmateri);
@@ -160,6 +161,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
     private void makeMoveActivity(String id) {
         Intent intent = new Intent(CreateMateriActivity.this, MateriActivity.class);
         intent.putExtra(EXTRA_MAPEL,id);
+        intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
         this.startActivity(intent);
     }
 
@@ -307,6 +309,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
                     if (response.body() != null) {
                         Log.d(TAG, "onResponse: "+response.body().getStatus());
                         if (response.body().getStatus() == 1) {
+                            clearAll();
                             Toast.makeText(CreateMateriActivity.this, "Success", Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(CreateMateriActivity.this, "Failed", Toast.LENGTH_LONG).show();

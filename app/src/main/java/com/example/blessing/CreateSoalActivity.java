@@ -104,10 +104,11 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
-    private void makeMoveActivity(String id, String nama) {
+    private void makeMoveActivity(String id, String nama, String idjenjang) {
         Intent intent = new Intent(CreateSoalActivity.this, SoalActivity.class);
         intent.putExtra(EXTRA_MAPELSOAL, id);
         intent.putExtra(EXTRA_NAMAJENJANG, nama);
+        intent.putExtra(EXTRA_IDJENJANG, idjenjang);
         this.startActivity(intent);
     }
 
@@ -116,7 +117,7 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            makeMoveActivity(idmapelsoal, namajenjang);
+            makeMoveActivity(idmapelsoal, namajenjang, idjenjang);
         }
         return super.onOptionsItemSelected(item);
     }

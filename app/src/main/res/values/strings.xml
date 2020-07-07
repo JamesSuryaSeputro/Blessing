@@ -52,9 +52,10 @@
     <string name="input_tryout">Input Tryout</string>
     <string name="edit_tryout">Edit Tryout</string>
     <string name="upload_tryout">upload tryout</string>
-    <string name="waktu">Waktu:</string>
+    <string name="waktu">Waktu: \u0020</string>
     <string name="dalam_hitungan_menit">dalam hitungan menit</string>
     <string name="hasil">Hasil</string>
     <string name="nilai">Nilai:</string>
     <string name="slash">/</string>
+    <string name="menit">\u0020 menit</string>
 </resources>

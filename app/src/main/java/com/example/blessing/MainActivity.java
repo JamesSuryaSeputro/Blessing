@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         cvPembahasan.setOnClickListener(v -> {
             preventDoubleClick();
-            makeMoveActivity(MenuPembahasanActivity.class);
+            makeMoveActivity(MenuHasilActivity.class);
         });
 
         //        recyclerView = (RecyclerView) findViewById(R.id.item_learning);

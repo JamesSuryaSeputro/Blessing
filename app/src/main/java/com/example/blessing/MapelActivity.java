@@ -110,9 +110,6 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
 //        });
 
         idRole = Preferences.getKeyUser(getBaseContext());
-        if(idRole.equals("2")){
-            fab.setVisibility(View.GONE);
-        }
 
         getDataMapel();
 

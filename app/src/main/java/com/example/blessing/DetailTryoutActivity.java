@@ -45,6 +45,7 @@ import com.example.blessing.Utils.Preferences;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -56,7 +57,7 @@ import retrofit2.Response;
 
 public class DetailTryoutActivity extends AppCompatActivity implements OnClickItemContextMenuDetailTryout, View.OnClickListener {
     public static final String TAG = DetailTryoutActivity.class.getSimpleName();
-    private TextView tvMulaiTo, A, B, C, D, E;
+    private TextView tvMulaiTo, A, B, C, D, E, tvTimer;
     private PhotoView imgTo;
     private LinearLayout optionLayoutTo;
     private ProgressBar progressBarTo;
@@ -75,7 +76,6 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
     private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private int noSoal = 0;
     private FloatingActionButton fabAddTo;
-    private TextView tvTimer;
     private boolean isQuizRunning = false;
     private CustomCountDownTimer customCountDownTimer;
     private String timer;
@@ -91,11 +91,6 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
         idnilaitryout = getIntent().getStringExtra(EXTRA_IDNILAITRYOUT);
         id = Preferences.getKeyId(getBaseContext());
 
-        if (timer != null) {
-            customCountDownTimer = new CustomCountDownTimer(TimeUnit.MINUTES.toMillis(Long.parseLong(timer)));
-        } else {
-            customCountDownTimer = new CustomCountDownTimer(TimeUnit.MINUTES.toMillis(10));
-        }
         tvMulaiTo = findViewById(R.id.tvmulaito);
         A = findViewById(R.id.ans_A);
         B = findViewById(R.id.ans_B);
@@ -108,6 +103,16 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
         fabAddTo = findViewById(R.id.fab_addto);
         idRole = Preferences.getKeyUser(getBaseContext());
         tvTimer = findViewById(R.id.tvtimer);
+        String waktu = getText(R.string.waktu) + timer + getText(R.string.menit);
+        String defWaktu = getText(R.string.waktu) + "10" + getText(R.string.menit);
+
+        if (timer != null) {
+            tvTimer.setText(waktu);
+            customCountDownTimer = new CustomCountDownTimer(TimeUnit.MINUTES.toMillis(Long.parseLong(timer)));
+        } else {
+            tvTimer.setText(defWaktu);
+            customCountDownTimer = new CustomCountDownTimer(TimeUnit.MINUTES.toMillis(10));
+        }
 
         A.setOnClickListener(this);
         B.setOnClickListener(this);
@@ -140,6 +145,12 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
                     isQuizRunning = aBoolean;
                     //ini artinya waktu udah abis
                     Toast.makeText(DetailTryoutActivity.this, "Tryout selesai", Toast.LENGTH_SHORT).show();
+
+                    if(idnilaitryout==null) {
+                        saveNilaiTryout();
+                    } else {
+                        updateNilaiTryout(idnilaitryout, String.valueOf(countingScore(mDetailTryoutModel)), String.valueOf(mDetailTryoutModel.size()));
+                    }
 
                     AlertDialog.Builder builder = new AlertDialog.Builder(DetailTryoutActivity.this, R.style.AlertDialogCustom);
                     builder.setTitle("WAKTU HABIS!");
@@ -294,6 +305,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Intent intent = new Intent(DetailTryoutActivity.this, TryoutActivity.class);
+                intent.putExtra(EXTRA_IDTO, idtryout);
                 startActivity(intent);
             }
         });
@@ -307,7 +319,6 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
             case android.R.id.home:
                 preventDoubleClick();
                 keluarTryout();
-                makeMoveActivity(idtryout);
                 return (true);
             case R.id.submit:
                 try {
@@ -479,6 +490,8 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 scoreDialog();
+                customCountDownTimer.cancel();
+                isQuizRunning = false;
                 Log.d(TAG, "idnilaitryout: " + idnilaitryout);
                 if(idnilaitryout==null) {
                     saveNilaiTryout();

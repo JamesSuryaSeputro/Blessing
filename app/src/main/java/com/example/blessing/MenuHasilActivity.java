@@ -8,13 +8,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.MenuItem;
-import android.view.View;
-
-import com.example.blessing.Utils.Preferences;
 
 import java.util.Objects;
 
-public class MenuPembahasanActivity extends AppCompatActivity {
+public class MenuHasilActivity extends AppCompatActivity {
     private CardView cvPembahasanBankSoal, cvPembahasanTryout, cvNilaiBankSoal, cvNilaiTryout;
     private long mLastClickTime = 0;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
@@ -34,27 +31,27 @@ public class MenuPembahasanActivity extends AppCompatActivity {
 
         cvPembahasanBankSoal.setOnClickListener(v -> {
             preventDoubleClick();
-            Intent moveIntent = new Intent(MenuPembahasanActivity.this, SoalActivity.class);
+            Intent moveIntent = new Intent(MenuHasilActivity.this, SoalActivity.class);
             moveIntent.putExtra(EXTRA_BOOLEAN, true);
             startActivity(moveIntent);
         });
 
         cvPembahasanTryout.setOnClickListener(v -> {
             preventDoubleClick();
-            Intent moveIntent = new Intent(MenuPembahasanActivity.this, TryoutActivity.class);
+            Intent moveIntent = new Intent(MenuHasilActivity.this, TryoutActivity.class);
             moveIntent.putExtra(EXTRA_BOOLEAN, true);
             startActivity(moveIntent);
         });
 
         cvNilaiBankSoal.setOnClickListener(v -> {
             preventDoubleClick();
-            Intent moveIntent = new Intent(MenuPembahasanActivity.this, NilaiSoalActivity.class);
+            Intent moveIntent = new Intent(MenuHasilActivity.this, NilaiSoalActivity.class);
             startActivity(moveIntent);
         });
 
         cvNilaiTryout.setOnClickListener(v -> {
             preventDoubleClick();
-            Intent moveIntent = new Intent(MenuPembahasanActivity.this, NilaiTryoutActivity.class);
+            Intent moveIntent = new Intent(MenuHasilActivity.this, NilaiTryoutActivity.class);
             startActivity(moveIntent);
         });
     }
@@ -65,7 +62,7 @@ public class MenuPembahasanActivity extends AppCompatActivity {
 
         if (id == android.R.id.home) {
             preventDoubleClick();
-            Intent moveIntent = new Intent(MenuPembahasanActivity.this, MainActivity.class);
+            Intent moveIntent = new Intent(MenuHasilActivity.this, MainActivity.class);
             startActivity(moveIntent);
         }
         return super.onOptionsItemSelected(item);

@@ -12,9 +12,7 @@ import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.blessing.Adapter.NilaiSoalAdapter;
 import com.example.blessing.Adapter.NilaiTryoutAdapter;
-import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Model.NilaiTryoutModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -78,7 +76,7 @@ public class NilaiTryoutActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-            Intent moveIntent = new Intent(NilaiTryoutActivity.this, MenuPembahasanActivity.class);
+            Intent moveIntent = new Intent(NilaiTryoutActivity.this, MenuHasilActivity.class);
             startActivity(moveIntent);
         }
         return super.onOptionsItemSelected(item);
