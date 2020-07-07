@@ -269,10 +269,10 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     @Override
-    public void onDeleteItem(String id) {
+    public void onDeleteItem(String id, String judul) {
         Log.d(TAG, "onDeleteItem: " + id);
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setMessage("Hapus materi ini?");
+        builder.setMessage("Hapus materi "+ judul + "?");
         builder.setCancelable(false);
         builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
             @Override
@@ -309,7 +309,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     @Override
-    public void onClickItem(String id, String fileName, String nama) {
+    public void onClickItem(String id, String fileName, String judul) {
         Log.d(TAG, "onClickItem: " + id);
         if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
             return;
@@ -317,7 +317,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         mLastClickTime = SystemClock.elapsedRealtime();
         if (ContextCompat.checkSelfPermission(MateriActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setMessage("Download materi " + nama + "?");
+        builder.setMessage("Download materi " + judul + "?");
         builder.setCancelable(false);
         builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
             @Override

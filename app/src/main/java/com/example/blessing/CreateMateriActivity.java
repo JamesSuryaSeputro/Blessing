@@ -87,7 +87,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         spinner = findViewById(R.id.spinnerkelasmateri);
 
         editText = findViewById(R.id.edtmateri);
-        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama materi":getIntent().getStringExtra("edittextitem"));
+        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input judul materi":getIntent().getStringExtra("edittextitem"));
         textView = findViewById(R.id.textviewmateri);
 
         btnChoosePdf.setOnClickListener(this);

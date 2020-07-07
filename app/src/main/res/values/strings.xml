@@ -35,7 +35,6 @@
     <string name="daftar_guru">Registrasi Guru</string>
     <string name="icon_made_by_freepik_from_www_flaticon_com">Icon made by Freepik from www.flaticon.com</string>
     <string name="upload_materi">Upload Materi</string>
-    <string name="input_nama_materi">Input nama materi</string>
     <string name="edit_materi">Edit Materi</string>
     <string name="edit_mapel">Edit Mapel</string>
     <string name="materi">Materi</string>
@@ -58,4 +57,5 @@
     <string name="nilai">Nilai:</string>
     <string name="slash">/</string>
     <string name="menit">\u0020 menit</string>
+    <string name="input_judul_materi">Input judul materi</string>
 </resources>

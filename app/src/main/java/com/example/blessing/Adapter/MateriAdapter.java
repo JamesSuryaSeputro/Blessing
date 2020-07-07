@@ -95,7 +95,7 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.ViewHolder
                 return false;
             });
             menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it ->{
-                mListener.onDeleteItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMateri());
+                mListener.onDeleteItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMateri(), mLearningModelArrayList.get(getAdapterPosition()).getJudulMateri());
                 return false;
             });
             menu.add(this.getAdapterPosition(),v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
