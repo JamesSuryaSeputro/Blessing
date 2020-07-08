@@ -14,7 +14,7 @@
         android:fontFamily="@font/garamondbold"
         android:textColor="#FF9800"
         android:textSize="18sp"
-        tools:text="input/edit tryout" />
+        android:text="@string/input_tryout" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"

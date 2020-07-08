@@ -59,7 +59,7 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_soal);
         editText = findViewById(R.id.soal);
-        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input judul soal" : getIntent().getStringExtra("edittextitem"));
+        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama soal" : getIntent().getStringExtra("edittextitem"));
 
         idsoal = getIntent().getStringExtra(EXTRA_SOAL);
         idjenjang = getIntent().getStringExtra(EXTRA_IDJENJANG);

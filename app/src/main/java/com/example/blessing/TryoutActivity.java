@@ -131,7 +131,7 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
     @Override
     public void onDeleteItem(String id) {
         AlertDialog.Builder builder = new AlertDialog.Builder(TryoutActivity.this, R.style.AlertDialogCustom);
-        builder.setMessage("Hapus tryout?");
+        builder.setMessage("Hapus tryout ini?");
         builder.setCancelable(false);
         builder.setPositiveButton("ya", (dialog, which) -> service.deletedatatryout(id).enqueue(new Callback<TryoutModel>() {
             @Override

@@ -71,12 +71,6 @@ public class CreateTryoutActivity extends AppCompatActivity implements View.OnCl
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Simpan Tryout </font>", Html.FROM_HTML_MODE_LEGACY));
 
         getDataJenjang();
-
-        if (!updatetryout) {
-            tvJudulTryout.setText(R.string.input_tryout);
-        } else {
-            tvJudulTryout.setText(R.string.edit_tryout);
-        }
     }
 
     @Override
