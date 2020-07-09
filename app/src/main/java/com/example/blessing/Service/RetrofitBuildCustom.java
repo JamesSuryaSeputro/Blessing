@@ -16,7 +16,7 @@ public class RetrofitBuildCustom {
    private static RetrofitBuildCustom instance = null;
    private static Retrofit retrofit;
    private API service;
-   public static final String BASE_URL = "http://192.168.1.2/blessing/blessingAPI/public/";
+   public static final String BASE_URL = "http://192.168.1.6/blessing/blessingAPI/public/";
    //https://blessingme.herokuapp.com/public/
    //http://192.168.1.8/blessing/blessingAPI/public/
     public RetrofitBuildCustom() {
