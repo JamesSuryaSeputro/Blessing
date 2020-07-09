@@ -556,6 +556,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 scoreDialog();
+                hideSubmit();
                 if(idnilaisoal==null) {
                     saveNilaiSoal();
                 } else {
@@ -576,7 +577,6 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         builder.setPositiveButton("lihat pembahasan", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                hideSubmit();
                 Intent intent = new Intent(DetailKuisActivity.this, PembahasanActivity.class);
                 //intent.putExtra(EXTRA_BOOLEAN, true);
                 Preferences.setKeyIdSoal(getBaseContext(), idsoal);

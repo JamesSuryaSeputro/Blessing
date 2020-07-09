@@ -490,6 +490,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 scoreDialog();
+                hideSubmit();
                 customCountDownTimer.cancel();
                 isQuizRunning = false;
                 Log.d(TAG, "idnilaitryout: " + idnilaitryout);
