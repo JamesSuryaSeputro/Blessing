@@ -176,7 +176,10 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
                     public void onResponse(Call<MapelSoalModel> call, Response<MapelSoalModel> response) {
                         Log.d(TAG, "onResponse: " + id);
                         getDataMapelSoal();
-                        getDataJenjang();
+                        finish();
+                        overridePendingTransition(0, 0);
+                        startActivity(getIntent());
+                        overridePendingTransition(0, 0);
                         Toast.makeText(MapelSoalActivity.this, "deleted successfully", Toast.LENGTH_SHORT).show();
                     }
 
