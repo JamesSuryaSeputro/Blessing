@@ -144,7 +144,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
                 if (!aBoolean) {
                     isQuizRunning = aBoolean;
                     //ini artinya waktu udah abis
-                    Toast.makeText(DetailTryoutActivity.this, "Tryout selesai", Toast.LENGTH_SHORT).show();
+                    hideSubmit();
 
                     if(idnilaitryout==null) {
                         saveNilaiTryout();
