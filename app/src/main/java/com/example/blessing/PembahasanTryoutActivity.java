@@ -39,7 +39,6 @@ public class PembahasanTryoutActivity extends AppCompatActivity {
     private JawabanTryoutAdapter mJawabanAdapter;
     private API service;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
-    private String idtryout, judultryout;
     private TextView tvJawabanTo, tvBelumAdaPembahasanTo;
 
     @Override
@@ -47,7 +46,7 @@ public class PembahasanTryoutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembahasan_tryout);
 
-        judultryout = Preferences.getKeyJudulTryout(getBaseContext());
+        String judultryout = Preferences.getKeyJudulTryout(getBaseContext());
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> " + judultryout + " </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
@@ -77,7 +76,7 @@ public class PembahasanTryoutActivity extends AppCompatActivity {
 
         service = RetrofitBuildCustom.getInstance().getService();
 
-        idtryout = Preferences.getKeyIdTryout(getBaseContext());
+        String idtryout = Preferences.getKeyIdTryout(getBaseContext());
 
         tvJawabanTo = findViewById(R.id.tvjawabanto);
         tvBelumAdaPembahasanTo = findViewById(R.id.tvbelumadapembahasanto);

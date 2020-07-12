@@ -30,7 +30,6 @@ public class NilaiTryoutActivity extends AppCompatActivity {
     private static final String TAG = NilaiTryoutAdapter.class.getSimpleName();
     private NilaiTryoutAdapter mAdapter;
     private API service;
-    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class NilaiTryoutActivity extends AppCompatActivity {
         mAdapter = new NilaiTryoutAdapter(new ArrayList<>(), NilaiTryoutActivity.this);
         recyclerView.setAdapter(mAdapter);
 
-        id = Preferences.getKeyId(getBaseContext());
+        String id = Preferences.getKeyId(getBaseContext());
 
         Log.d(TAG, "id: " + id);
         getDataNilaiTryout(id);

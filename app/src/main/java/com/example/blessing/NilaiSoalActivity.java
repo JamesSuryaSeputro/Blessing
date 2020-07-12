@@ -30,7 +30,6 @@ public class NilaiSoalActivity extends AppCompatActivity {
     private static final String TAG = NilaiSoalActivity.class.getSimpleName();
     private NilaiSoalAdapter mAdapter;
     private API service;
-    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class NilaiSoalActivity extends AppCompatActivity {
         mAdapter = new NilaiSoalAdapter(new ArrayList<>(), NilaiSoalActivity.this);
         recyclerView.setAdapter(mAdapter);
 
-        id = Preferences.getKeyId(getBaseContext());
+        String id = Preferences.getKeyId(getBaseContext());
 
         Log.d(TAG, "id: " + id);
         getDataNilaiSoal(id);

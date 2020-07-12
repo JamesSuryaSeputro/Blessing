@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import java.util.Objects;
 
 public class MenuHasilActivity extends AppCompatActivity {
-    private CardView cvPembahasanBankSoal, cvPembahasanTryout, cvNilaiBankSoal, cvNilaiTryout;
     private long mLastClickTime = 0;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
 
@@ -24,10 +23,10 @@ public class MenuHasilActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        cvPembahasanBankSoal = findViewById(R.id.cv_pembahasanbanksoal);
-        cvPembahasanTryout = findViewById(R.id.cv_pembahasantryout);
-        cvNilaiBankSoal = findViewById(R.id.cv_nilaibanksoal);
-        cvNilaiTryout = findViewById(R.id.cv_nilaitryout);
+        CardView cvPembahasanBankSoal = findViewById(R.id.cv_pembahasanbanksoal);
+        CardView cvPembahasanTryout = findViewById(R.id.cv_pembahasantryout);
+        CardView cvNilaiBankSoal = findViewById(R.id.cv_nilaibanksoal);
+        CardView cvNilaiTryout = findViewById(R.id.cv_nilaitryout);
 
         cvPembahasanBankSoal.setOnClickListener(v -> {
             preventDoubleClick();

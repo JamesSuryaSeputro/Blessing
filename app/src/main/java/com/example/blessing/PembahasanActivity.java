@@ -55,7 +55,7 @@ public class PembahasanActivity extends AppCompatActivity {
     private API service;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_SOAL = "extra_soal";
-    private String idsoal, namasoal;
+    private String idsoal;
     private TextView tvJawaban, tvBelumAdaPembahasan;
 
     @Override
@@ -63,7 +63,7 @@ public class PembahasanActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pembahasan);
 
-        namasoal = Preferences.getKeyNamaSoal(getBaseContext());
+        String namasoal = Preferences.getKeyNamaSoal(getBaseContext());
 
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> " + namasoal + " </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));

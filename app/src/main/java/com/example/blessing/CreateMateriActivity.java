@@ -54,11 +54,9 @@ import static com.example.blessing.MateriActivity.EXTRA_NAMAMAPEL;
 public class CreateMateriActivity extends AppCompatActivity implements View.OnClickListener {
 
     private EditText editText;
-    private TextView textView;
     private static final int READ_FILE_REQ = 42;
     private static final String TAG = CreateMateriActivity.class.getSimpleName();
     private String pdfPath = "";
-    private Uri filePath;
     private String mapelid, materiid, namamapel;
     private Boolean updatemateri;
     private API service;
@@ -88,7 +86,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
 
         editText = findViewById(R.id.edtmateri);
         editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input judul materi":getIntent().getStringExtra("edittextitem"));
-        textView = findViewById(R.id.textviewmateri);
+        TextView textView = findViewById(R.id.textviewmateri);
 
         btnChoosePdf.setOnClickListener(this);
         btnUploadMateri.setOnClickListener(this);
@@ -191,7 +189,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         switch (requestCode) {
             case READ_FILE_REQ:
                 if (resultCode == RESULT_OK && data != null) {
-                    filePath = data.getData();
+                    Uri filePath = data.getData();
                     pdfPath = FilePath.getPath(CreateMateriActivity.this, filePath);
                     Toast.makeText(CreateMateriActivity.this, Environment.getExternalStorageDirectory() + "/" + pdfPath, Toast.LENGTH_LONG).show();
                     Log.d(TAG, "onActivityResult: " + pdfPath);

@@ -49,7 +49,6 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
     private MapelSoalAdapter mAdapter;
     private long mLastClickTime = 0;
     private FloatingActionButton fab;
-    private String idRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,7 +87,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
 
         spinner = findViewById(R.id.spinner);
 
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
         if(idRole.equals("3")){
             fab.setVisibility(View.GONE);
         }

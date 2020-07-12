@@ -31,12 +31,9 @@ import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RetrofitBuildCustom retrofitBuildCustom;
     private EditText edtNama, edtEmail, edtPassword, edtConfirmpass;
-    private ImageView imageView;
-    private TextView tvRegister;
     private String idRole;
     private long mLastClickTime = 0;
     public static final String EXTRA_BOOLEAN = "extra_boolean";
-    private Boolean registerGuru;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtEmail = findViewById(R.id.txtemail);
         edtPassword = findViewById(R.id.txtpassword);
         edtConfirmpass = findViewById(R.id.txtconfirmpass);
-        imageView = findViewById(R.id.backtologin);
+        ImageView imageView = findViewById(R.id.backtologin);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,9 +60,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         Button btnRegister = findViewById(R.id.btnregister);
         btnRegister.setOnClickListener(this);
 
-        tvRegister = findViewById(R.id.tvregister);
+        TextView tvRegister = findViewById(R.id.tvregister);
         idRole = Preferences.getKeyUser(getBaseContext());
-        registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+        Boolean registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
         if (!registerGuru) {
             idRole = String.valueOf(3);

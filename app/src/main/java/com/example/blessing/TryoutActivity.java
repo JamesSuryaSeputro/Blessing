@@ -36,16 +36,13 @@ import retrofit2.Response;
 public class TryoutActivity extends AppCompatActivity implements OnClickItemContextMenuTryout {
     private static final String TAG = TryoutActivity.class.getSimpleName();
     private TryoutAdapter mAdapter;
-    private FloatingActionButton fab;
     private long mLastClickTime = 0;
     private API service;
     public static final String EXTRA_IDTO = "extra_idto";
     public static final String EXTRA_JUDUL = "extra_judul";
     public static final String EXTRA_TIMER = "extra_timer";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
-    private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private Boolean pembahasanTryout;
-    private String idRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +52,7 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Tryout </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
-        fab = findViewById(R.id.fab_addto);
+        FloatingActionButton fab = findViewById(R.id.fab_addto);
         fab.setOnClickListener(view -> {
             preventDoubleClick();
             Intent intent = new Intent(TryoutActivity.this, CreateTryoutActivity.class);
@@ -71,7 +68,7 @@ public class TryoutActivity extends AppCompatActivity implements OnClickItemCont
         service = RetrofitBuildCustom.getInstance().getService();
         pembahasanTryout = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
 
         if(idRole.equals("3")){
             fab.setVisibility(View.GONE);

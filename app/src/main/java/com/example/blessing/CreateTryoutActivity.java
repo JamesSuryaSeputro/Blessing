@@ -39,14 +39,12 @@ import static com.example.blessing.SoalActivity.EXTRA_SOAL;
 public class CreateTryoutActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String EXTRA_IDTO = "extra_idto";
     private EditText edtJudulTo, edtDeskripsi;
-    private TextView tvJudulTryout;
     private API service;
     private String idtryout;
     private Boolean updatetryout;
     private List<String> listSpinner = new ArrayList<>();
     private String selectedId;
     private long mLastClickTime = 0;
-    private Button button;
     private EditText edtTimer;
     private Spinner spinner;
 
@@ -58,8 +56,8 @@ public class CreateTryoutActivity extends AppCompatActivity implements View.OnCl
 
         edtJudulTo = findViewById(R.id.edtjudulto);
         edtDeskripsi = findViewById(R.id.edtdeskripsi);
-        tvJudulTryout = findViewById(R.id.judultryout);
-        button = findViewById(R.id.btnsimpanto);
+        TextView tvJudulTryout = findViewById(R.id.judultryout);
+        Button button = findViewById(R.id.btnsimpanto);
         edtTimer = findViewById(R.id.timer);
         spinner = findViewById(R.id.spinnerjenjangto);
         button.setOnClickListener(this);

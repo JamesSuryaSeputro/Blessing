@@ -51,11 +51,8 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
     private static final String EXTRA_IDTO = "extra_idto";
     private static final String EXTRA_POSISI = "extra_posisi";
     private static final String EXTRA_BOOLEAN = "extra_boolean";
-    private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private String imgPath = "";
-    private Uri filePath;
     private EditText edtToFilename;
-    private Button btnChooseImgTo, btnSaveTo;
     private TextView tvPreviewTo;
     private Spinner spnrTo;
     private PhotoView toImgPreview;
@@ -63,7 +60,6 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
     private String[] arraySpinner = new String[]{"A", "B", "C", "D", "E"};
     private String idtryout;
     private Boolean updateDetailTryout;
-    private int posisi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,16 +69,16 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Simpan Detail Tryout </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
         edtToFilename = findViewById(R.id.to_filename);
-        btnChooseImgTo = findViewById(R.id.btnchooseimgto);
+        Button btnChooseImgTo = findViewById(R.id.btnchooseimgto);
         btnChooseImgTo.setOnClickListener(this);
-        btnSaveTo = findViewById(R.id.btnsaveto);
+        Button btnSaveTo = findViewById(R.id.btnsaveto);
         btnSaveTo.setOnClickListener(this);
         toImgPreview = findViewById(R.id.to_img_preview);
         tvPreviewTo = findViewById(R.id.to_tvpreview);
         spnrTo = findViewById(R.id.to_spinner);
 
         idtryout = getIntent().getStringExtra(EXTRA_IDTO);
-        posisi = getIntent().getIntExtra(EXTRA_POSISI, 0);
+        int posisi = getIntent().getIntExtra(EXTRA_POSISI, 0);
         updateDetailTryout = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -152,7 +148,7 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
                     tvPreviewTo.setVisibility(View.VISIBLE);
                     toImgPreview.setVisibility(View.VISIBLE);
 
-                    filePath = data.getData();
+                    Uri filePath = data.getData();
                     imgPath = FilePath.getPath(CreateDetailTryoutActivity.this, filePath);
                     if (imgPath != null && !imgPath.equals("")) {
                         Glide.with(this)

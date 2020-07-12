@@ -49,12 +49,10 @@ import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 
 public class CreateKuisActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editText;
-    private Button btnChooseImg, btnSimpanKuis;
     private Spinner spinner;
     private TextView textView;
     private PhotoView imgPreview;
     private String imgPath = "";
-    private Uri filePath;
     private long mLastClickTime = 0;
     private static final int READ_FILE_REQ = 42;
     private static final String TAG = CreateKuisActivity.class.getSimpleName();
@@ -75,9 +73,9 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Simpan Kuis </font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
 
         editText = findViewById(R.id.img_filename);
-        btnChooseImg = findViewById(R.id.btnchooseimg);
+        Button btnChooseImg = findViewById(R.id.btnchooseimg);
         spinner = findViewById(R.id.spinnerjawaban);
-        btnSimpanKuis = findViewById(R.id.btnsimpankuis);
+        Button btnSimpanKuis = findViewById(R.id.btnsimpankuis);
         textView = findViewById(R.id.tvpreview);
         imgPreview = findViewById(R.id.img_preview);
 
@@ -159,7 +157,7 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
                     textView.setVisibility(View.VISIBLE);
                     imgPreview.setVisibility(View.VISIBLE);
 
-                    filePath = data.getData();
+                    Uri filePath = data.getData();
                     imgPath = FilePath.getPath(CreateKuisActivity.this, filePath);
                     if (imgPath != null && !imgPath.equals("")) {
                         Glide.with(this)

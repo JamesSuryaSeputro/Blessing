@@ -43,11 +43,9 @@ import static com.example.blessing.SoalActivity.EXTRA_SOAL;
 public class CreateSoalActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editText;
     private Spinner spinner;
-    private Button button;
     private String idsoal, idjenjang, namajenjang, idmapelsoal;
     private Boolean updatesoal;
     private API service;
-    private TextView tvKelas, judul;
     private long mLastClickTime = 0;
     public static final String TAG = SoalActivity.class.getSimpleName();
     private List<String> listSpinner = new ArrayList<>();
@@ -69,15 +67,15 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
 
         spinner = findViewById(R.id.spinnersoal);
         //spinner.setPrompt("Pilih kelas");
-        button = findViewById(R.id.btnsoal);
-        button.setOnClickListener(this);
+        Button button1 = findViewById(R.id.btnsoal);
+        button1.setOnClickListener(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setTitle(Html.fromHtml("<font color='#000000'> Input Soal </font>", Html.FROM_HTML_MODE_LEGACY));
 
-        tvKelas = findViewById(R.id.tvpilihkelas);
-        judul = findViewById(R.id.judulsoal);
+        TextView tvKelas = findViewById(R.id.tvpilihkelas);
+        TextView judul = findViewById(R.id.judulsoal);
 
         service = RetrofitBuildCustom.getInstance().getService();
         Button button = findViewById(R.id.btnsoal);

@@ -47,9 +47,6 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_KELAS = "extra_kelas";
     public static final String EXTRA_NAMASOAL = "extra_namasoal";
-    public static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
-    private TextView tvJenjang, jenjang;
-    private String idRole;
     private Boolean pembahasanBankSoal;
 
     @Override
@@ -90,11 +87,11 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
         recyclerView.setAdapter(mAdapter);
         mAdapter.setmListener(this);
 
-        tvJenjang = findViewById(R.id.tvjenjang);
-        jenjang = findViewById(R.id.jenjang);
+        TextView tvJenjang = findViewById(R.id.tvjenjang);
+        TextView jenjang = findViewById(R.id.jenjang);
         jenjang.setText(namajenjang);
 
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
         if (idRole.equals("3")) {
             fab.setVisibility(View.GONE);
         }

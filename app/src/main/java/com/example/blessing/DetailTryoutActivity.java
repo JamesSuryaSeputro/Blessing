@@ -65,7 +65,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
     private DetailTryoutAdapter mAdapter;
     private View previousView;
     private Menu menuItem;
-    private String id, idRole;
+    private String id;
     private List<DetailTryoutModel> mDetailTryoutModel = new ArrayList<>();
     private long mLastClickTime = 0;
     private String idtryout, judul, idnilaitryout;
@@ -75,10 +75,8 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
     private static final String EXTRA_TIMER = "extra_timer";
     private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private int noSoal = 0;
-    private FloatingActionButton fabAddTo;
     private boolean isQuizRunning = false;
     private CustomCountDownTimer customCountDownTimer;
-    private String timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,7 +85,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
 
         idtryout = getIntent().getStringExtra(EXTRA_IDTO);
         judul = getIntent().getStringExtra(EXTRA_JUDUL);
-        timer = getIntent().getStringExtra(EXTRA_TIMER);
+        String timer = getIntent().getStringExtra(EXTRA_TIMER);
         idnilaitryout = getIntent().getStringExtra(EXTRA_IDNILAITRYOUT);
         id = Preferences.getKeyId(getBaseContext());
 
@@ -100,8 +98,8 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
         imgTo = findViewById(R.id.img_to);
         optionLayoutTo = findViewById(R.id.optionlayoutto);
         progressBarTo = findViewById(R.id.progressbarto);
-        fabAddTo = findViewById(R.id.fab_addto);
-        idRole = Preferences.getKeyUser(getBaseContext());
+        FloatingActionButton fabAddTo = findViewById(R.id.fab_addto);
+        String idRole = Preferences.getKeyUser(getBaseContext());
         tvTimer = findViewById(R.id.tvtimer);
         String waktu = getText(R.string.waktu) + timer + getText(R.string.menit);
         String defWaktu = getText(R.string.waktu) + "10" + getText(R.string.menit);

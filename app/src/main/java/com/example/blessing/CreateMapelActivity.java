@@ -33,7 +33,6 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
     private API service;
     private String mapelid;
     private Boolean updatemapel;
-    private TextView tvMapel;
     private long mLastClickTime = 0;
 
     @Override
@@ -41,7 +40,7 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_mapel);
         edtMapel = findViewById(R.id.mapel);
-        tvMapel = findViewById(R.id.tvmapel);
+        TextView tvMapel = findViewById(R.id.tvmapel);
 
         edtMapel.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama mapel":getIntent().getStringExtra("edittextitem"));
 

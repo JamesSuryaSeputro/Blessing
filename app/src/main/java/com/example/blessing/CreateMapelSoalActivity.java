@@ -43,7 +43,6 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
     private Boolean updatemapelsoal;
     private List<String> listSpinner = new ArrayList<>();
     public static final String TAG = CreateMapelSoalActivity.class.getSimpleName();
-    private TextView tvJenjang, judul;
     private String selectedId;
 
     @Override
@@ -61,8 +60,8 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
         updatemapelsoal = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
 
-        judul = findViewById(R.id.judulmapelsoal);
-        tvJenjang = findViewById(R.id.tvpilihjenjang);
+        TextView judul = findViewById(R.id.judulmapelsoal);
+        TextView tvJenjang = findViewById(R.id.tvpilihjenjang);
         spinner = findViewById(R.id.spinnermapelsoal);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

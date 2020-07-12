@@ -29,14 +29,11 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.blessing.Adapter.MateriAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuMateri;
-import com.example.blessing.Adapter.RecyclerviewClickListener;
 import com.example.blessing.Model.MateriModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -55,7 +52,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
 
     private ArrayList<MateriModel> mLearningModelArrayList = new ArrayList<>();
     private MateriAdapter mAdapter;
-    private RecyclerviewClickListener onItemClickListener;
     private long mLastClickTime = 0;
     private API service;
     private FloatingActionButton fab;
@@ -68,7 +64,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     private String mapelid, namamapel;
     private long downloadID;
     private DownloadManager manager;
-    private TextView tvNamaMapel;
 
     private BroadcastReceiver onDownloadComplete = new BroadcastReceiver() {
         @Override
@@ -118,7 +113,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         namamapel = getIntent().getStringExtra(EXTRA_NAMAMAPEL);
         mapelid = getIntent().getStringExtra(EXTRA_MAPEL);
 
-        tvNamaMapel = findViewById(R.id.tvnamamapel);
+        TextView tvNamaMapel = findViewById(R.id.tvnamamapel);
         tvNamaMapel.setText(namamapel);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

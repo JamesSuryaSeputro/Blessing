@@ -62,8 +62,12 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private NumberAdapter mAdapter;
     private List<KuisModel> kuisModel = new ArrayList<>();
     private long mLastClickTime = 0;
-    private RecyclerView recyclerView;
-    private String idsoal, idjenjang, namajenjang, idmapelsoal, idkuis, namasoal, idnilaisoal;
+    private String idsoal;
+    private String idjenjang;
+    private String namajenjang;
+    private String idmapelsoal;
+    private String namasoal;
+    private String idnilaisoal;
     public static final String EXTRA_SOAL = "extra_soal";
     public static final String EXTRA_IDKUIS = "extra_idkuis";
     public static final String EXTRA_IDJENJANG = "extra_idjenjang";
@@ -83,7 +87,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private int noSoal = 0;
     private View previousView;
     private Menu menuItem;
-    private String id, idRole;
+    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +98,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
         idjenjang = getIntent().getStringExtra(EXTRA_IDJENJANG);
         namajenjang = getIntent().getStringExtra(EXTRA_NAMAJENJANG);
         idmapelsoal = getIntent().getStringExtra(EXTRA_MAPELSOAL);
-        idkuis = getIntent().getStringExtra(EXTRA_IDKUIS);
+        String idkuis = getIntent().getStringExtra(EXTRA_IDKUIS);
         namasoal = getIntent().getStringExtra(EXTRA_NAMASOAL);
         idnilaisoal = getIntent().getStringExtra(EXTRA_IDNILAISOAL);
         id = Preferences.getKeyId(getBaseContext());
@@ -148,7 +152,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             startActivity(intent);
         });
 
-        recyclerView = findViewById(R.id.RV_number);
+        RecyclerView recyclerView = findViewById(R.id.RV_number);
         mAdapter = new NumberAdapter(DetailKuisActivity.this, new ArrayList<>());
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
@@ -165,7 +169,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             }
         });
         service = RetrofitBuildCustom.getInstance().getService();
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
         if (idRole.equals("3")) {
             fabExpand.setVisibility(View.GONE);
         }

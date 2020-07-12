@@ -35,13 +35,10 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    private CircleImageView circleImageView;
-    private String id, idRole;
-    private ImageView imageView;
+    private String id;
     private long mLastClickTime = 0;
     private API service;
     private EditText newName;
-    private Button btnSimpan;
     private TextView nama;
 
     @SuppressLint("ClickableViewAccessibility")
@@ -53,7 +50,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         nama = findViewById(R.id.nama);
         TextView email = findViewById(R.id.email);
         TextView rolename = findViewById(R.id.role);
-        circleImageView = findViewById(R.id.img_role);
+        CircleImageView circleImageView = findViewById(R.id.img_role);
         newName = findViewById(R.id.newname);
         newName.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -77,10 +74,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 }
             }
         });
-        btnSimpan = findViewById(R.id.btnnewname);
+        Button btnSimpan = findViewById(R.id.btnnewname);
         btnSimpan.setOnClickListener(this);
         service = RetrofitBuildCustom.getInstance().getService();
-        imageView = findViewById(R.id.backtomain);
+        ImageView imageView = findViewById(R.id.backtomain);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,7 +96,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         email.setText(Preferences.getKeyEmail(getBaseContext()));
         rolename.setText(Preferences.getKeyRolename(getBaseContext()));
         id = Preferences.getKeyId(getBaseContext());
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
 
         if (idRole.equals("1")) {
             Glide.with(this)

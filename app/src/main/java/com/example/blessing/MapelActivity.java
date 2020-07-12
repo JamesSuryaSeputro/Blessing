@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.MapelAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuMapel;
-import com.example.blessing.Adapter.RecyclerviewClickListener;
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -33,21 +32,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MapelActivity extends AppCompatActivity implements OnClickItemContextMenuMapel {
-    //BEFORE : ArrayList<MapelModel> mLearningModelArrayList
-    //INGAT JIKA INGIN BUAT MASUKIN DATA KE ARRAYLIST HARUS BUAT NEW ARRAYLIST
     private ArrayList<MapelModel> mLearningModelArrayList = new ArrayList<>();
     private MapelAdapter mAdapter;
-    private RecyclerviewClickListener onItemClickListener;
-    private long mLastClickTime = 0;
     private API service;
     public static final String TAG = MapelActivity.class.getSimpleName();
     public static final String EXTRA_MAPEL = "extra_mapel";
     public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private FloatingActionButton fab;
-    private String idRole;
-
-    //private String[] TextList = new String[]{"Matematika Dasar", "Bahasa Inggris", "Fisika", "Biologi", "Kimia"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,37 +71,11 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
         });
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        //recyclerView.setAdapter(mAdapter);
-
-        //  ini salah karena lu declare bahwa mLearningModelArrayList Sedangkan itu masih NULL
-        //  BEFORE: mAdapter = new MapelAdapter(MapelActivity.this, mLearningModelArrayList);
         mAdapter = new MapelAdapter(MapelActivity.this, new ArrayList<>());
         recyclerView.setAdapter(mAdapter);
         mAdapter.setmListener(this);
-        // ini pakai adapter onitemclick listener tadinya
-        //BEFORE: mAdapter.setOnItemClickListener(MapelActivity.this);
-//        mAdapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClickListener(int position) {
-//
-//                Log.d(TAG, "onItemClickListener: " + position);
-//                //Jangan pakai
-//                // BEFORE: Intent intent = new Intent(this, MateriActivity.class); <-- this tidak kurang menejelaskan bisa aja this itu yang lain
-//                Intent intent = new Intent(MapelActivity.this, MateriActivity.class);
-//                //Ini Objectnya Kosong mLearningModelArrayList nggak pernah di isi data jadinya kosong diisi pass saat ngambil data dari server
-//                MapelModel clickMapel = mLearningModelArrayList.get(position);
-//
-//                intent.putExtra(EXTRA_MAPEL, clickMapel.getIdMapel());
-//                startActivity(intent);
-//            }
-//
-//            @Override
-//            public void onItemClickLongListener(int position) {
-//
-//            }
-//        });
 
-        idRole = Preferences.getKeyUser(getBaseContext());
+        String idRole = Preferences.getKeyUser(getBaseContext());
 
         getDataMapel();
 
@@ -142,7 +108,6 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
         int id = item.getItemId();
 
         if (id == android.R.id.home) {
-//            this.finish();
             Intent moveIntent = new Intent(MapelActivity.this, MainActivity.class);
             startActivity(moveIntent);
         }
