@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/judultryout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamondbold"
+        android:text="@string/input_tryout"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtjudulto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/masukan_judul_tryout"
+            android:theme="@style/TextInputLayoutAppearance" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/edtdeskripsi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/masukan_deskripsi"
+            android:inputType="textMultiLine"
+            android:maxLength="2000"
+            android:maxLines="4"
+            android:theme="@style/TextInputLayoutAppearance" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp">
+
+        <TextView
+            android:id="@+id/tvwaktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/garamondbold"
+            android:text="@string/waktu"
+            android:textSize="18sp"/>
+
+        <EditText
+            android:id="@+id/timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:layout_toEndOf="@+id/tvwaktu"
+            android:hint="@string/dalam_hitungan_menit"
+            android:importantForAutofill="no"
+            android:inputType="time"
+            android:singleLine="true"
+            android:textSize="18sp"
+            tools:text="60:00"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvjenjangto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:fontFamily="@font/garamondbold"
+            android:text="@string/jenjang"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerjenjangto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginHorizontal="4dp"
+            android:layout_marginVertical="12dp"
+            android:layout_toEndOf="@+id/tvjenjangto"
+            android:background="@drawable/spinner"
+            android:padding="10dp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            tools:listitem="@android:layout/simple_spinner_item" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnsimpanto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightOrange"
+        android:text="@string/simpan" />
+
+</LinearLayout>

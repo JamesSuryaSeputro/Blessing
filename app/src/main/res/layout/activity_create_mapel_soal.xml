@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/judulmapelsoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamondbold"
+        android:text="Tambah Mapel Soal"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/mapelsoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Masukan Mata Pelajaran"
+        android:inputType=""/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+    <TextView
+        android:id="@+id/tvpilihjenjang"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:fontFamily="@font/garamondbold"
+        android:text="@string/jenjang"
+        android:textSize="18sp" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/spinnermapelsoal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:layout_weight="0.2"
+        android:background="@drawable/spinner"
+        android:padding="10dp"
+        android:spinnerMode="dropdown"
+        android:textAlignment="center"
+        tools:listitem="@android:layout/simple_spinner_item"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnmapelsoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorLightOrange"
+        android:text="@string/simpan" />
+
+</LinearLayout>

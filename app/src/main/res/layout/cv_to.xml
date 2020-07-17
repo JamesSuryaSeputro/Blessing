@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:id="@+id/parentView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp">
+
+        <TextView
+            android:id="@+id/list_judul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/btnstart"
+            android:fontFamily="sans-serif-black"
+            android:textSize="16sp"
+            tools:text="judul" />
+
+        <TextView
+            android:id="@+id/list_deskripsi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_judul"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toStartOf="@+id/btnstart"
+            android:fontFamily="sans-serif"
+            android:text="@string/deskripsi"
+            android:textSize="14sp"
+            tools:text="ini adalah deskripsi judul"/>
+
+        <TextView
+            android:id="@+id/list_jenjang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_deskripsi"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+
+
+            tools:text="SMA" />
+
+        <TextView
+            android:id="@+id/list_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/list_deskripsi"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:layout_toEndOf="@+id/list_jenjang"
+            android:fontFamily="sans-serif-light"
+            android:textSize="14sp"
+            tools:text="dd-mm-yy" />
+
+        <Button
+            android:id="@+id/btnstart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/btn_rounded_to"
+            android:clickable="true"
+            android:focusable="true"
+            android:text="@string/mulai" />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

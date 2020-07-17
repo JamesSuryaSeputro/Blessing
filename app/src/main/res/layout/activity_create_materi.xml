@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9dp"
+    android:orientation="vertical"
+    tools:context=".CreateMateriActivity">
+
+    <TextView
+        android:id="@+id/textviewmateri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamondbold"
+        android:text="@string/upload_materi"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/edtmateri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="@string/input_judul_materi"
+        android:importantForAutofill="no"
+        android:inputType="text" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvkelasmateri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/garamondbold"
+            android:text="@string/kelas"
+            android:textSize="18sp" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerkelasmateri"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_toEndOf="@+id/tvkelasmateri"
+            android:background="@drawable/spinner"
+            android:padding="10dp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            tools:listitem="@android:layout/simple_spinner_item" />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnchoosepdf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorLightOrange"
+        android:text="Pilih PDF" />
+
+    <Button
+        android:id="@+id/btnuploadmateri"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorLightOrange"
+        android:text="@string/upload" />
+
+</LinearLayout>

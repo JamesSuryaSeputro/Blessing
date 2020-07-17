@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="9dp"
+    android:orientation="vertical"
+    tools:context=".CreateMapelActivity">
+
+    <TextView
+        android:id="@+id/tvmapel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/garamondbold"
+        android:text="Tambah Mata Pelajaran"
+        android:textColor="#FF9800"
+        android:textSize="18sp" />
+
+    <EditText
+        android:id="@+id/mapel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Masukan Mata Pelajaran"
+        android:inputType=""/>
+
+    <Button
+        android:id="@+id/btninputmapel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:background="@color/colorLightOrange"
+        android:text="@string/simpan" />
+
+</LinearLayout>
