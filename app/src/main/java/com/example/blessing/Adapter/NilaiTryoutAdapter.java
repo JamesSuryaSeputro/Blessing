@@ -58,6 +58,7 @@ public class NilaiTryoutAdapter extends RecyclerView.Adapter<NilaiTryoutAdapter.
         listNilai = list;
         notifyDataSetChanged();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvListJudul, tvListNilaiTryout, tvListDate, tvListJumlahTryout;
 

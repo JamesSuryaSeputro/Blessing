@@ -84,7 +84,7 @@ public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.ViewHolder
             super(itemView);
             number = itemView.findViewById(R.id.number);
             Log.d(TAG, "ViewHolderUserId: " + userid);
-            if(!userid.equals("3")) {
+            if (!userid.equals("3")) {
                 number.setOnCreateContextMenuListener(this);
             }
         }

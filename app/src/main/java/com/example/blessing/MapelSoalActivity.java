@@ -88,7 +88,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
         spinner = findViewById(R.id.spinner);
 
         String idRole = Preferences.getKeyUser(getBaseContext());
-        if(idRole.equals("3")){
+        if (idRole.equals("3")) {
             fab.setVisibility(View.GONE);
         }
 
@@ -206,7 +206,7 @@ public class MapelSoalActivity extends AppCompatActivity implements OnClickItemC
     @Override
     public void onClickItem(String id, String jId, String namajenjang) {
         Log.d(TAG, "onClickItem: " + id);
-        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000){
+        if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
             return;
         }
         mLastClickTime = SystemClock.elapsedRealtime();

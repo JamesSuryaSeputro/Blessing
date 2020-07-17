@@ -19,7 +19,6 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
-import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Model.KuisModel;
 import com.example.blessing.R;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -53,31 +52,31 @@ public class ImagePembahasanAdapter extends RecyclerView.Adapter<ImagePembahasan
         String imgList = String.valueOf(kuisModel.getImgPertanyaan());
 
         RequestOptions options = new RequestOptions()
-                                .error(R.drawable.ic_error)
-                                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                                .priority(Priority.HIGH)
-                                .dontAnimate();
+                .error(R.drawable.ic_error)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .priority(Priority.HIGH)
+                .dontAnimate();
 
         String path = RetrofitBuildCustom.BASE_URL + "uploads/";
         Glide.with(mContext)
-                                .load(path + imgList)
-                                .listener(new RequestListener<Drawable>() {
-                                    @Override
-                                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                                        holder.solutionProgressBar.setVisibility(View.GONE);
-                                        holder.photoView.setScaleType(ImageView.ScaleType.CENTER);
-                                        return false;
-                                    }
+                .load(path + imgList)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                        holder.solutionProgressBar.setVisibility(View.GONE);
+                        holder.photoView.setScaleType(ImageView.ScaleType.CENTER);
+                        return false;
+                    }
 
-                                    @Override
-                                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
-                                        holder.solutionProgressBar.setVisibility(View.GONE);
-                                        holder.photoView.setScaleType(ImageView.ScaleType.FIT_XY);
-                                        return false;
-                                    }
-                                })
-                                .apply(options)
-                                .into(holder.photoView);
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        holder.solutionProgressBar.setVisibility(View.GONE);
+                        holder.photoView.setScaleType(ImageView.ScaleType.FIT_XY);
+                        return false;
+                    }
+                })
+                .apply(options)
+                .into(holder.photoView);
     }
 
     @Override

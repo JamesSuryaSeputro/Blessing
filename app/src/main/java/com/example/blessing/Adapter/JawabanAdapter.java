@@ -53,7 +53,7 @@ public class JawabanAdapter extends RecyclerView.Adapter<JawabanAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-    TextView noJawaban, jawaban;
+        TextView noJawaban, jawaban;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

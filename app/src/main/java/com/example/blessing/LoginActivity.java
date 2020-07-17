@@ -78,11 +78,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                 if (response.isSuccessful() && response.body().getStatus().equals("1")) {
-                    Preferences.setStatusLogin(getBaseContext(),true);
-                    Log.d("AK1", "onResponse: "+response.body().toString());
-                    Log.d("AK1", "onResponse: "+response.body().getNama()+" "+response.body().getEmail());
-                    Preferences.setKeyId(getBaseContext(),response.body().getId());
-                    Preferences.setKeyNama(getBaseContext(),response.body().getNama());
+                    Preferences.setStatusLogin(getBaseContext(), true);
+                    Log.d("AK1", "onResponse: " + response.body().toString());
+                    Log.d("AK1", "onResponse: " + response.body().getNama() + " " + response.body().getEmail());
+                    Preferences.setKeyId(getBaseContext(), response.body().getId());
+                    Preferences.setKeyNama(getBaseContext(), response.body().getNama());
                     Preferences.setKeyEmail(getBaseContext(), response.body().getEmail());
                     Preferences.setKeyRole(getBaseContext(), response.body().getRoleid());
                     Preferences.setKeyRolename(getBaseContext(), response.body().getNamaRole());

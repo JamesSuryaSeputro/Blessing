@@ -45,7 +45,6 @@ import com.example.blessing.Utils.Preferences;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -144,7 +143,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
                     //ini artinya waktu udah abis
                     hideSubmit();
 
-                    if(idnilaitryout==null) {
+                    if (idnilaitryout == null) {
                         saveNilaiTryout();
                     } else {
                         updateNilaiTryout(idnilaitryout, String.valueOf(countingScore(mDetailTryoutModel)), String.valueOf(mDetailTryoutModel.size()));
@@ -492,7 +491,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
                 customCountDownTimer.cancel();
                 isQuizRunning = false;
                 Log.d(TAG, "idnilaitryout: " + idnilaitryout);
-                if(idnilaitryout==null) {
+                if (idnilaitryout == null) {
                     saveNilaiTryout();
                 } else {
                     updateNilaiTryout(idnilaitryout, String.valueOf(countingScore(mDetailTryoutModel)), String.valueOf(mDetailTryoutModel.size()));
@@ -513,7 +512,7 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
             public void onClick(DialogInterface dialog, int which) {
                 hideSubmit();
                 Intent intent = new Intent(DetailTryoutActivity.this, PembahasanTryoutActivity.class);
-               // intent.putExtra(EXTRA_BOOLEAN, true);
+                // intent.putExtra(EXTRA_BOOLEAN, true);
                 Preferences.setKeyIdTryout(getBaseContext(), idtryout);
                 Preferences.setKeyJudulTryout(getBaseContext(), judul);
                 startActivity(intent);

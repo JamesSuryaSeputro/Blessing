@@ -2,9 +2,7 @@ package com.example.blessing;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +25,7 @@ public class PdfViewFixActivity extends AppCompatActivity {
         webView.getSettings().setJavaScriptEnabled(true);
         webView.getSettings().setBuiltInZoomControls(true);
         String filename = getIntent().getStringExtra("link");
-        webView.loadUrl("http://docs.google.com/gview?embedded=true&url="+filename);
+        webView.loadUrl("http://docs.google.com/gview?embedded=true&url=" + filename);
         finish();
     }
 }

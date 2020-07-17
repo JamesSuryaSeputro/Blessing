@@ -18,13 +18,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.blessing.Model.JenjangModel;
 import com.example.blessing.Model.KelasModel;
-import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
-import com.example.blessing.Utils.Preferences;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +31,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
-import static com.example.blessing.MapelActivity.EXTRA_MAPEL;
 import static com.example.blessing.MapelSoalActivity.EXTRA_IDJENJANG;
 import static com.example.blessing.MapelSoalActivity.EXTRA_MAPELSOAL;
 import static com.example.blessing.SoalActivity.EXTRA_NAMAJENJANG;
@@ -123,9 +119,9 @@ public class CreateSoalActivity extends AppCompatActivity implements View.OnClic
     private void saveDataSoal(String idjenjang, String idmapelsoal) {
         if (editText.getText().toString().equals("")) {
             Toast.makeText(CreateSoalActivity.this, "isi judul soal", Toast.LENGTH_SHORT).show();
-        } else if(selectedId==null) {
+        } else if (selectedId == null) {
             Toast.makeText(CreateSoalActivity.this, "pilih kelas", Toast.LENGTH_SHORT).show();
-        } else{
+        } else {
             Log.d(TAG, "saveDataSoal: " + selectedId);
             Call<SoalModel> call = service.postdatasoal(idjenjang, idmapelsoal, selectedId, editText.getText().toString());
             call.enqueue(new Callback<SoalModel>() {

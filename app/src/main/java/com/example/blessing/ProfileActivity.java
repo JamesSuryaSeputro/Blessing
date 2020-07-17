@@ -3,11 +3,8 @@ package com.example.blessing;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.preference.PreferenceManager;
-import android.text.Html;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -19,12 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.text.HtmlCompat;
 
 import com.bumptech.glide.Glide;
 import com.example.blessing.Model.LoginModel;
-import com.example.blessing.Model.MapelModel;
-import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
@@ -57,8 +51,8 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             public boolean onTouch(View v, MotionEvent event) {
                 final int DRAWABLE_RIGHT = 2;
 
-                if(event.getAction() == MotionEvent.ACTION_UP) {
-                    if(event.getRawX() >= (newName.getRight() - newName.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                if (event.getAction() == MotionEvent.ACTION_UP) {
+                    if (event.getRawX() >= (newName.getRight() - newName.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
                         newName.setFocusableInTouchMode(true);
                         return true;
                     }
@@ -121,7 +115,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     }
 
     public void hideKeyboard(View view) {
-        InputMethodManager inputMethodManager =(InputMethodManager)getSystemService(Activity.INPUT_METHOD_SERVICE);
+        InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
         inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
@@ -136,7 +130,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                     if (response.isSuccessful()) {
                         if (response.body() != null) {
                             clearAll();
-                            Preferences.setKeyNama(getBaseContext(),response.body().getNama());
+                            Preferences.setKeyNama(getBaseContext(), response.body().getNama());
                             Log.d("TEST2", "onResponse: " + Preferences.getKeyNama(getBaseContext()));
                             nama.setText(Preferences.getKeyNama(getBaseContext()));
                             Toast.makeText(ProfileActivity.this, "nama berhasil diperbaharui", Toast.LENGTH_SHORT).show();

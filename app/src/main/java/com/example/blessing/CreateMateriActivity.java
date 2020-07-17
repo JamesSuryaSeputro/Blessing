@@ -85,7 +85,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         spinner = findViewById(R.id.spinnerkelasmateri);
 
         editText = findViewById(R.id.edtmateri);
-        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input judul materi":getIntent().getStringExtra("edittextitem"));
+        editText.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input judul materi" : getIntent().getStringExtra("edittextitem"));
         TextView textView = findViewById(R.id.textviewmateri);
 
         btnChoosePdf.setOnClickListener(this);
@@ -93,7 +93,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
 
         getDataKelas();
 
-        if (updatemateri){
+        if (updatemateri) {
             //true
             textView.setText(R.string.edit_materi);
             btnUploadMateri.setText(R.string.simpan);
@@ -158,7 +158,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
 
     private void makeMoveActivity(String id) {
         Intent intent = new Intent(CreateMateriActivity.this, MateriActivity.class);
-        intent.putExtra(EXTRA_MAPEL,id);
+        intent.putExtra(EXTRA_MAPEL, id);
         intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
         this.startActivity(intent);
     }
@@ -273,14 +273,14 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
-    private boolean checkFileisHere(){
-        if (pdfPath.equals("")){
+    private boolean checkFileisHere() {
+        if (pdfPath.equals("")) {
             Toast.makeText(CreateMateriActivity.this, "File belum dipilih", Toast.LENGTH_SHORT).show();
             return false;
-        }else if (editText.getText().toString().equals("")){
+        } else if (editText.getText().toString().equals("")) {
             Toast.makeText(CreateMateriActivity.this, "nama materi masih kosong", Toast.LENGTH_SHORT).show();
             return false;
-        }else {
+        } else {
             return true;
         }
     }
@@ -289,10 +289,10 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
         Log.d("CreateMateriActivity", "button upload");
         if (editText.getText().toString().equals("")) {
 
-        } else if (pdfPath.equals("") || pdfPath.isEmpty()){
+        } else if (pdfPath.equals("") || pdfPath.isEmpty()) {
 
         } else if (!pdfPath.isEmpty()) {
-            Log.d(TAG, "uploadFile: "+ pdfPath);
+            Log.d(TAG, "uploadFile: " + pdfPath);
             File file = new File(pdfPath);
             RequestBody requestBody = RequestBody.create(file, MediaType.parse("*/*"));
             RequestBody JudulMateri = RequestBody.create(editText.getText().toString(), MediaType.parse("text/plain"));
@@ -305,7 +305,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
                 @Override
                 public void onResponse(Call<UploadModel> call, Response<UploadModel> response) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: "+response.body().getStatus());
+                        Log.d(TAG, "onResponse: " + response.body().getStatus());
                         if (response.body().getStatus() == 1) {
                             clearAll();
                             Toast.makeText(CreateMateriActivity.this, "Success", Toast.LENGTH_LONG).show();
@@ -326,10 +326,10 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
     public void updateDataMateri(String id) {
         if (editText.getText().toString().equals("")) {
 
-        } else if (pdfPath.equals("") || pdfPath.isEmpty()){
+        } else if (pdfPath.equals("") || pdfPath.isEmpty()) {
 
         } else if (!pdfPath.isEmpty()) {
-            Log.d(TAG, "uploadFile: "+ pdfPath);
+            Log.d(TAG, "uploadFile: " + pdfPath);
             File file = new File(pdfPath);
             RequestBody requestBody = RequestBody.create(file, MediaType.parse("*/*"));
             RequestBody JudulMateri = RequestBody.create(editText.getText().toString(), MediaType.parse("text/plain"));
@@ -341,7 +341,7 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
                 @Override
                 public void onResponse(Call<UploadModel> call, Response<UploadModel> response) {
                     if (response.body() != null) {
-                        Log.d(TAG, "onResponse: "+response.body().getStatus());
+                        Log.d(TAG, "onResponse: " + response.body().getStatus());
                         if (response.body().getStatus() == 1) {
                             Toast.makeText(CreateMateriActivity.this, "Success", Toast.LENGTH_LONG).show();
                         } else {

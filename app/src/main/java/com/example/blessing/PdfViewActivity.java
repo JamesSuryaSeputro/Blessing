@@ -1,7 +1,5 @@
 package com.example.blessing;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.net.Uri;
@@ -9,7 +7,8 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.widget.Toast;
 
-import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
@@ -53,7 +52,7 @@ public class PdfViewActivity extends AppCompatActivity implements OnPageChangeLi
                 .load();
     }
 
-        private String getFilename(Uri uri) {
+    private String getFilename(Uri uri) {
         String result = null;
         if (Objects.equals(uri.getScheme(), "content")) {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);

@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.actionbar_menu, menu);
         MenuItem item = menu.findItem(R.id.registerguru);
-        if(idRole.equals("3")){
+        if (idRole.equals("3")) {
             item.setVisible(false);
-        } else if (idRole .equals("2")){
+        } else if (idRole.equals("2")) {
             item.setVisible(false);
         }
         return super.onCreateOptionsMenu(menu);

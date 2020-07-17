@@ -58,6 +58,7 @@ public class NilaiSoalAdapter extends RecyclerView.Adapter<NilaiSoalAdapter.View
         listNilai = list;
         notifyDataSetChanged();
     }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvListNamaSoal, tvListNilaiSoal, tvListDate, tvListJumlahSoal;
 

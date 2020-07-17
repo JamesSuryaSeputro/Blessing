@@ -1,6 +1,5 @@
 package com.example.blessing;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,9 +9,7 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.Html;
 import android.util.Log;
-import android.view.ContextMenu;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,7 +17,6 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -40,7 +36,6 @@ import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Adapter.NumberAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuNumber;
 import com.example.blessing.Model.KuisModel;
-import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -51,7 +46,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.logging.Level;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -318,7 +312,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             public void onResponse(Call<NilaiSoalModel> call, Response<NilaiSoalModel> response) {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
-                        idnilaisoal =  response.body().getIdNilaisoal();
+                        idnilaisoal = response.body().getIdNilaisoal();
                     }
                     Toast.makeText(DetailKuisActivity.this, "Berhasil submit nilai", Toast.LENGTH_SHORT).show();
                 } else {
@@ -561,7 +555,7 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
             public void onClick(DialogInterface dialog, int which) {
                 scoreDialog();
                 hideSubmit();
-                if(idnilaisoal==null) {
+                if (idnilaisoal == null) {
                     saveNilaiSoal();
                 } else {
                     Log.d(TAG, "idnilaisoal: " + idnilaisoal);

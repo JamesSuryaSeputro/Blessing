@@ -1,7 +1,6 @@
 package com.example.blessing.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,11 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.DetailTryoutModel;
-import com.example.blessing.Model.KuisModel;
 import com.example.blessing.R;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class JawabanTryoutAdapter extends RecyclerView.Adapter<JawabanTryoutAdapter.ViewHolder> {
 

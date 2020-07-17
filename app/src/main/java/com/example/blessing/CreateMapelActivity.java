@@ -2,7 +2,6 @@ package com.example.blessing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
@@ -42,7 +41,7 @@ public class CreateMapelActivity extends AppCompatActivity implements View.OnCli
         edtMapel = findViewById(R.id.mapel);
         TextView tvMapel = findViewById(R.id.tvmapel);
 
-        edtMapel.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama mapel":getIntent().getStringExtra("edittextitem"));
+        edtMapel.setHint(getIntent().getStringExtra("edittextitem") == null ? "Input nama mapel" : getIntent().getStringExtra("edittextitem"));
 
         service = RetrofitBuildCustom.getInstance().getService();
         Button btnCreateMapel = findViewById(R.id.btninputmapel);

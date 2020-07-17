@@ -1,7 +1,6 @@
 package com.example.blessing.Adapter;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -9,13 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.MateriModel;
-import com.example.blessing.Model.SoalModel;
 import com.example.blessing.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -89,19 +89,19 @@ public class MateriAdapter extends RecyclerView.Adapter<MateriAdapter.ViewHolder
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it ->{
-                Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMateri());
+            menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it -> {
+                Log.d(TAG, "onMenuItemClick: " + mLearningModelArrayList.get(getAdapterPosition()).getIdMateri());
                 mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMateri(), mLearningModelArrayList.get(getAdapterPosition()).getIdMapel(), mLearningModelArrayList.get(getAdapterPosition()).getJudulMateri());
                 return false;
             });
-            menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it ->{
+            menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it -> {
                 mListener.onDeleteItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMateri(), mLearningModelArrayList.get(getAdapterPosition()).getJudulMateri());
                 return false;
             });
-            menu.add(this.getAdapterPosition(),v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            menu.add(this.getAdapterPosition(), v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMateri());
+                    Log.d(TAG, "onMenuItemClick: " + mLearningModelArrayList.get(getAdapterPosition()).getIdMateri());
                     return false;
                 }
             });

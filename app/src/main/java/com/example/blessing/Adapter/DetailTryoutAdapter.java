@@ -78,7 +78,7 @@ public class DetailTryoutAdapter extends RecyclerView.Adapter<DetailTryoutAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             number = itemView.findViewById(R.id.number);
-            if(!userid.equals("3")) {
+            if (!userid.equals("3")) {
                 number.setOnCreateContextMenuListener(this);
             }
         }

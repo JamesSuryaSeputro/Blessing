@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import com.example.blessing.Adapter.ImagePembahasanAdapter;
 import com.example.blessing.Adapter.ImagePembahasanTryoutAdapter;
-import com.example.blessing.Adapter.JawabanAdapter;
 import com.example.blessing.Adapter.JawabanTryoutAdapter;
 import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Service.API;

@@ -1,8 +1,5 @@
 package com.example.blessing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
@@ -17,6 +14,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.blessing.Model.JenjangModel;
 import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Service.API;
@@ -24,14 +24,12 @@ import com.example.blessing.Service.RetrofitBuildCustom;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
-import static com.example.blessing.MapelActivity.EXTRA_MAPEL;
 import static com.example.blessing.MapelSoalActivity.EXTRA_MAPELSOAL;
 
 public class CreateMapelSoalActivity extends AppCompatActivity implements View.OnClickListener {
@@ -122,7 +120,7 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         Log.d(TAG, "onItemSelected: " + position);
                         if (position != 0) {
-                                selectedId = String.valueOf(jenjangModelList.get(position - 1).getIdJenjang());
+                            selectedId = String.valueOf(jenjangModelList.get(position - 1).getIdJenjang());
                         }
                         // API  SMP[0] SMA[1] WWW[2] -> Dari response Retrofit soalnya lu taroh adapternya di dalam call
                         //LIST Local -> Pilih[0] SMP[1-1] SMA[2-1] www{3-1] ->Spinner
@@ -145,8 +143,8 @@ public class CreateMapelSoalActivity extends AppCompatActivity implements View.O
     public void saveDataMapelSoal() {
         if (editText.getText().toString().equals("")) {
             Toast.makeText(CreateMapelSoalActivity.this, "isi mata pelajaran", Toast.LENGTH_SHORT).show();
-        } else if(selectedId==null) {
-                Toast.makeText(CreateMapelSoalActivity.this, "pilih jenjang", Toast.LENGTH_SHORT).show();
+        } else if (selectedId == null) {
+            Toast.makeText(CreateMapelSoalActivity.this, "pilih jenjang", Toast.LENGTH_SHORT).show();
         } else {
             Log.d(TAG, "saveDataMapelSoal: " + spinner.getSelectedItemId());
             Call<MapelSoalModel> call = service.postdatamapelsoal(selectedId, editText.getText().toString());

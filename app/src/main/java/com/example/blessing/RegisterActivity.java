@@ -20,13 +20,9 @@ import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
 
-import java.util.ArrayList;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RetrofitBuildCustom retrofitBuildCustom;
@@ -45,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtPassword = findViewById(R.id.txtpassword);
         edtConfirmpass = findViewById(R.id.txtconfirmpass);
         ImageView imageView = findViewById(R.id.backtologin);
+        Boolean registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,8 +49,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
-                Intent moveIntent = new Intent(RegisterActivity.this, LoginActivity.class);
-                startActivity(moveIntent);
+                if (!registerGuru) {
+                    Intent moveIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                    startActivity(moveIntent);
+                } else {
+                    Intent moveIntent = new Intent(RegisterActivity.this, MainActivity.class);
+                    startActivity(moveIntent);
+                }
             }
         });
         retrofitBuildCustom = RetrofitBuildCustom.getInstance();
@@ -62,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         TextView tvRegister = findViewById(R.id.tvregister);
         idRole = Preferences.getKeyUser(getBaseContext());
-        Boolean registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
 
         if (!registerGuru) {
             idRole = String.valueOf(3);

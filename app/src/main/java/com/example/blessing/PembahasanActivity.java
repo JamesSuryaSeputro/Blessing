@@ -1,7 +1,14 @@
 package com.example.blessing;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -9,36 +16,12 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Bundle;
-import android.text.Html;
-import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
-
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.DataSource;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.engine.GlideException;
-import com.bumptech.glide.request.RequestListener;
-import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Adapter.ImagePembahasanAdapter;
 import com.example.blessing.Adapter.JawabanAdapter;
-import com.example.blessing.Adapter.SoalAdapter;
 import com.example.blessing.Model.KuisModel;
-import com.example.blessing.Model.MainModel;
-import com.example.blessing.Model.MapelSoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
-import com.github.chrisbanes.photoview.PhotoView;
 
 import java.util.ArrayList;
 import java.util.List;

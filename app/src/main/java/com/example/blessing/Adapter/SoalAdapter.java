@@ -33,7 +33,6 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
         this.userid = Preferences.getKeyUser(context);
     }
 
-
     public void setmListener(OnClickItemContextMenuSoal mListener) {
         this.mListener = mListener;
     }
@@ -89,7 +88,7 @@ public class SoalAdapter extends RecyclerView.Adapter<SoalAdapter.ViewHolder> {
             tvKelas = view.findViewById(R.id.tvkelas);
             tvListKelas = view.findViewById(R.id.list_kelas);
             cardView = view.findViewById(R.id.card_view);
-            if(!userid.equals("3")) {
+            if (!userid.equals("3")) {
                 cardView.setOnCreateContextMenuListener(this);
             }
         }

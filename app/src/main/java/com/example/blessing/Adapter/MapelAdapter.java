@@ -15,10 +15,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
+public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder> {
 
     private static final String TAG = "MapelAdapter";
     private List<MapelModel> mLearningModelArrayList;
@@ -33,7 +34,7 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
     public void setmListener(OnClickItemContextMenuMapel mListener) {
         this.mListener = mListener;
     }
-    
+
     @NonNull
     @Override
     public MapelAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -50,7 +51,7 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 mListener.onClickItem(mapelModel.getIdMapel(), mapelModel.getNamaMapel());
+                mListener.onClickItem(mapelModel.getIdMapel(), mapelModel.getNamaMapel());
             }
         });
 //        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
@@ -65,7 +66,7 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
     }
 
     public void updateData(List<MapelModel> list) {
-      // mLearningModelArrayList.addAll(score);
+        // mLearningModelArrayList.addAll(score);
         mLearningModelArrayList = list;
         notifyDataSetChanged();
     }
@@ -93,19 +94,19 @@ public class MapelAdapter extends RecyclerView.Adapter<MapelAdapter.ViewHolder>{
 
         @Override
         public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-            menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it ->{
-                Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
-                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel(),mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
+            menu.add(this.getAdapterPosition(), v.getId(), 0, "Edit").setOnMenuItemClickListener(it -> {
+                Log.d(TAG, "onMenuItemClick: " + mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
+                mListener.onEditItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel(), mLearningModelArrayList.get(getAdapterPosition()).getNamaMapel());
                 return false;
             });
-            menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it ->{
+            menu.add(this.getAdapterPosition(), v.getId(), 1, "Delete").setOnMenuItemClickListener(it -> {
                 mListener.onDeleteItem(mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
                 return false;
             });
-            menu.add(this.getAdapterPosition(),v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            menu.add(this.getAdapterPosition(), v.getId(), 2, "Cancel").setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem item) {
-                    Log.d(TAG, "onMenuItemClick: "+mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
+                    Log.d(TAG, "onMenuItemClick: " + mLearningModelArrayList.get(getAdapterPosition()).getIdMapel());
                     return false;
                 }
             });

@@ -1,14 +1,5 @@
 package com.example.blessing;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.core.content.FileProvider;
-import androidx.core.text.HtmlCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -31,6 +22,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.text.HtmlCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Adapter.MateriAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuMateri;
@@ -71,8 +71,8 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
             //Mengambil id download yang diterima dengan broadcast
             long id = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
             //Cek apakah broadcast yang diterima adalah file yang bergantung pada id download
-            String status =  intent.getAction();
-            if(DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(status)){
+            String status = intent.getAction();
+            if (DownloadManager.ACTION_DOWNLOAD_COMPLETE.equals(status)) {
                 if (downloadID == id) {
                     DownloadManager.Query query = new DownloadManager.Query();
                     query.setFilterById(id);
@@ -209,27 +209,26 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     public void download(String fileName) {
-        //download filenya // file loc lu intent extra ke activity pdfview
         String path = RetrofitBuildCustom.BASE_URL + "uploads/" + fileName;
         Log.d(TAG, "onReceive: " + path);
         manager = (DownloadManager) this.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(path));
         request.setTitle(fileName);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-        //getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setVisibleInDownloadsUi(true);
-        try{
+        try {
             downloadID = manager.enqueue(request);
             checkDownloadStatus(MateriActivity.this, DownloadManager.STATUS_RUNNING);
-        }catch (Exception e){
+        } catch (Exception e) {
             Log.d("DOWNLOADED_INFO", "startDownload =" + e.getMessage());
             e.printStackTrace();
             manager.remove(downloadID);
         }
     }
 
-    public static boolean checkDownloadStatus(Context context , int status) {
+    public static boolean checkDownloadStatus(Context context, int status) {
         DownloadManager downloadManager = (DownloadManager)
                 context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();
@@ -267,7 +266,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     public void onDeleteItem(String id, String judul) {
         Log.d(TAG, "onDeleteItem: " + id);
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setMessage("Hapus materi "+ judul + "?");
+        builder.setMessage("Hapus materi " + judul + "?");
         builder.setCancelable(false);
         builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
             @Override
@@ -311,18 +310,18 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         }
         mLastClickTime = SystemClock.elapsedRealtime();
         if (ContextCompat.checkSelfPermission(MateriActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
-        builder.setMessage("Download materi " + judul + "?");
-        builder.setCancelable(false);
-        builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Log.d(TAG, "onDownload: " + fileName);
-                download(fileName);
-            }
-        });
-        builder.setNegativeButton("tidak", null);
-        builder.show();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
+            builder.setMessage("Download materi " + judul + "?");
+            builder.setCancelable(false);
+            builder.setPositiveButton("ya", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Log.d(TAG, "onDownload: " + fileName);
+                    download(fileName);
+                }
+            });
+            builder.setNegativeButton("tidak", null);
+            builder.show();
         } else if (PermissionUtils.neverAskAgainSelected(MateriActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
             displayNeverAskAgainDialog();
         } else {

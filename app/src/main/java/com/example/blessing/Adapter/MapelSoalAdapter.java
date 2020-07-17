@@ -50,8 +50,8 @@ public class MapelSoalAdapter extends RecyclerView.Adapter<MapelSoalAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull MapelSoalAdapter.ViewHolder holder, int position) {
-        if (mLearningModelArrayListNew!= null){
-            if (!mLearningModelArrayListNew.isEmpty()){
+        if (mLearningModelArrayListNew != null) {
+            if (!mLearningModelArrayListNew.isEmpty()) {
                 MapelSoalModel mapelSoalModel = mLearningModelArrayListNew.get(position);
                 String mapelList = mapelSoalModel.getNamaMapelsoal();
                 holder.textView.setText(mapelList);
@@ -70,8 +70,8 @@ public class MapelSoalAdapter extends RecyclerView.Adapter<MapelSoalAdapter.View
         notifyDataSetChanged();
     }
 
-    public void updateDataChangeFilterSchool(int id){
-        Log.d(TAG, "updateDataChangeFilterSchool: "+id);
+    public void updateDataChangeFilterSchool(int id) {
+        Log.d(TAG, "updateDataChangeFilterSchool: " + id);
         //mLearningModelArrayList.removeIf(it -> it.getIdMapelsoal().equals(String.valueOf(id)));
         mLearningModelArrayListNew = mLearningModelArrayList.stream().filter(it -> it.getIdJenjang().equals(String.valueOf(id))).collect(Collectors.toList());
         notifyDataSetChanged();
@@ -94,7 +94,7 @@ public class MapelSoalAdapter extends RecyclerView.Adapter<MapelSoalAdapter.View
             super(view);
             textView = view.findViewById(R.id.list_item);
             cardView = view.findViewById(R.id.card_view);
-            if(!userid.equals("3")) {
+            if (!userid.equals("3")) {
                 cardView.setOnCreateContextMenuListener(this);
             }
         }

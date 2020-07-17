@@ -145,7 +145,7 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
 
     @Override
     public void onEditItem(String id, String nama) {
-        Log.d(TAG, "onEditItem: "+id);
+        Log.d(TAG, "onEditItem: " + id);
         Intent intent = new Intent(MapelActivity.this, CreateMapelActivity.class);
         intent.putExtra(EXTRA_MAPEL, id);
         intent.putExtra(EXTRA_BOOLEAN, true);
@@ -157,7 +157,7 @@ public class MapelActivity extends AppCompatActivity implements OnClickItemConte
 
     @Override
     public void onClickItem(String id, String namamapel) {
-        Log.d(TAG, "onClickItem: "+id);
+        Log.d(TAG, "onClickItem: " + id);
         Intent intent = new Intent(MapelActivity.this, MateriActivity.class);
         intent.putExtra(EXTRA_MAPEL, id);
         intent.putExtra(EXTRA_NAMAMAPEL, namamapel);
