@@ -37,25 +37,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MapelSoalActivity extends AppCompatActivity implements OnClickItemContextMenuMapelSoal {
-<<<<<<< HEAD
-=======
     private Spinner spinner;
     private ArrayList<MapelSoalModel> mLearningModelArrayList = new ArrayList<>();
     private List<String> listSpinner = new ArrayList<>();
     private API service;
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     public static final String TAG = MapelSoalActivity.class.getSimpleName();
     public static final String EXTRA_IDJENJANG = "extra_idjenjang";
     public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
-<<<<<<< HEAD
-    private Spinner spinner;
-    private ArrayList<MapelSoalModel> mLearningModelArrayList = new ArrayList<>();
-    private List<String> listSpinner = new ArrayList<>();
-    private API service;
-=======
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private MapelSoalAdapter mAdapter;
     private long mLastClickTime = 0;
     private FloatingActionButton fab;

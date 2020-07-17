@@ -22,18 +22,11 @@ import java.util.List;
 public class NumberAdapter extends RecyclerView.Adapter<NumberAdapter.ViewHolder> {
 
     private static final String TAG = "NumberAdapter";
-<<<<<<< HEAD
     public String userid;
-=======
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private List<KuisModel> numberList;
     private Context mContext;
     private OnClickItemContextMenuNumber mListener;
     private int selectedPos = RecyclerView.NO_POSITION;
-<<<<<<< HEAD
-=======
-    public String userid;
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     public NumberAdapter(Context context, ArrayList<KuisModel> numberList) {
         this.mContext = context;

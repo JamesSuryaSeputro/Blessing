@@ -7,27 +7,16 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
     android:layout_margin="10dp"
-<<<<<<< HEAD
     android:clickable="true"
     android:focusable="true"
     card_view:cardCornerRadius="10dp">
-=======
-    card_view:cardCornerRadius="10dp"
-    android:clickable="true"
-    android:focusable="true">
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <TextView
         android:id="@+id/list_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
         android:padding="10dp"
         android:textAlignment="center"
-=======
-        android:textAlignment="center"
-        android:padding="10dp"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         android:textSize="16sp"
         tools:text="test"/>
 

@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:gravity="center"
     android:orientation="vertical"
-=======
-    android:orientation="vertical"
-    android:gravity="center"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".SplashScreen">
 
     <ImageView
@@ -23,15 +18,9 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_marginTop="6dp"
-<<<<<<< HEAD
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_url="https://assets1.lottiefiles.com/datafiles/nT4vnUFY9yay7QI/data.json"
-=======
-        app:lottie_url="https://assets1.lottiefiles.com/datafiles/nT4vnUFY9yay7QI/data.json"
-        app:lottie_loop="true"
-        app:lottie_autoPlay="true"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         />
 
 </LinearLayout>

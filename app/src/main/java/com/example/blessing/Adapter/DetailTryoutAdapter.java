@@ -20,18 +20,11 @@ import java.util.List;
 public class DetailTryoutAdapter extends RecyclerView.Adapter<DetailTryoutAdapter.ViewHolder> {
 
     private static final String TAG = "DetailTryoutAdapter";
-<<<<<<< HEAD
     public String userid;
-=======
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private List<DetailTryoutModel> numberList;
     private Context mContext;
     private OnClickItemContextMenuDetailTryout mListener;
     private int selectedPos = RecyclerView.NO_POSITION;
-<<<<<<< HEAD
-=======
-    public String userid;
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     public DetailTryoutAdapter(List<DetailTryoutModel> numberList, Context mContext) {
         this.numberList = numberList;

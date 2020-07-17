@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-=======
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,15 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garamondbold"
-<<<<<<< HEAD
         android:text="@string/input_tryout"
         android:textColor="#FF9800"
         android:textSize="18sp" />
-=======
-        android:textColor="#FF9800"
-        android:textSize="18sp"
-        android:text="@string/input_tryout" />
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -63,37 +54,21 @@
             android:id="@+id/tvwaktu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_centerVertical="true"
             android:fontFamily="@font/garamondbold"
             android:text="@string/waktu"
             android:textSize="18sp"/>
-=======
-            android:textSize="18sp"
-            android:layout_centerVertical="true"
-            android:fontFamily="@font/garamondbold"
-            android:text="@string/waktu"/>
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <EditText
             android:id="@+id/timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_marginStart="6dp"
             android:layout_toEndOf="@+id/tvwaktu"
             android:hint="@string/dalam_hitungan_menit"
             android:importantForAutofill="no"
             android:inputType="time"
             android:singleLine="true"
-=======
-            android:importantForAutofill="no"
-            android:layout_marginStart="6dp"
-            android:inputType="time"
-            android:singleLine="true"
-            android:hint="@string/dalam_hitungan_menit"
-            android:layout_toEndOf="@+id/tvwaktu"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:textSize="18sp"
             tools:text="60:00"/>
 
@@ -107,22 +82,15 @@
             android:id="@+id/tvjenjangto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_centerVertical="true"
             android:fontFamily="@font/garamondbold"
             android:text="@string/jenjang"
-=======
-            android:fontFamily="@font/garamondbold"
-            android:text="@string/jenjang"
-            android:layout_centerVertical="true"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:textSize="18sp" />
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spinnerjenjangto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_centerVertical="true"
             android:layout_marginHorizontal="4dp"
             android:layout_marginVertical="12dp"
@@ -131,16 +99,6 @@
             android:padding="10dp"
             android:spinnerMode="dropdown"
             android:textAlignment="center"
-=======
-            android:background="@drawable/spinner"
-            android:layout_toEndOf="@+id/tvjenjangto"
-            android:padding="10dp"
-            android:layout_marginVertical="12dp"
-            android:layout_marginHorizontal="4dp"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:layout_centerVertical="true"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:listitem="@android:layout/simple_spinner_item" />
 
     </RelativeLayout>

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
-=======
     xmlns:app="http://schemas.android.com/apk/res-auto"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -18,21 +15,12 @@
             android:id="@+id/tvbelumadapembahasanto"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:fontFamily="sans-serif-light"
             android:text="@string/belum_ada_pembahasan"
             android:textSize="18sp"
             android:visibility="gone"/>
-=======
-            android:text="@string/belum_ada_pembahasan"
-            android:visibility="gone"
-            android:textSize="18sp"
-            android:fontFamily="sans-serif-light"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"/>
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <LinearLayout
             android:layout_width="match_parent"

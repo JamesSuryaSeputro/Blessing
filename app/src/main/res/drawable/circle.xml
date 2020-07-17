@@ -4,13 +4,8 @@
     <solid android:color="#FFFFFF" />
 
     <size
-<<<<<<< HEAD
         android:width="50dp"
         android:height="50dp" />
-=======
-        android:height="50dp"
-        android:width="50dp" />
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <stroke
         android:width="2dp"

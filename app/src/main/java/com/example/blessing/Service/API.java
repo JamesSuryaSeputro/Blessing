@@ -1,10 +1,7 @@
 package com.example.blessing.Service;
 
-<<<<<<< HEAD
-=======
 import android.media.Image;
 
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Model.ImageModel;
 import com.example.blessing.Model.JenjangModel;
@@ -20,10 +17,7 @@ import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Model.UploadModel;
-<<<<<<< HEAD
-=======
 import com.example.blessing.TryoutActivity;
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 import java.util.List;
 

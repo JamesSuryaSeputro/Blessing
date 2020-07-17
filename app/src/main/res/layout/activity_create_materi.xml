@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="9dp"
     android:orientation="vertical"
-=======
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="9dp"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".CreateMateriActivity">
 
     <TextView
@@ -42,13 +33,8 @@
             android:id="@+id/tvkelasmateri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_marginTop="20dp"
             android:fontFamily="@font/garamondbold"
-=======
-            android:fontFamily="@font/garamondbold"
-            android:layout_marginTop="20dp"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:text="@string/kelas"
             android:textSize="18sp" />
 
@@ -56,17 +42,10 @@
             android:id="@+id/spinnerkelasmateri"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_margin="10dp"
             android:layout_toEndOf="@+id/tvkelasmateri"
             android:background="@drawable/spinner"
             android:padding="10dp"
-=======
-            android:background="@drawable/spinner"
-            android:padding="10dp"
-            android:layout_toEndOf="@+id/tvkelasmateri"
-            android:layout_margin="10dp"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:spinnerMode="dropdown"
             android:textAlignment="center"
             tools:listitem="@android:layout/simple_spinner_item" />
@@ -77,17 +56,10 @@
         android:id="@+id/btnchoosepdf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
         android:layout_gravity="bottom"
         android:layout_marginBottom="10dp"
         android:background="@color/colorLightOrange"
         android:text="Pilih PDF" />
-=======
-        android:layout_marginBottom="10dp"
-        android:text="Pilih PDF"
-        android:background="@color/colorLightOrange"
-        android:layout_gravity="bottom" />
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <Button
         android:id="@+id/btnuploadmateri"

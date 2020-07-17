@@ -4,17 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
     android:clickable="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:padding="12dp"
-=======
-    android:padding="12dp"
-    android:clickable="true"
-    android:focusableInTouchMode="true"
-    android:focusable="true"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".LoginActivity">
 
     <LinearLayout
@@ -79,14 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/masukan_email"
-<<<<<<< HEAD
                 android:importantForAutofill="no"
                 android:inputType="textEmailAddress"
-=======
-                android:inputType="textEmailAddress"
-                android:importantForAutofill="no"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
-                android:singleLine="true"
                 android:theme="@style/TextInputLayoutAppearance"/>
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -113,29 +100,17 @@
                 android:id="@+id/btnlogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-<<<<<<< HEAD
                 android:layout_gravity="bottom"
                 android:background="@color/colorLightOrange"
                 android:text="@string/login" />
-=======
-                android:text="@string/login"
-                android:background="@color/colorLightOrange"
-                android:layout_gravity="bottom" />
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:layout_marginTop="40dp"
             android:orientation="horizontal"
             android:paddingHorizontal="4dp"
-=======
-            android:paddingHorizontal="4dp"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:weightSum="1">
 
             <TextView
@@ -151,21 +126,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.55"
-<<<<<<< HEAD
                 android:clickable="true"
                 android:focusable="true"
                 android:gravity="center"
                 android:text="@string/daftar_sekarang"
                 android:textColor="#4682B4"
                 android:textSize="14sp" />
-=======
-                android:gravity="center"
-                android:text="@string/daftar_sekarang"
-                android:textSize="14sp"
-                android:textColor="#4682B4"
-                android:clickable="true"
-                android:focusable="true" />
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
+
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

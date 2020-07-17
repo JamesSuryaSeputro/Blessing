@@ -13,13 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
         android:layout_marginTop="6dp"
-<<<<<<< HEAD
         android:layout_marginEnd="6dp"
         android:layout_marginBottom="6dp"
-=======
-        android:layout_marginBottom="6dp"
-        android:layout_marginEnd="6dp"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/number" />
@@ -61,13 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:focusable="true"
-<<<<<<< HEAD
         android:gravity="center"
         android:visibility="invisible">
-=======
-        android:visibility="invisible"
-        android:gravity="center">
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <TextView
             android:id="@+id/opt_A"

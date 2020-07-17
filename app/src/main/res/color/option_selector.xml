@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-<<<<<<< HEAD
+
     <item android:color="#ffff0000"
         android:state_pressed="true"/> <!-- pressed -->
     <item android:color="#ff0000ff"
         android:state_focused="true"/> <!-- focused -->
-=======
-    <item android:state_pressed="true"
-        android:color="#ffff0000"/> <!-- pressed -->
-    <item android:state_focused="true"
-        android:color="#ff0000ff"/> <!-- focused -->
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     <item android:color="#000000" /> <!-- default case -->
 </selector>

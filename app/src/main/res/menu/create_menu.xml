@@ -4,32 +4,16 @@
 
     <item
         android:id="@+id/edit"
-<<<<<<< HEAD
         android:icon="@drawable/ic_edit"
         android:title="edit"
         android:visible="false"
-        app:showAsAction="ifRoom"
-=======
-        android:title="edit"
-        android:visible="false"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_edit"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
-        />
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/delete"
-<<<<<<< HEAD
         android:icon="@drawable/ic_delete"
         android:title="delete"
         android:visible="false"
-        app:showAsAction="ifRoom"
-=======
-        android:title="delete"
-        android:visible="false"
-        app:showAsAction="ifRoom"
-        android:icon="@drawable/ic_delete"
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
-        />
+        app:showAsAction="ifRoom" />
 
 </menu>

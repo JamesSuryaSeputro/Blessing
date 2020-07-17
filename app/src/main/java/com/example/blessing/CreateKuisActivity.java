@@ -48,7 +48,6 @@ import retrofit2.Response;
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 
 public class CreateKuisActivity extends AppCompatActivity implements View.OnClickListener {
-<<<<<<< HEAD
     public static final String EXTRA_SOAL = "extra_soal";
     public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
     public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
@@ -56,26 +55,13 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
     public static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
     private static final int READ_FILE_REQ = 42;
     private static final String TAG = CreateKuisActivity.class.getSimpleName();
-=======
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private EditText editText;
     private Spinner spinner;
     private TextView textView;
     private PhotoView imgPreview;
     private String imgPath = "";
     private long mLastClickTime = 0;
-<<<<<<< HEAD
     private String idsoal, namajenjang, idmapelsoal, idkuis, iddetailkuis;
-=======
-    private static final int READ_FILE_REQ = 42;
-    private static final String TAG = CreateKuisActivity.class.getSimpleName();
-    private String idsoal, namajenjang, idmapelsoal, idkuis, iddetailkuis;
-    public static final String EXTRA_SOAL = "extra_soal";
-    public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
-    public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
-    public static final String EXTRA_IDKUIS = "extra_idkuis";
-    public static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private Boolean updatekuis;
     private String[] arraySpinner = new String[]{"A", "B", "C", "D", "E"};
 
@@ -206,8 +192,6 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         builder.show();
     }
 
-<<<<<<< HEAD
-=======
     private class UploadImg extends AsyncTask<Void, Integer, Void> {
         @Override
         protected Void doInBackground(Void... voids) {
@@ -252,7 +236,6 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         }
     }
 
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     public void saveKuis() {
         if (imgPath.equals("") || imgPath.isEmpty()) {
 
@@ -339,51 +322,4 @@ public class CreateKuisActivity extends AppCompatActivity implements View.OnClic
         }
         return super.onOptionsItemSelected(item);
     }
-<<<<<<< HEAD
-
-    private class UploadImg extends AsyncTask<Void, Integer, Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            try {
-                checkFileisHere();
-                if (!updatekuis) {
-                    saveKuis();
-                } else {
-                    Log.d(TAG, "updatekuis: " + iddetailkuis);
-                    updateKuis(iddetailkuis);
-                }
-                runOnUiThread(() -> {
-                    Log.d(TAG, "doInBackground: Upload Progress");
-                    Toast.makeText(CreateKuisActivity.this, "Please Wait . . .", Toast.LENGTH_SHORT).show();
-                });
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.d(TAG, "onPreExecute: Mulai Upload");
-        }
-
-        @Override
-        protected void onProgressUpdate(Integer... values) {
-            super.onProgressUpdate(values);
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            imgPath = "";
-            editText.getText().clear();
-            textView.setVisibility(View.GONE);
-            imgPreview.setVisibility(View.GONE);
-
-            Log.d(TAG, "onPreExecute: Selesai Upload");
-        }
-    }
-=======
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 }

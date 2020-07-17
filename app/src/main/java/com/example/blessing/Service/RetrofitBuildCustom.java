@@ -1,14 +1,5 @@
 package com.example.blessing.Service;
 
-<<<<<<< HEAD
-=======
-import android.util.Log;
-
-import org.jetbrains.annotations.NotNull;
-
-import java.util.concurrent.TimeUnit;
-
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -16,7 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitBuildCustom {
 
-<<<<<<< HEAD
    public static final String BASE_URL = "http://192.168.1.4/blessing/blessingAPI/public/";
    private static RetrofitBuildCustom instance = null;
    private static Retrofit retrofit;
@@ -24,14 +14,7 @@ public class RetrofitBuildCustom {
    //https://blessingme.herokuapp.com/public/
 //    192.168.43.40
    //http://192.168.1.2/blessing/blessingAPI/public/
-=======
-   private static RetrofitBuildCustom instance = null;
-   private static Retrofit retrofit;
-   private API service;
-   public static final String BASE_URL = "http://192.168.1.4/blessing/blessingAPI/public/";
-   //https://blessingme.herokuapp.com/public/
-   //http://192.168.1.8/blessing/blessingAPI/public/
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
+
     public RetrofitBuildCustom() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
@@ -60,7 +43,6 @@ public class RetrofitBuildCustom {
         return instance;
     }
 
-<<<<<<< HEAD
   public static Retrofit getRetrofit() {
     return retrofit;
   }
@@ -68,13 +50,5 @@ public class RetrofitBuildCustom {
   public API getService() {
     return service;
   }
-=======
-  public API getService() {
-    return service;
-  }
 
-  public static Retrofit getRetrofit() {
-    return retrofit;
-  }
->>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 }
