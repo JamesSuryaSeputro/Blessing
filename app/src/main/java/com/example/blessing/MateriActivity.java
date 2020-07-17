@@ -1,5 +1,14 @@
 package com.example.blessing;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.text.HtmlCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -50,17 +59,17 @@ import retrofit2.Response;
 
 public class MateriActivity extends AppCompatActivity implements OnClickItemContextMenuMateri {
 
-    private ArrayList<MateriModel> mLearningModelArrayList = new ArrayList<>();
-    private MateriAdapter mAdapter;
-    private long mLastClickTime = 0;
-    private API service;
-    private FloatingActionButton fab;
-    private static final int READ_FILE_REQ = 42;
     public static final String TAG = MateriActivity.class.getSimpleName();
     public static final String EXTRA_MATERI = "extra_materi";
     public static final String EXTRA_MAPEL = "extra_mapel";
     public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+    private static final int READ_FILE_REQ = 42;
+    private ArrayList<MateriModel> mLearningModelArrayList = new ArrayList<>();
+    private MateriAdapter mAdapter;
+    private long mLastClickTime = 0;
+    private API service;
+    private FloatingActionButton fab;
     private String mapelid, namamapel;
     private long downloadID;
     private DownloadManager manager;
@@ -101,6 +110,22 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
             }
         }
     };
+
+    public static boolean checkDownloadStatus(Context context , int status) {
+        DownloadManager downloadManager = (DownloadManager)
+                context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+
+        query.setFilterByStatus(status);
+        Cursor c = downloadManager.query(query);
+        if (c.moveToFirst()) {
+            c.close();
+            Log.i("DOWNLOAD_STATUS", String.valueOf(status));
+            return true;
+        }
+        Log.i("AUTOMATION_DOWNLOAD", "DEFAULT");
+        return false;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +175,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
 
         getMateriByMapel();
     }
-
 
     private void displayNeverAskAgainDialog() {
 
@@ -216,6 +240,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         request.setTitle(fileName);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI | DownloadManager.Request.NETWORK_MOBILE);
+        request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI|DownloadManager.Request.NETWORK_MOBILE);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setVisibleInDownloadsUi(true);
         try {
@@ -228,7 +253,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         }
     }
 
-    public static boolean checkDownloadStatus(Context context, int status) {
+    public static boolean checkDownloadStatus(Context context , int status) {
         DownloadManager downloadManager = (DownloadManager)
                 context.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Query query = new DownloadManager.Query();

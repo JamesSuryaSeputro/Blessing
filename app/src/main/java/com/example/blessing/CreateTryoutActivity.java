@@ -19,6 +19,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.blessing.Model.JenjangModel;
+import com.example.blessing.Model.MapelModel;
+import com.example.blessing.Model.SoalModel;
+
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -32,6 +35,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+import static com.example.blessing.SoalActivity.EXTRA_SOAL;
 
 public class CreateTryoutActivity extends AppCompatActivity implements View.OnClickListener {
     private static final String EXTRA_IDTO = "extra_idto";

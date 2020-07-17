@@ -5,8 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+<<<<<<< HEAD
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+=======
     android:focusableInTouchMode="true"
     android:focusable="true"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".RegisterActivity">
 
     <ImageView

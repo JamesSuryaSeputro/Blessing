@@ -4,10 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+=======
     android:orientation="vertical"
     android:clickable="true"
     android:focusableInTouchMode="true"
     android:focusable="true"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".ProfileActivity">
 
     <RelativeLayout
@@ -136,12 +143,20 @@
             android:id="@+id/newname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+            android:drawableEnd="@drawable/ic_edit"
+            android:focusable="false"
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:hint="@string/input_nama_baru"
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:singleLine="true"
+<<<<<<< HEAD
+=======
             android:focusable="false"
             android:drawableEnd="@drawable/ic_edit"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:theme="@style/TextInputLayoutAppearance"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -150,9 +165,15 @@
             android:id="@+id/btnnewname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+            android:layout_gravity="bottom"
+            android:background="@drawable/btn_rounded"
+            android:text="@string/simpan" />
+=======
             android:text="@string/simpan"
             android:background="@drawable/btn_rounded"
             android:layout_gravity="bottom" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     </LinearLayout>
 </LinearLayout>

@@ -17,11 +17,19 @@ import com.example.blessing.Utils.Preferences;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
+<<<<<<< HEAD
+    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+    private TextView tvNamaUser;
+    private long mLastClickTime = 0;
+    private String idRole;
+=======
     private TextView tvNamaUser;
     private long mLastClickTime = 0;
     private String idRole;
     public static final String TAG = MainActivity.class.getSimpleName();
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

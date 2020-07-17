@@ -4,8 +4,13 @@
     <item
         android:id="@+id/accountmenu"
         android:icon="@drawable/ic_account"
+<<<<<<< HEAD
+        android:title=""
+        app:showAsAction="ifRoom|withText">
+=======
         app:showAsAction="ifRoom|withText"
         android:title="">
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         <menu>
             <item
                 android:id="@+id/myProfile"

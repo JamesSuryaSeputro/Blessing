@@ -3,9 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+<<<<<<< HEAD
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="4dp"
+=======
     android:layout_marginTop="4dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     card_view:cardCornerRadius="10dp">
 
         <TextView
@@ -22,10 +28,17 @@
             android:id="@+id/jenjang"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+            android:layout_toEndOf="@+id/tvjenjang"
+            android:fontFamily="@font/garamond"
+            android:padding="4dp"
+            android:text="@string/jenjang"
+=======
             android:fontFamily="@font/garamond"
             android:padding="4dp"
             android:text="@string/jenjang"
             android:layout_toEndOf="@+id/tvjenjang"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             android:textSize="20sp"
             tools:text="SMP" />
 

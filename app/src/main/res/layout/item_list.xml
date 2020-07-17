@@ -33,8 +33,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_judul"
             android:layout_marginStart="6dp"
+<<<<<<< HEAD
+            android:text="@string/kelas"
+            android:textSize="16sp" />
+=======
             android:textSize="16sp"
             android:text="@string/kelas" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <TextView
             android:id="@+id/list_kelas"
@@ -42,8 +47,13 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_judul"
             android:layout_marginStart="6dp"
+<<<<<<< HEAD
+            android:layout_toEndOf="@+id/tvkelas"
+            android:textSize="16sp"
+=======
             android:textSize="16sp"
             android:layout_toEndOf="@+id/tvkelas"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:text="10" />
 
     </RelativeLayout>

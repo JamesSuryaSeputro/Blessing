@@ -1,10 +1,16 @@
 package com.example.blessing.Service;
 
+<<<<<<< HEAD
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+=======
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 public class RetrofitBuildCustomTest {
 

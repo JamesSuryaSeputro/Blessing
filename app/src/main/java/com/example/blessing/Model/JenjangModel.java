@@ -3,6 +3,8 @@ package com.example.blessing.Model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import org.jetbrains.annotations.NotNull;
+
 public class JenjangModel {
 
     @Expose

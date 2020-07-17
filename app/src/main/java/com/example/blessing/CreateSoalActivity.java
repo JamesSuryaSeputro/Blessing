@@ -23,6 +23,12 @@ import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 
+import com.example.blessing.Model.JenjangModel;
+import com.example.blessing.Model.KelasModel;
+import com.example.blessing.Model.SoalModel;
+import com.example.blessing.Service.API;
+import com.example.blessing.Service.RetrofitBuildCustom;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,19 +37,20 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+import static com.example.blessing.MapelActivity.EXTRA_MAPEL;
 import static com.example.blessing.MapelSoalActivity.EXTRA_IDJENJANG;
 import static com.example.blessing.MapelSoalActivity.EXTRA_MAPELSOAL;
 import static com.example.blessing.SoalActivity.EXTRA_NAMAJENJANG;
 import static com.example.blessing.SoalActivity.EXTRA_SOAL;
 
 public class CreateSoalActivity extends AppCompatActivity implements View.OnClickListener {
+    public static final String TAG = SoalActivity.class.getSimpleName();
     private EditText editText;
     private Spinner spinner;
     private String idsoal, idjenjang, namajenjang, idmapelsoal;
     private Boolean updatesoal;
     private API service;
     private long mLastClickTime = 0;
-    public static final String TAG = SoalActivity.class.getSimpleName();
     private List<String> listSpinner = new ArrayList<>();
     private String selectedId;
     private String idRole;

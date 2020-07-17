@@ -22,12 +22,21 @@
             android:id="@+id/list_namasoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-black"
+            android:textSize="16sp"
+=======
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
             android:textSize="16sp"
             android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-black"
             android:layout_alignParentStart="true"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:text="nama soal" />
 
         <TextView
@@ -35,21 +44,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_namasoal"
+<<<<<<< HEAD
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/nilai"
+            android:textSize="14sp" />
+=======
             android:layout_marginStart="6dp"
             android:textSize="14sp"
             android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif"
             android:text="@string/nilai"
             android:layout_alignParentStart="true" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <TextView
             android:id="@+id/list_nilaisoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_namasoal"
+<<<<<<< HEAD
+            android:layout_toEndOf="@id/tv_nilaisoal"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+=======
             android:textSize="14sp"
             android:fontFamily="sans-serif"
             android:layout_toEndOf="@id/tv_nilaisoal"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:text="10"/>
 
         <TextView
@@ -57,19 +81,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_namasoal"
+<<<<<<< HEAD
+            android:layout_toEndOf="@id/list_nilaisoal"
+            android:fontFamily="sans-serif"
+            android:text="@string/slash"
+            android:textSize="14sp" />
+=======
             android:textSize="14sp"
             android:text="@string/slash"
             android:fontFamily="sans-serif"
             android:layout_toEndOf="@id/list_nilaisoal" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <TextView
             android:id="@+id/list_jumlahsoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_namasoal"
+<<<<<<< HEAD
+            android:layout_toEndOf="@id/tv_slash"
+            android:fontFamily="sans-serif"
+            android:textSize="14sp"
+=======
             android:textSize="14sp"
             android:fontFamily="sans-serif"
             android:layout_toEndOf="@id/tv_slash"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:text="10"/>
 
         <TextView
@@ -77,11 +114,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/list_nilaisoal"
+<<<<<<< HEAD
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="sans-serif-light"
+            android:textSize="14sp"
+=======
             android:layout_marginStart="6dp"
             android:textSize="14sp"
             android:layout_marginEnd="10dp"
             android:fontFamily="sans-serif-light"
             android:layout_alignParentStart="true"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             tools:text="dd-mm-yy" />
 
     </RelativeLayout>

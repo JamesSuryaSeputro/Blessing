@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
 <gradient android:angle="45"
+<<<<<<< HEAD
+    android:endColor="@color/colorOrange"
+    android:startColor="@color/colorLightOrange">
+=======
     android:startColor="@color/colorLightOrange"
     android:endColor="@color/colorOrange">
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 </gradient>
 </shape>

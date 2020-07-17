@@ -1,5 +1,6 @@
 package com.example.blessing;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -18,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.widget.Toolbar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +38,8 @@ import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Adapter.NumberAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuNumber;
 import com.example.blessing.Model.KuisModel;
+
+import com.example.blessing.Model.MapelModel;
 import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -46,6 +50,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +58,16 @@ import retrofit2.Response;
 
 public class DetailKuisActivity extends AppCompatActivity implements OnClickItemContextMenuNumber, View.OnClickListener {
     public static final String TAG = DetailKuisActivity.class.getSimpleName();
+    public static final String EXTRA_SOAL = "extra_soal";
+    public static final String EXTRA_IDKUIS = "extra_idkuis";
+    public static final String EXTRA_IDJENJANG = "extra_idjenjang";
+    public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
+    public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+    public static final String EXTRA_NAMASOAL = "extra_namasoal";
+    private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
+    private static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
+    boolean isOpen = false;
     private NumberAdapter mAdapter;
     private List<KuisModel> kuisModel = new ArrayList<>();
     private long mLastClickTime = 0;
@@ -62,22 +77,12 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private String idmapelsoal;
     private String namasoal;
     private String idnilaisoal;
-    public static final String EXTRA_SOAL = "extra_soal";
-    public static final String EXTRA_IDKUIS = "extra_idkuis";
-    public static final String EXTRA_IDJENJANG = "extra_idjenjang";
-    public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
-    public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
-    private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
-    public static final String EXTRA_BOOLEAN = "extra_boolean";
-    public static final String EXTRA_NAMASOAL = "extra_namasoal";
-    private static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
     private FloatingActionButton fabExpand, fabNumber, fabAddKuis, fabRefresh;
     private API service;
     private TextView A, B, C, D, E, tvMulai;
     private PhotoView imgKuis;
     private LinearLayout optionLayout;
     private ProgressBar progressBar;
-    boolean isOpen = false;
     private int noSoal = 0;
     private View previousView;
     private Menu menuItem;

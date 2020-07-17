@@ -14,9 +14,15 @@
         android:id="@+id/spinner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
+        android:layout_margin="10dp"
+        android:background="@drawable/spinner"
+        android:padding="10dp"
+=======
         android:background="@drawable/spinner"
         android:padding="10dp"
         android:layout_margin="10dp"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         android:spinnerMode="dropdown"
         android:textAlignment="center"
         tools:listitem="@android:layout/simple_spinner_item"/>

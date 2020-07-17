@@ -20,9 +20,13 @@ import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     private RetrofitBuildCustom retrofitBuildCustom;
@@ -49,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
-                if (!registerGuru) {
+                if(!registerGuru) {
                     Intent moveIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(moveIntent);
                 } else {

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,11 +14,16 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.blessing.Model.MapelSoalModel;
+import com.example.blessing.Model.NilaiTryoutModel;
+import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.R;
 import com.example.blessing.Utils.Preferences;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder> {
     private static final String TAG = "TryoutAdapter";

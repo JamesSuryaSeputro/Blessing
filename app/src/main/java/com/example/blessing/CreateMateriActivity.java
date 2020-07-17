@@ -53,9 +53,9 @@ import static com.example.blessing.MateriActivity.EXTRA_NAMAMAPEL;
 
 public class CreateMateriActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText editText;
     private static final int READ_FILE_REQ = 42;
     private static final String TAG = CreateMateriActivity.class.getSimpleName();
+    private EditText editText;
     private String pdfPath = "";
     private String mapelid, materiid, namamapel;
     private Boolean updatemateri;
@@ -360,5 +360,45 @@ public class CreateMateriActivity extends AppCompatActivity implements View.OnCl
 
     private void clearAll() {
         editText.getText().clear();
+    }
+
+    private class UploadPdf extends AsyncTask<Void, Integer, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                if (!updatemateri) {
+                    uploadFile();
+                } else {
+                    updateDataMateri(materiid);
+                }
+                runOnUiThread(new Runnable() {
+                    public void run() {
+                        Log.d(TAG, "doInBackground: Upload Progress");
+                        Toast.makeText(CreateMateriActivity.this, "Uploading . . .", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: Mulai Upload");
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            pdfPath = "";
+            Log.d(TAG, "onPreExecute: Selesai Upload");
+        }
     }
 }

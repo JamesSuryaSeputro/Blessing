@@ -5,17 +5,29 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="2dp"
+<<<<<<< HEAD
+    app:cardCornerRadius="25dp"
+    app:cardElevation="4dp">
+=======
     app:cardElevation="4dp"
     app:cardCornerRadius="25dp">
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <TextView
         android:id="@+id/number"
         android:layout_width="50dp"
         android:layout_height="50dp"
+<<<<<<< HEAD
+        android:background="@drawable/selector"
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
         android:textColor="@android:color/black"
         android:textSize="20sp"
+<<<<<<< HEAD
+=======
         android:background="@drawable/selector"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         tools:text="1" />
 </androidx.cardview.widget.CardView>

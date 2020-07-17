@@ -45,6 +45,7 @@ import com.example.blessing.Utils.Preferences;
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -56,6 +57,11 @@ import retrofit2.Response;
 
 public class DetailTryoutActivity extends AppCompatActivity implements OnClickItemContextMenuDetailTryout, View.OnClickListener {
     public static final String TAG = DetailTryoutActivity.class.getSimpleName();
+    private static final String EXTRA_IDTO = "extra_idto";
+    private static final String EXTRA_JUDUL = "extra_judul";
+    private static final String EXTRA_BOOLEAN = "extra_boolean";
+    private static final String EXTRA_TIMER = "extra_timer";
+    private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private TextView tvMulaiTo, A, B, C, D, E, tvTimer;
     private PhotoView imgTo;
     private LinearLayout optionLayoutTo;
@@ -68,11 +74,6 @@ public class DetailTryoutActivity extends AppCompatActivity implements OnClickIt
     private List<DetailTryoutModel> mDetailTryoutModel = new ArrayList<>();
     private long mLastClickTime = 0;
     private String idtryout, judul, idnilaitryout;
-    private static final String EXTRA_IDTO = "extra_idto";
-    private static final String EXTRA_JUDUL = "extra_judul";
-    private static final String EXTRA_BOOLEAN = "extra_boolean";
-    private static final String EXTRA_TIMER = "extra_timer";
-    private static final String EXTRA_IDNILAITRYOUT = "extra_idnilaitryout";
     private int noSoal = 0;
     private boolean isQuizRunning = false;
     private CustomCountDownTimer customCountDownTimer;

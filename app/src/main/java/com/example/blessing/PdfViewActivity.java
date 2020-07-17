@@ -1,5 +1,6 @@
 package com.example.blessing;
 
+import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.net.Uri;
@@ -22,11 +23,11 @@ import java.util.Objects;
 
 //loading PDF file from local storage
 public class PdfViewActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener, OnPageErrorListener {
+    private static final int READ_FILE_REQ = 42;
+    public ProgressDialog pDialog;
     private int pageNumber = 0;
     private String pdfFilename;
     private PDFView pdfView;
-    public ProgressDialog pDialog;
-    private static final int READ_FILE_REQ = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

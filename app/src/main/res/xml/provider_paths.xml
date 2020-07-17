@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
+<paths>
+=======
 <paths xmlns:android="http://schemas.android.com/apk/res/android">
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     <external-path name="external_files" path="."/>
     <root-path name="root" path="." />
 

@@ -34,12 +34,15 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SoalActivity extends AppCompatActivity implements OnClickItemContextMenuSoal {
+<<<<<<< HEAD
+=======
     private static final String TAG = SoalActivity.class.getSimpleName();
     private SoalAdapter mAdapter;
     private long mLastClickTime = 0;
     private API service;
     private FloatingActionButton fab;
     private String idjenjang, namajenjang, idmapelsoal;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     public static final String EXTRA_SOAL = "extra_soal";
     public static final String EXTRA_IDJENJANG = "extra_idjenjang";
     public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
@@ -47,6 +50,15 @@ public class SoalActivity extends AppCompatActivity implements OnClickItemContex
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     public static final String EXTRA_KELAS = "extra_kelas";
     public static final String EXTRA_NAMASOAL = "extra_namasoal";
+<<<<<<< HEAD
+    private static final String TAG = SoalActivity.class.getSimpleName();
+    private SoalAdapter mAdapter;
+    private long mLastClickTime = 0;
+    private API service;
+    private FloatingActionButton fab;
+    private String idjenjang, namajenjang, idmapelsoal;
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private Boolean pembahasanBankSoal;
 
     @Override

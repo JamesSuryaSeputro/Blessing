@@ -5,10 +5,17 @@
             <item>
                 <shape android:shape="rectangle">
                     <padding
+<<<<<<< HEAD
+                        android:bottom="4dp"
+                        android:left="4dp"
+                        android:right="8dp"
+                        android:top="4dp"
+=======
                         android:left="4dp"
                         android:top="4dp"
                         android:right="8dp"
                         android:bottom="4dp"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                         />
 
                     <solid android:color="#FFFFFF"/>
