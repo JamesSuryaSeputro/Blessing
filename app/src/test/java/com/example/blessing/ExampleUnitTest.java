@@ -2,7 +2,11 @@ package com.example.blessing;
 
 import org.junit.Test;
 
+<<<<<<< HEAD
 import static org.junit.Assert.assertEquals;
+=======
+import static org.junit.Assert.*;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 /**
  * Example local unit test, which will execute on the development machine (host).

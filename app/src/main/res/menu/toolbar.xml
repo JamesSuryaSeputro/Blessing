@@ -3,8 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/submit"
+<<<<<<< HEAD
         android:icon="@drawable/ic_save"
         android:title="@string/submit"
+=======
+        android:title="@string/submit"
+        android:icon="@drawable/ic_save"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         app:showAsAction="always"
         />
 </menu>

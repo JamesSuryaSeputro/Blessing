@@ -1,6 +1,10 @@
 package com.example.blessing.Adapter;
 
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.util.Log;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +14,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.DetailTryoutModel;
+<<<<<<< HEAD
 import com.example.blessing.R;
 
 import java.util.List;
+=======
+import com.example.blessing.Model.KuisModel;
+import com.example.blessing.R;
+
+import java.util.List;
+import java.util.stream.Collectors;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 public class JawabanTryoutAdapter extends RecyclerView.Adapter<JawabanTryoutAdapter.ViewHolder> {
 

@@ -1,10 +1,18 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.MenuItem;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -14,6 +22,13 @@ import java.util.Objects;
 public class MenuHasilActivity extends AppCompatActivity {
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private long mLastClickTime = 0;
+=======
+import java.util.Objects;
+
+public class MenuHasilActivity extends AppCompatActivity {
+    private long mLastClickTime = 0;
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

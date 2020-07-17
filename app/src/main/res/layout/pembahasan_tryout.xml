@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+=======
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -11,10 +16,17 @@
         xmlns:card_view="http://schemas.android.com/tools"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="4dp"
+=======
+        android:layout_margin="10dp"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:layout_gravity="center_horizontal"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         card_view:cardPreventCornerOverlap="false">
 
     <com.github.chrisbanes.photoview.PhotoView
@@ -43,16 +55,27 @@
         android:id="@+id/titikjawabanto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_toEndOf="@+id/nojawabanto"
         android:text="@string/titikjawaban"
         android:textSize="18sp" />
+=======
+        android:textSize="18sp"
+        android:text="@string/titikjawaban"
+        android:layout_toEndOf="@+id/nojawabanto" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     <TextView
         android:id="@+id/jawabanto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/titikjawabanto"
+<<<<<<< HEAD
         android:textSize="18sp"
         tools:text="A" />
+=======
+        tools:text="A"
+        android:textSize="18sp" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     </RelativeLayout>
 </LinearLayout>

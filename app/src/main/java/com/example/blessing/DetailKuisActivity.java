@@ -1,5 +1,9 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
+=======
+import android.annotation.SuppressLint;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -9,7 +13,13 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.Html;
 import android.util.Log;
+<<<<<<< HEAD
 import android.view.Menu;
+=======
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -17,6 +27,10 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+<<<<<<< HEAD
+=======
+import android.widget.Toolbar;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +50,10 @@ import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Adapter.NumberAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuNumber;
 import com.example.blessing.Model.KuisModel;
+<<<<<<< HEAD
+=======
+import com.example.blessing.Model.MapelModel;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
@@ -46,6 +64,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+<<<<<<< HEAD
+=======
+import java.util.logging.Level;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +75,7 @@ import retrofit2.Response;
 
 public class DetailKuisActivity extends AppCompatActivity implements OnClickItemContextMenuNumber, View.OnClickListener {
     public static final String TAG = DetailKuisActivity.class.getSimpleName();
+<<<<<<< HEAD
     public static final String EXTRA_SOAL = "extra_soal";
     public static final String EXTRA_IDKUIS = "extra_idkuis";
     public static final String EXTRA_IDJENJANG = "extra_idjenjang";
@@ -63,6 +86,8 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
     private static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
     boolean isOpen = false;
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private NumberAdapter mAdapter;
     private List<KuisModel> kuisModel = new ArrayList<>();
     private long mLastClickTime = 0;
@@ -72,12 +97,28 @@ public class DetailKuisActivity extends AppCompatActivity implements OnClickItem
     private String idmapelsoal;
     private String namasoal;
     private String idnilaisoal;
+<<<<<<< HEAD
+=======
+    public static final String EXTRA_SOAL = "extra_soal";
+    public static final String EXTRA_IDKUIS = "extra_idkuis";
+    public static final String EXTRA_IDJENJANG = "extra_idjenjang";
+    public static final String EXTRA_NAMAJENJANG = "extra_namajenjang";
+    public static final String EXTRA_MAPELSOAL = "extra_mapelsoal";
+    private static final String EXTRA_IDDETAILKUIS = "extra_detailkuis";
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+    public static final String EXTRA_NAMASOAL = "extra_namasoal";
+    private static final String EXTRA_IDNILAISOAL = "extra_idnilaisoal";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private FloatingActionButton fabExpand, fabNumber, fabAddKuis, fabRefresh;
     private API service;
     private TextView A, B, C, D, E, tvMulai;
     private PhotoView imgKuis;
     private LinearLayout optionLayout;
     private ProgressBar progressBar;
+<<<<<<< HEAD
+=======
+    boolean isOpen = false;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private int noSoal = 0;
     private View previousView;
     private Menu menuItem;

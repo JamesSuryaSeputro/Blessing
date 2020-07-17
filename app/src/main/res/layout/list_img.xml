@@ -5,10 +5,17 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+<<<<<<< HEAD
     android:layout_gravity="center_horizontal"
     android:layout_margin="10dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
+=======
+    android:layout_margin="10dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:layout_gravity="center_horizontal"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     card_view:cardPreventCornerOverlap="false">
 
     <ProgressBar

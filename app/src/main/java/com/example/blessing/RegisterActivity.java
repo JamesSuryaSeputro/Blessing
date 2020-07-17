@@ -20,16 +20,31 @@ import com.example.blessing.Model.RegisterModel;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;
 
+<<<<<<< HEAD
+=======
+import java.util.ArrayList;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+<<<<<<< HEAD
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+=======
+import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private RetrofitBuildCustom retrofitBuildCustom;
     private EditText edtNama, edtEmail, edtPassword, edtConfirmpass;
     private String idRole;
     private long mLastClickTime = 0;
+<<<<<<< HEAD
+=======
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +55,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         edtEmail = findViewById(R.id.txtemail);
         edtPassword = findViewById(R.id.txtpassword);
         edtConfirmpass = findViewById(R.id.txtconfirmpass);
+<<<<<<< HEAD
         Boolean registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         ImageView imageView = findViewById(R.id.backtologin);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +67,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     return;
                 }
                 mLastClickTime = SystemClock.elapsedRealtime();
+<<<<<<< HEAD
                 if(!registerGuru) {
                     Intent moveIntent = new Intent(RegisterActivity.this, LoginActivity.class);
                     startActivity(moveIntent);
@@ -56,6 +75,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     Intent moveIntent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(moveIntent);
                 }
+=======
+                Intent moveIntent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(moveIntent);
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
             }
         });
         retrofitBuildCustom = RetrofitBuildCustom.getInstance();
@@ -64,6 +87,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         TextView tvRegister = findViewById(R.id.tvregister);
         idRole = Preferences.getKeyUser(getBaseContext());
+<<<<<<< HEAD
+=======
+        Boolean registerGuru = getIntent().getBooleanExtra(EXTRA_BOOLEAN, false);
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         if (!registerGuru) {
             idRole = String.valueOf(3);

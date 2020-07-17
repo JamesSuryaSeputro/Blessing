@@ -8,6 +8,10 @@ import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+<<<<<<< HEAD
+=======
+import android.widget.Spinner;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,14 +37,24 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TryoutActivity extends AppCompatActivity implements OnClickItemContextMenuTryout {
+<<<<<<< HEAD
     public static final String EXTRA_IDTO = "extra_idto";
     public static final String EXTRA_JUDUL = "extra_judul";
     public static final String EXTRA_TIMER = "extra_timer";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private static final String TAG = TryoutActivity.class.getSimpleName();
     private TryoutAdapter mAdapter;
     private long mLastClickTime = 0;
     private API service;
+<<<<<<< HEAD
+=======
+    public static final String EXTRA_IDTO = "extra_idto";
+    public static final String EXTRA_JUDUL = "extra_judul";
+    public static final String EXTRA_TIMER = "extra_timer";
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private Boolean pembahasanTryout;
 
     @Override

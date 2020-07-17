@@ -1,5 +1,17 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
+import androidx.core.text.HtmlCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.Manifest;
 import android.app.AlertDialog;
 import android.app.DownloadManager;
@@ -23,6 +35,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -32,6 +45,8 @@ import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Adapter.MateriAdapter;
 import com.example.blessing.Adapter.OnClickItemContextMenuMateri;
 import com.example.blessing.Model.MateriModel;
@@ -50,17 +65,29 @@ import retrofit2.Response;
 
 public class MateriActivity extends AppCompatActivity implements OnClickItemContextMenuMateri {
 
+<<<<<<< HEAD
     public static final String TAG = MateriActivity.class.getSimpleName();
     public static final String EXTRA_MATERI = "extra_materi";
     public static final String EXTRA_MAPEL = "extra_mapel";
     public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
     private static final int READ_FILE_REQ = 42;
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private ArrayList<MateriModel> mLearningModelArrayList = new ArrayList<>();
     private MateriAdapter mAdapter;
     private long mLastClickTime = 0;
     private API service;
     private FloatingActionButton fab;
+<<<<<<< HEAD
+=======
+    private static final int READ_FILE_REQ = 42;
+    public static final String TAG = MateriActivity.class.getSimpleName();
+    public static final String EXTRA_MATERI = "extra_materi";
+    public static final String EXTRA_MAPEL = "extra_mapel";
+    public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private String mapelid, namamapel;
     private long downloadID;
     private DownloadManager manager;
@@ -102,6 +129,7 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         }
     };
 
+<<<<<<< HEAD
     public static boolean checkDownloadStatus(Context context , int status) {
         DownloadManager downloadManager = (DownloadManager)
                 context.getSystemService(Context.DOWNLOAD_SERVICE);
@@ -118,6 +146,8 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         return false;
     }
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -167,6 +197,10 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         getMateriByMapel();
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private void displayNeverAskAgainDialog() {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogCustom);
@@ -231,7 +265,10 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(path));
         request.setTitle(fileName);
         request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+<<<<<<< HEAD
         request.setAllowedNetworkTypes(DownloadManager.Request.NETWORK_WIFI|DownloadManager.Request.NETWORK_MOBILE);
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         //getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS);
         request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
         request.setVisibleInDownloadsUi(true);
@@ -245,6 +282,25 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
         }
     }
 
+<<<<<<< HEAD
+=======
+    public static boolean checkDownloadStatus(Context context , int status) {
+        DownloadManager downloadManager = (DownloadManager)
+                context.getSystemService(Context.DOWNLOAD_SERVICE);
+        DownloadManager.Query query = new DownloadManager.Query();
+
+        query.setFilterByStatus(status);
+        Cursor c = downloadManager.query(query);
+        if (c.moveToFirst()) {
+            c.close();
+            Log.i("DOWNLOAD_STATUS", String.valueOf(status));
+            return true;
+        }
+        Log.i("AUTOMATION_DOWNLOAD", "DEFAULT");
+        return false;
+    }
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private void makeMoveActivity(String id) {
         Intent intent = new Intent(this, CreateMateriActivity.class);
         intent.putExtra(EXTRA_MAPEL, id);

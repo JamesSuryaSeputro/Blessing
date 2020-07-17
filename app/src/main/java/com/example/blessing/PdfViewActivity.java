@@ -1,5 +1,10 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
+=======
+import androidx.appcompat.app.AppCompatActivity;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.app.ProgressDialog;
 import android.database.Cursor;
 import android.net.Uri;
@@ -7,8 +12,12 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import androidx.appcompat.app.AppCompatActivity;
 
+=======
+import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.github.barteksc.pdfviewer.PDFView;
 import com.github.barteksc.pdfviewer.listener.OnLoadCompleteListener;
 import com.github.barteksc.pdfviewer.listener.OnPageChangeListener;
@@ -22,11 +31,19 @@ import java.util.Objects;
 
 //loading PDF file from local storage
 public class PdfViewActivity extends AppCompatActivity implements OnPageChangeListener, OnLoadCompleteListener, OnPageErrorListener {
+<<<<<<< HEAD
     private static final int READ_FILE_REQ = 42;
     public ProgressDialog pDialog;
     private int pageNumber = 0;
     private String pdfFilename;
     private PDFView pdfView;
+=======
+    private int pageNumber = 0;
+    private String pdfFilename;
+    private PDFView pdfView;
+    public ProgressDialog pDialog;
+    private static final int READ_FILE_REQ = 42;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -1,17 +1,29 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.text.HtmlCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< HEAD
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Html;
+import android.util.Log;
+import android.view.MenuItem;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Adapter.NilaiSoalAdapter;
 import com.example.blessing.Model.NilaiSoalModel;
 import com.example.blessing.Service.API;

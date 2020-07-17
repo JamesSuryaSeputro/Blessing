@@ -20,6 +20,10 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.Target;
 import com.example.blessing.Model.DetailTryoutModel;
+<<<<<<< HEAD
+=======
+import com.example.blessing.Model.KuisModel;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.R;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.github.chrisbanes.photoview.PhotoView;

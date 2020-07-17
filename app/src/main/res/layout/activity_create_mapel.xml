@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<<<<<<< HEAD
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="9dp"
     android:orientation="vertical"
+=======
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="9dp"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     tools:context=".CreateMapelActivity">
 
     <TextView
@@ -28,9 +37,16 @@
         android:id="@+id/btninputmapel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_gravity="bottom"
         android:layout_marginBottom="10dp"
         android:background="@color/colorLightOrange"
         android:text="@string/simpan" />
+=======
+        android:layout_marginBottom="10dp"
+        android:text="@string/simpan"
+        android:background="@color/colorLightOrange"
+        android:layout_gravity="bottom" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 </LinearLayout>

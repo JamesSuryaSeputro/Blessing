@@ -15,7 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.MapelModel;
 import com.example.blessing.R;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import java.util.ArrayList;
 import java.util.List;
 

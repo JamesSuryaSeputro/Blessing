@@ -63,22 +63,39 @@
                 android:id="@+id/img_materi"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:layout_alignParentEnd="true"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
                 android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/materi" />
+=======
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
+                android:padding="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/materi"
+                android:scaleType="fitXY" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
             <TextView
                 android:id="@+id/tvmainmateri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="12dp"
                 android:layout_toStartOf="@+id/img_materi"
                 android:fontFamily="sans-serif"
+=======
+                android:fontFamily="sans-serif"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/img_materi"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                 android:text="Lihat kumpulan materi-materi"
                 android:textSize="16sp" />
 
@@ -125,17 +142,29 @@
                     android:adjustViewBounds="true"
                     android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
                     android:padding="10dp"
+<<<<<<< HEAD
                     android:scaleType="fitXY"
                     android:src="@drawable/banksoal" />
+=======
+                    android:src="@drawable/banksoal"
+                    android:scaleType="fitXY" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
                 <TextView
                     android:id="@+id/tvmainbanksoal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+<<<<<<< HEAD
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/img_banksoal"
                     android:fontFamily="sans-serif"
+=======
+                    android:fontFamily="sans-serif"
+                    android:layout_marginStart="10dp"
+                    android:layout_centerVertical="true"
+                    android:layout_toEndOf="@+id/img_banksoal"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                     android:text="Lihat kumpulan berbagai latihan soal kuis"
                     android:textSize="16sp" />
 
@@ -170,22 +199,39 @@
                 android:id="@+id/img_tryout"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+<<<<<<< HEAD
                 android:layout_alignParentEnd="true"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
                 android:padding="10dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/tryout" />
+=======
+                android:adjustViewBounds="true"
+                android:layout_alignParentEnd="true"
+                android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
+                android:padding="10dp"
+                android:src="@drawable/tryout"
+                android:scaleType="fitXY" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
             <TextView
                 android:id="@+id/tvtryout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="12dp"
                 android:layout_toStartOf="@+id/img_tryout"
                 android:fontFamily="sans-serif"
+=======
+                android:fontFamily="sans-serif"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/img_tryout"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                 android:text="Kerjakan tryout yang akan diadakan secara berkala"
                 android:textSize="16sp" />
 
@@ -225,17 +271,29 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/icon_made_by_freepik_from_www_flaticon_com"
                 android:padding="10dp"
+<<<<<<< HEAD
                 android:scaleType="fitXY"
                 android:src="@drawable/pembahasan" />
+=======
+                android:src="@drawable/pembahasan"
+                android:scaleType="fitXY" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
             <TextView
                 android:id="@+id/tvpembahasan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_centerVertical="true"
                 android:layout_marginStart="10dp"
                 android:layout_toEndOf="@+id/img_pembahasan"
                 android:fontFamily="sans-serif"
+=======
+                android:fontFamily="sans-serif"
+                android:layout_marginStart="10dp"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/img_pembahasan"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                 android:text="Lihat hasil pembahasan dan nilai"
                 android:textSize="16sp" />
 
@@ -243,11 +301,19 @@
                 android:id="@+id/tvlihatpembahasan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="8dp"
                 android:clickable="true"
+=======
+                android:layout_gravity="bottom|end"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                 android:drawableEnd="@drawable/ic_chevron_right"
                 android:drawablePadding="4dp"
                 android:focusable="true"

@@ -14,19 +14,33 @@
         android:id="@+id/tvnamamapel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+<<<<<<< HEAD
         android:layout_marginStart="10dp"
         android:layout_marginTop="6dp"
         android:fontFamily="@font/garamond"
         android:text="@string/jenjang"
         android:textColor="@color/colorLightOrange"
         android:textSize="20sp"
+=======
+        android:text="@string/jenjang"
+        android:textColor="@color/colorLightOrange"
+        android:fontFamily="@font/garamond"
+        android:textSize="20sp"
+        android:layout_marginTop="6dp"
+        android:layout_marginStart="10dp"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         tools:text="Bidang Studi"/>
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="1dp"
+<<<<<<< HEAD
         android:layout_marginStart="10dp"
         android:layout_marginTop="32dp"
+=======
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="10dp"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
         android:layout_marginEnd="10dp"
         android:background="@color/colorOrange" />
 

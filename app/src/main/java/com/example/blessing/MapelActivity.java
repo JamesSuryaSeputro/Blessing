@@ -32,13 +32,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MapelActivity extends AppCompatActivity implements OnClickItemContextMenuMapel {
+<<<<<<< HEAD
+=======
+    private ArrayList<MapelModel> mLearningModelArrayList = new ArrayList<>();
+    private MapelAdapter mAdapter;
+    private API service;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     public static final String TAG = MapelActivity.class.getSimpleName();
     public static final String EXTRA_MAPEL = "extra_mapel";
     public static final String EXTRA_NAMAMAPEL = "extra_namamapel";
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+<<<<<<< HEAD
     private ArrayList<MapelModel> mLearningModelArrayList = new ArrayList<>();
     private MapelAdapter mAdapter;
     private API service;
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private FloatingActionButton fab;
 
     @Override

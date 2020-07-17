@@ -12,8 +12,13 @@
         android:thickness="4dp"
         android:useLevel="false" >
         <size
+<<<<<<< HEAD
             android:width="48dp"
             android:height="48dp" />
+=======
+            android:height="48dp"
+            android:width="48dp" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <gradient
             android:centerColor="#80ec7e2a"

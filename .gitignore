@@ -13,7 +13,11 @@
 bin/
 gen/
 out/
+<<<<<<< HEAD
 #  Uncomment the following line in case you need and you don't have the release build type files in your app
+=======
+#  Uncomment the following line in case you need and you don't have the release build type files in your tryout
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 # release/
 
 # Gradle files

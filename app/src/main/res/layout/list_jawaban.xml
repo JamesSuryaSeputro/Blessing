@@ -16,15 +16,26 @@
             android:id="@+id/titikjawaban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+<<<<<<< HEAD
             android:layout_toEndOf="@+id/nojawaban"
             android:text="@string/titikjawaban"
             android:textSize="18sp" />
+=======
+            android:textSize="18sp"
+            android:text="@string/titikjawaban"
+            android:layout_toEndOf="@+id/nojawaban" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
         <TextView
             android:id="@+id/jawaban"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/titikjawaban"
+<<<<<<< HEAD
             android:textSize="18sp"
             tools:text="A" />
+=======
+            tools:text="A"
+            android:textSize="18sp" />
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 </RelativeLayout>

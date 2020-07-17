@@ -3,8 +3,16 @@ package com.example.blessing;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.os.Bundle;
 import android.os.SystemClock;
+=======
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.os.SystemClock;
+import android.preference.PreferenceManager;
+import android.text.Html;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,9 +24,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+<<<<<<< HEAD
 
 import com.bumptech.glide.Glide;
 import com.example.blessing.Model.LoginModel;
+=======
+import androidx.core.text.HtmlCompat;
+
+import com.bumptech.glide.Glide;
+import com.example.blessing.Model.LoginModel;
+import com.example.blessing.Model.MapelModel;
+import com.example.blessing.Model.RegisterModel;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 import com.example.blessing.Utils.Preferences;

@@ -1,5 +1,15 @@
 package com.example.blessing;
 
+<<<<<<< HEAD
+=======
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -20,6 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+<<<<<<< HEAD
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +38,8 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.text.HtmlCompat;
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.bumptech.glide.Glide;
 import com.example.blessing.Model.ImageModel;
 import com.example.blessing.Service.API;
@@ -183,6 +196,53 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
         builder.show();
     }
 
+<<<<<<< HEAD
+=======
+    private class UploadImg extends AsyncTask<Void, Integer, Void> {
+        @Override
+        protected Void doInBackground(Void... voids) {
+            try {
+                checkFileisHere();
+                if (!updateDetailTryout) {
+                    saveDetailTryout();
+                } else {
+                    Log.d(TAG, "updatetryout: " + idtryout);
+                    updateDetailTryout(idtryout);
+                }
+                runOnUiThread(() -> {
+                    Log.d(TAG, "doInBackground: Upload Progress");
+                    Toast.makeText(CreateDetailTryoutActivity.this, "Please Wait . . .", Toast.LENGTH_SHORT).show();
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            Log.d(TAG, "onPreExecute: Mulai Upload");
+        }
+
+        @Override
+        protected void onProgressUpdate(Integer... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            imgPath = "";
+            edtToFilename.getText().clear();
+            tvPreviewTo.setVisibility(View.GONE);
+            toImgPreview.setVisibility(View.GONE);
+
+            Log.d(TAG, "onPreExecute: Selesai Upload");
+        }
+    }
+
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     public void saveDetailTryout() {
         if (imgPath.equals("") || imgPath.isEmpty()) {
 
@@ -259,6 +319,7 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
         }
         return super.onOptionsItemSelected(item);
     }
+<<<<<<< HEAD
 
     private class UploadImg extends AsyncTask<Void, Integer, Void> {
         @Override
@@ -303,4 +364,6 @@ public class CreateDetailTryoutActivity extends AppCompatActivity implements Vie
             Log.d(TAG, "onPreExecute: Selesai Upload");
         }
     }
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 }

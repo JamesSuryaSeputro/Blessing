@@ -18,10 +18,20 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+<<<<<<< HEAD
 import com.example.blessing.Model.KelasModel;
 import com.example.blessing.Model.SoalModel;
 import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
+=======
+import com.example.blessing.Model.JenjangModel;
+import com.example.blessing.Model.KelasModel;
+import com.example.blessing.Model.MapelSoalModel;
+import com.example.blessing.Model.SoalModel;
+import com.example.blessing.Service.API;
+import com.example.blessing.Service.RetrofitBuildCustom;
+import com.example.blessing.Utils.Preferences;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,19 +41,30 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.example.blessing.MapelActivity.EXTRA_BOOLEAN;
+<<<<<<< HEAD
+=======
+import static com.example.blessing.MapelActivity.EXTRA_MAPEL;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import static com.example.blessing.MapelSoalActivity.EXTRA_IDJENJANG;
 import static com.example.blessing.MapelSoalActivity.EXTRA_MAPELSOAL;
 import static com.example.blessing.SoalActivity.EXTRA_NAMAJENJANG;
 import static com.example.blessing.SoalActivity.EXTRA_SOAL;
 
 public class CreateSoalActivity extends AppCompatActivity implements View.OnClickListener {
+<<<<<<< HEAD
     public static final String TAG = SoalActivity.class.getSimpleName();
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private EditText editText;
     private Spinner spinner;
     private String idsoal, idjenjang, namajenjang, idmapelsoal;
     private Boolean updatesoal;
     private API service;
     private long mLastClickTime = 0;
+<<<<<<< HEAD
+=======
+    public static final String TAG = SoalActivity.class.getSimpleName();
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private List<String> listSpinner = new ArrayList<>();
     private String selectedId;
     private String idRole;

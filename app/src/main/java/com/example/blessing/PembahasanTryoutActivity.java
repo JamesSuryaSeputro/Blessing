@@ -16,7 +16,13 @@ import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SnapHelper;
 
+<<<<<<< HEAD
 import com.example.blessing.Adapter.ImagePembahasanTryoutAdapter;
+=======
+import com.example.blessing.Adapter.ImagePembahasanAdapter;
+import com.example.blessing.Adapter.ImagePembahasanTryoutAdapter;
+import com.example.blessing.Adapter.JawabanAdapter;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Adapter.JawabanTryoutAdapter;
 import com.example.blessing.Model.DetailTryoutModel;
 import com.example.blessing.Service.API;
@@ -32,11 +38,18 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PembahasanTryoutActivity extends AppCompatActivity {
+<<<<<<< HEAD
     public static final String EXTRA_BOOLEAN = "extra_boolean";
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private static final String TAG = PembahasanTryoutActivity.class.getSimpleName();
     private ImagePembahasanTryoutAdapter mAdapter;
     private JawabanTryoutAdapter mJawabanAdapter;
     private API service;
+<<<<<<< HEAD
+=======
+    public static final String EXTRA_BOOLEAN = "extra_boolean";
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
     private TextView tvJawabanTo, tvBelumAdaPembahasanTo;
 
     @Override

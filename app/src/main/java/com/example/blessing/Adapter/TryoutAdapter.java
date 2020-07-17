@@ -4,6 +4,10 @@ import android.content.Context;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
+<<<<<<< HEAD
+=======
+import android.view.MenuItem;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -13,11 +17,23 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+<<<<<<< HEAD
+=======
+import com.example.blessing.Model.MapelSoalModel;
+import com.example.blessing.Model.NilaiTryoutModel;
+import com.example.blessing.Model.SoalModel;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import com.example.blessing.Model.TryoutModel;
 import com.example.blessing.R;
 import com.example.blessing.Utils.Preferences;
 
+<<<<<<< HEAD
 import java.util.List;
+=======
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 
 public class TryoutAdapter extends RecyclerView.Adapter<TryoutAdapter.ViewHolder> {
     private static final String TAG = "TryoutAdapter";

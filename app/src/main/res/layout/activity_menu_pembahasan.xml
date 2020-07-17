@@ -55,8 +55,13 @@
                     android:layout_below="@+id/img_pembahasanbanksoal"
                     android:fontFamily="sans-serif"
                     android:text="Pembahasan Soal"
+<<<<<<< HEAD
                     android:textAlignment="center"
                     android:textColor="@color/colorLightOrange"
+=======
+                    android:textColor="@color/colorLightOrange"
+                    android:textAlignment="center"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                     android:textSize="14sp" />
 
             </RelativeLayout>
@@ -94,9 +99,15 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/img_pembahasantryout"
                     android:fontFamily="sans-serif"
+<<<<<<< HEAD
                     android:text="Pembahasan Tryout"
                     android:textAlignment="center"
                     android:textColor="@color/colorLightOrange"
+=======
+                    android:textColor="@color/colorLightOrange"
+                    android:text="Pembahasan Tryout"
+                    android:textAlignment="center"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                     android:textSize="14sp" />
 
             </RelativeLayout>
@@ -141,8 +152,13 @@
                     android:layout_below="@+id/img_nilaibanksoal"
                     android:fontFamily="sans-serif"
                     android:text="Nilai Soal"
+<<<<<<< HEAD
                     android:textAlignment="center"
                     android:textColor="@color/colorLightOrange"
+=======
+                    android:textColor="@color/colorLightOrange"
+                    android:textAlignment="center"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                     android:textSize="14sp" />
 
             </RelativeLayout>
@@ -180,9 +196,15 @@
                     android:layout_height="match_parent"
                     android:layout_below="@+id/img_nilaitryout"
                     android:fontFamily="sans-serif"
+<<<<<<< HEAD
                     android:text="Nilai Tryout"
                     android:textAlignment="center"
                     android:textColor="@color/colorLightOrange"
+=======
+                    android:textColor="@color/colorLightOrange"
+                    android:text="Nilai Tryout"
+                    android:textAlignment="center"
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
                     android:textSize="14sp" />
 
             </RelativeLayout>

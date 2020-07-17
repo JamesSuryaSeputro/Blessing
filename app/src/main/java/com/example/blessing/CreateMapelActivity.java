@@ -2,6 +2,10 @@ package com.example.blessing;
 
 import android.content.Intent;
 import android.os.Bundle;
+<<<<<<< HEAD
+=======
+import android.os.SystemClock;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;

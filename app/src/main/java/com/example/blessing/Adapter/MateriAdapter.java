@@ -1,6 +1,10 @@
 package com.example.blessing.Adapter;
 
 import android.content.Context;
+<<<<<<< HEAD
+=======
+import android.database.Cursor;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.LayoutInflater;
@@ -8,14 +12,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.blessing.Model.MateriModel;
+<<<<<<< HEAD
 import com.example.blessing.R;
 
+=======
+import com.example.blessing.Model.SoalModel;
+import com.example.blessing.R;
+>>>>>>> 73837329fd07894514e9194bf88f89881d1a8dff
 import java.util.ArrayList;
 import java.util.List;
 
