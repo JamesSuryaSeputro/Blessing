@@ -71,15 +71,31 @@ public interface API {
     @GET("api_get_materi/{id}")
     Call<List<MateriModel>> getmateribymapel(@Path("id") String idmapel);
 
+//    @Multipart
+//    @POST("api_post_materi")
+//    Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
+//                                   @Part("judul_materi") RequestBody judulmateri,
+//                                   @Part("id_mapel") RequestBody idmapel,
+//                                   @Part("id_kelas") RequestBody idkelas);
+
+    //server GCP
     @Multipart
-    @POST("api_post_materi")
+    @POST("api_post_materi_test")
     Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
                                    @Part("judul_materi") RequestBody judulmateri,
                                    @Part("id_mapel") RequestBody idmapel,
                                    @Part("id_kelas") RequestBody idkelas);
 
+//    @Multipart
+//    @POST("api_update_materi/{id}")
+//    Call<UploadModel> updatedatamateri(@Path("id") String id,
+//                                       @Part MultipartBody.Part file,
+//                                       @Part("judul_materi") RequestBody judulmateri,
+//                                       @Part("id_kelas") RequestBody idkelas);
+
+    //server GCP
     @Multipart
-    @POST("api_update_materi/{id}")
+    @POST("api_update_materi_test/{id}")
     Call<UploadModel> updatedatamateri(@Path("id") String id,
                                        @Part MultipartBody.Part file,
                                        @Part("judul_materi") RequestBody judulmateri,

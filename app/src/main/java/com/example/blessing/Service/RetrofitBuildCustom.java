@@ -7,13 +7,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitBuildCustom {
 
-   public static final String BASE_URL = "http://192.168.1.4/blessing/blessingAPI/public/";
+   public static final String BASE_URL = "https://krisjaya-2020.et.r.appspot.com/";
    private static RetrofitBuildCustom instance = null;
    private static Retrofit retrofit;
    private API service;
-   //https://blessingme.herokuapp.com/public/
-//    192.168.43.40
-   //http://192.168.1.2/blessing/blessingAPI/public/
+   //https://blessingme.herokuapp.com/
+    //http://192.168.1.7/blessingAPIremote/public/
+   //http://192.168.1.7/blessing/blessingAPI/public/
 
     public RetrofitBuildCustom() {
         retrofit = new Retrofit.Builder()

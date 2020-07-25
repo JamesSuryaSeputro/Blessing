@@ -217,7 +217,8 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     public void download(String fileName) {
-        String path = RetrofitBuildCustom.BASE_URL + "uploads/" + fileName;
+//      String path = RetrofitBuildCustom.BASE_URL + "uploads/" + fileName;
+        String path = fileName;
         Log.d(TAG, "onReceive: " + path);
         manager = (DownloadManager) this.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(path));
