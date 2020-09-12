@@ -1,8 +1,12 @@
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 package com.example.blessing;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.text.Html;
 import android.util.Log;
 import android.view.MenuItem;
@@ -20,6 +24,7 @@ import com.example.blessing.Service.API;
 import com.example.blessing.Service.RetrofitBuildCustom;
 
 import java.util.Objects;
+
 
 import retrofit2.Call;
 import retrofit2.Callback;

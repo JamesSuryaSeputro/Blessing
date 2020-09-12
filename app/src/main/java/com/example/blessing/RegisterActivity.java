@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 package com.example.blessing;
 
 import android.content.Context;
@@ -96,8 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         } else {
             Call<RegisterModel> call = retrofitBuildCustom.getService().checkregister(idRole, edtNama.getText().toString(),
                     edtEmail.getText().toString(),
-                    edtPassword.getText().toString().trim(),
-                    edtConfirmpass.getText().toString().trim());
+                    edtPassword.getText().toString().trim());
             call.enqueue(new Callback<RegisterModel>() {
                 @Override
                 public void onResponse(Call<RegisterModel> call, Response<RegisterModel> response) {

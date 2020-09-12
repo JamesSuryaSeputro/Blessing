@@ -36,4 +36,9 @@
         <item name="colorControlActivated">#FC6600</item>
     </style>
 
+    <style name="ErrorAppearance" parent="TextAppearance.Design.Error">
+        <item name="android:textColor">@color/red</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

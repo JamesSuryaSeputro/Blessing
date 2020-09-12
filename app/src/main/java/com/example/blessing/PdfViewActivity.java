@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 package com.example.blessing;
 
 import androidx.appcompat.app.AppCompatActivity;

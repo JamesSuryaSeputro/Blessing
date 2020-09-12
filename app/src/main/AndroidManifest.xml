@@ -19,7 +19,8 @@
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="q">
-        <activity android:name=".NilaiTryoutActivity"></activity>
+        <activity android:name=".ResetPasswordActivity"></activity>
+        <activity android:name=".NilaiTryoutActivity" />
         <activity android:name=".NilaiSoalActivity" />
         <activity android:name=".PembahasanTryoutActivity" />
         <activity android:name=".CreateDetailTryoutActivity" />

@@ -1,5 +1,10 @@
 package com.example.blessing;
 
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

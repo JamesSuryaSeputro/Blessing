@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">blessing</string>
     <string name="teaching_with_integrity_making_history_through_knowledge">Teaching with Integrity, Making History Through Knowledge</string>
-    <string name="belum_pernah_mendaftar">Belum pernah mendaftar?</string>
-    <string name="daftar_sekarang">Daftar sekarang</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="reset_password">reset password</string>
     <string name="blessing">BLESSING</string>
     <string name="masukan_email">Masukan email</string>
     <string name="masukan_password">Masukan password</string>
@@ -58,4 +58,9 @@
     <string name="slash">/</string>
     <string name="menit">\u0020 menit</string>
     <string name="input_judul_materi">Input judul materi</string>
+    <string name="or">OR</string>
+    <string name="input_email">Input email</string>
+    <string name="tambah_mata_pelajaran">Tambah Mata Pelajaran</string>
+    <string name="masukan_mata_pelajaran">Masukan Mata Pelajaran</string>
+    <string name="confirm">confirm</string>
 </resources>

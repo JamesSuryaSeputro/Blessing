@@ -79,7 +79,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_toStartOf="@+id/img_materi"
                 android:fontFamily="sans-serif"
-                android:text="Lihat kumpulan materi-materi"
+                android:text="Lihat kumpulan materi pelajaran dari berbagai mata pelajaran"
                 android:textSize="16sp" />
 
             </RelativeLayout>
@@ -136,7 +136,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_toEndOf="@+id/img_banksoal"
                     android:fontFamily="sans-serif"
-                    android:text="Lihat kumpulan berbagai latihan soal kuis"
+                    android:text="Pecahkan dan temukan jawaban dari kumpulan latihan soal kuis"
                     android:textSize="16sp" />
 
             </RelativeLayout>
@@ -186,7 +186,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_toStartOf="@+id/img_tryout"
                 android:fontFamily="sans-serif"
-                android:text="Kerjakan tryout yang akan diadakan secara berkala"
+                android:text="Kerjakan tryout untuk mempersiapkan diri menghadapi ujian"
                 android:textSize="16sp" />
 
             </RelativeLayout>

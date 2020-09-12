@@ -41,13 +41,21 @@ public interface API {
     @FormUrlEncoded
     Call<LoginModel> checklogin(@Field("email") String email, @Field("password") String password);
 
+    @POST("api_post_checkemail")
+    @FormUrlEncoded
+    Call<LoginModel> checkemail(@Field("email") String email);
+
+    @POST("api_reset_password")
+    @FormUrlEncoded
+    Call<RegisterModel> resetpassword(@Field("email") String email,
+                                      @Field("password") String password);
+
     @POST("api_post_user")
     @FormUrlEncoded
     Call<RegisterModel> checkregister(@Field("id_role") String idrole,
                                       @Field("nama") String nama,
                                       @Field("email") String email,
-                                      @Field("password") String password,
-                                      @Field("confirmpass") String confirmpassword);
+                                      @Field("password") String password);
 
     @PUT("api_update_user/{id}")
     Call<LoginModel> updatedatauser(@Path("id") String id,
@@ -71,35 +79,35 @@ public interface API {
     @GET("api_get_materi/{id}")
     Call<List<MateriModel>> getmateribymapel(@Path("id") String idmapel);
 
-//    @Multipart
-//    @POST("api_post_materi")
-//    Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
-//                                   @Part("judul_materi") RequestBody judulmateri,
-//                                   @Part("id_mapel") RequestBody idmapel,
-//                                   @Part("id_kelas") RequestBody idkelas);
-
-    //server GCP
     @Multipart
-    @POST("api_post_materi_test")
+    @POST("api_post_materi")
     Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
                                    @Part("judul_materi") RequestBody judulmateri,
                                    @Part("id_mapel") RequestBody idmapel,
                                    @Part("id_kelas") RequestBody idkelas);
 
-//    @Multipart
-//    @POST("api_update_materi/{id}")
-//    Call<UploadModel> updatedatamateri(@Path("id") String id,
-//                                       @Part MultipartBody.Part file,
-//                                       @Part("judul_materi") RequestBody judulmateri,
-//                                       @Part("id_kelas") RequestBody idkelas);
-
     //server GCP
+//    @Multipart
+//    @POST("api_post_materi_test")
+//    Call<UploadModel> uploadmateri(@Part MultipartBody.Part file,
+//                                   @Part("judul_materi") RequestBody judulmateri,
+//                                   @Part("id_mapel") RequestBody idmapel,
+//                                   @Part("id_kelas") RequestBody idkelas);
+
     @Multipart
-    @POST("api_update_materi_test/{id}")
+    @POST("api_update_materi/{id}")
     Call<UploadModel> updatedatamateri(@Path("id") String id,
                                        @Part MultipartBody.Part file,
                                        @Part("judul_materi") RequestBody judulmateri,
                                        @Part("id_kelas") RequestBody idkelas);
+
+    //server GCP
+//    @Multipart
+//    @POST("api_update_materi_test/{id}")
+//    Call<UploadModel> updatedatamateri(@Path("id") String id,
+//                                       @Part MultipartBody.Part file,
+//                                       @Part("judul_materi") RequestBody judulmateri,
+//                                       @Part("id_kelas") RequestBody idkelas);
 
     @DELETE("api_delete_materi/{id}")
     Call<MateriModel> deletedatamateri(@Path("id") String id);

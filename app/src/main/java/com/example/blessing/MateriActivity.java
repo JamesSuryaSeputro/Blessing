@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 package com.example.blessing;
 
 import androidx.annotation.NonNull;
@@ -217,8 +222,10 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
     }
 
     public void download(String fileName) {
-//      String path = RetrofitBuildCustom.BASE_URL + "uploads/" + fileName;
-        String path = fileName;
+        String path = RetrofitBuildCustom.BASE_URL + "uploads/" + fileName;
+
+//        //server GCP
+//        String path = fileName;
         Log.d(TAG, "onReceive: " + path);
         manager = (DownloadManager) this.getSystemService(Context.DOWNLOAD_SERVICE);
         DownloadManager.Request request = new DownloadManager.Request(Uri.parse(path));

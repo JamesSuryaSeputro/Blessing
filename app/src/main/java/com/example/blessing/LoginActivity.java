@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2020 James Surya Seputro.
+ * All rights reserved.
+ */
+
 package com.example.blessing;
 
 import android.content.Context;
@@ -35,22 +40,23 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView btnTextView = findViewById(R.id.toregister);
-        btnTextView.setOnClickListener(this);
-
         EdtEmail = findViewById(R.id.txtemail);
         EdtPassword = findViewById(R.id.txtpassword);
 
         retrofitBuildCustom = RetrofitBuildCustom.getInstance();
         Button btnLogin = findViewById(R.id.btnlogin);
         btnLogin.setOnClickListener(this);
+        Button btnRegister = findViewById(R.id.btnregister);
+        btnRegister.setOnClickListener(this);
+        TextView tvResetPassword = findViewById(R.id.reset_password);
+        tvResetPassword.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.toregister:
+            case R.id.btnregister:
                 if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
                     return;
                 }
@@ -67,6 +73,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Log.d("LoginActivity", "BTNLOGIN CLICKED");
                     checkLogin();
                 }
+                break;
+            case R.id.reset_password:
+                if (SystemClock.elapsedRealtime() - mLastClickTime < 1000) {
+                    return;
+                }
+                mLastClickTime = SystemClock.elapsedRealtime();
+                Intent moveIntent2 = new Intent(LoginActivity.this, ResetPasswordActivity.class);
+                startActivity(moveIntent2);
                 break;
         }
     }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="9dp"
     android:orientation="vertical"
     tools:context=".CreateMapelActivity">
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/garamondbold"
-        android:text="Tambah Mata Pelajaran"
+        android:text="@string/tambah_mata_pelajaran"
         android:textColor="#FF9800"
         android:textSize="18sp" />
 
@@ -21,8 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:hint="Masukan Mata Pelajaran"
-        android:inputType=""/>
+        android:hint="@string/masukan_mata_pelajaran"
+        android:inputType="text"/>
 
     <Button
         android:id="@+id/btninputmapel"
