@@ -63,4 +63,5 @@
     <string name="tambah_mata_pelajaran">Tambah Mata Pelajaran</string>
     <string name="masukan_mata_pelajaran">Masukan Mata Pelajaran</string>
     <string name="confirm">confirm</string>
+    <string name="dropdown">Dropdown</string>
 </resources>

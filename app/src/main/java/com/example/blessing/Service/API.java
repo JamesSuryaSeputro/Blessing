@@ -257,4 +257,14 @@ public interface API {
     Call<NilaiTryoutModel> updatedatanilaitryout(@Path("id") String id,
                                                  @Field("nilai_tryout") String nilaitryout,
                                                  @Field("jumlah_tryout") String jumlahtryout);
+
+    @Multipart
+    @POST("api_update_jawaban")
+    Call<ImageModel> updateimgjawabandetailkuis(@Part MultipartBody.Part file,
+                                                @Part("id") RequestBody id);
+
+    @Multipart
+    @POST("api_update_jawabanto")
+    Call<ImageModel> updateimgjawabandetailtryout(@Part MultipartBody.Part file,
+                                                  @Part("id") RequestBody id);
 }

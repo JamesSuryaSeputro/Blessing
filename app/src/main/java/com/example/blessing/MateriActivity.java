@@ -153,8 +153,6 @@ public class MateriActivity extends AppCompatActivity implements OnClickItemCont
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
-        //recyclerView.setAdapter(mAdapter);
-
         mAdapter = new MateriAdapter(MateriActivity.this, new ArrayList<>());
         recyclerView.setAdapter(mAdapter);
         mAdapter.setmListener(this);

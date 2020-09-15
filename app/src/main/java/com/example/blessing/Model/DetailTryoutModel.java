@@ -9,6 +9,9 @@ public class DetailTryoutModel {
     @SerializedName("datecreated")
     private String datecreated;
     @Expose
+    @SerializedName("img_jawaban")
+    private String imgJawaban;
+    @Expose
     @SerializedName("jawaban_to")
     private String jawabanTo;
     @Expose
@@ -37,6 +40,14 @@ public class DetailTryoutModel {
 
     public void setDatecreated(String datecreated) {
         this.datecreated = datecreated;
+    }
+
+    public String getImgJawaban() {
+        return imgJawaban;
+    }
+
+    public void setImgJawaban(String imgJawaban) {
+        this.imgJawaban = imgJawaban;
     }
 
     public String getJawabanTo() {

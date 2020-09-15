@@ -5,27 +5,54 @@
     android:layout_height="wrap_content"
     android:layout_marginStart="10dp">
 
-        <TextView
-            android:id="@+id/nojawaban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18sp"
-            tools:text="1"/>
+    <TextView
+        android:id="@+id/nojawaban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="1" />
 
-        <TextView
-            android:id="@+id/titikjawaban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/nojawaban"
-            android:text="@string/titikjawaban"
-            android:textSize="18sp" />
+    <TextView
+        android:id="@+id/titikjawaban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/nojawaban"
+        android:text="@string/titikjawaban"
+        android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/jawaban"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/titikjawaban"
-            android:textSize="18sp"
-            tools:text="A" />
+    <TextView
+        android:id="@+id/jawaban"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/titikjawaban"
+        android:textSize="18sp"
+        tools:text="A" />
+
+    <ImageView
+        android:id="@+id/pick_image"
+        android:layout_toStartOf="@+id/dropdown_arrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_photo"
+        android:contentDescription="@string/choose_image" />
+
+    <ImageView
+        android:id="@+id/dropdown_arrow"
+        android:layout_alignParentEnd="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_drop_down"
+        android:contentDescription="@string/dropdown" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/img_jawaban"
+        android:layout_toEndOf="@+id/titikjawaban"
+        android:layout_below="@+id/jawaban"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/image_kuis"
+        android:visibility="gone"
+        android:scaleType="fitXY" />
 
 </RelativeLayout>
