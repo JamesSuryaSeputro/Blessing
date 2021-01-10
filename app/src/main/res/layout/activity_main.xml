@@ -70,17 +70,17 @@
                 android:scaleType="fitXY"
                 android:src="@drawable/materi" />
 
-            <TextView
-                android:id="@+id/tvmainmateri"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="12dp"
-                android:layout_toStartOf="@+id/img_materi"
-                android:fontFamily="sans-serif"
-                android:text="Lihat kumpulan materi pelajaran dari berbagai mata pelajaran"
-                android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/tvmainmateri"
+                    android:layout_width="272dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="13dp"
+                    android:layout_toStartOf="@+id/img_materi"
+                    android:fontFamily="sans-serif"
+                    android:text="Lihat kumpulan materi pelajaran dari berbagai mata pelajaran"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
